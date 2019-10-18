@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>立即报名，圆你电影梦！人人有奖，瓜分20W现金！</title>
+		<meta name="Description" content="电影《杜月笙》主创主演海选大奖赛" />
+
+		<link rel="stylesheet" type="text/css" href="../../css/common.css?v=01"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css?v=01"/>
+		<style>
+			.act1_list{padding-top: 0;}
+			.act1_list>p{font-size: .4rem; text-align: center; line-height: .6rem;}
+			.act1_list>p>a{color: #bb1005;}
+		</style>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script>
+	    var _hmt = _hmt || [];
+	    (function() {
+	      var hm = document.createElement("script");
+	      hm.src = "https://hm.baidu.com/hm.js?4933824c3bcc9fccd852b3be0d6c0d58";
+	      var s = document.getElementsByTagName("script")[0]; 
+	      s.parentNode.insertBefore(hm, s);
+	    })();
+	    </script>
+	</head>
+	<body>
+		<div style="display: none;"><img src="share/share.jpg" alt=""></div>
+		<header class="download_top displayFlex flexMidle">
+			<div class="logo displayFlex flex1">
+				<h1 class="logo-img"></h1>
+				<p class="logo-text">
+					<span class="text-span1">未来无限APP</span>
+					<span class="text-span2">新手注册立享大礼包</span>
+				</p>
+			</div>
+			<a class="logo-right" href="javascript:;" onclick="gotoDown()">下载有礼</a>
+		</header>
+		<div class="main">
+			<div class="banner"><img src="images/banner.jpg"/></div>
+			<div class="mainBtn">
+				<ul class="boxBtn displayFlex">
+					<li><a href="javascript:;"><img src="images/xiangqing.png"/></a></li>
+					<li><a href="javascript:;" onclick="newHd.scrollTo('prize')"><img src="images/jiangli.png"/></a></li>
+				</ul>
+				<ul class="boxBtn displayFlex">
+					<li><a href="javascript:;" onclick="newHd.scrollTo('activity')"><img src="images/canyu.png"/></a></li>
+					<li><a href="javascript:;" onclick="rankModal()" ><img src="images/zhenxuan.png"/></a></li>
+				</ul>
+			</div>
+			<!--活动详情-->
+			<div class="detail" id="detail">
+				<img src="images/detail1.jpg"/>
+				<img src="images/detail2.jpg"/>
+			</div>
+			<!--活动奖励-->
+			<div class="prize" id="prize">
+				<img src="images/prize1.jpg"/>
+				<img src="images/prize2.jpg"/>
+			</div>
+			<!--参与活动-->
+			<div class="activity" id="activity">
+				<img src="images/act1.jpg"/>
+				<!--导演-->
+				<div class="act1">
+					<div class="act1_head1"><img src="images/act1_img1.png"/></div>
+					<ul class="act1_time displayFlex">
+						<li>
+							<p>征集时间</p>
+							<p>3.28 - 4.11</p>
+						</li>
+						<li>
+							<p>晋级时间</p>
+							<p>4.13 - 5.2</p>
+						</li>
+						<li>
+							<p>评选时间</p>
+							<p>5.3 - 6.6</p>
+						</li>
+					</ul>
+					<div class="act1_head1 act1_head2"><img src="images/act1_img2.png"/></div>
+					<div class="act1_main">
+						<div class="act1_list displayFlex flexCenter flexMidle">
+							<p>
+								请<a href="javascript:;" onclick="gotoLogin()">登录</a>后，参与活动!<br>
+								没有账号？请<a href="javascript:;" onclick="gotoReg()">注册</a>
+							</p>
+						</div>
+						<div class="page displayFlex flexMidle" data-index="0">
+							<a href="javascript:;" class="prev" onclick="prevPage(this)">&lt;</a>
+							<span class="pageInfo"><i class="now_page">0</i>/<i class="total_page">0</i></span>
+							<a href="javascript:;" class="next" onclick="nextPage(this)">&gt;</a>
+						</div>
+						<div class="con-btn displayFlex">
+							<a href="javascript:;" onclick="gotoLogin()">立即参与</a>
+							<a href="javascript:;" onclick="gotoLogin()">提交记录</a>
+						</div>
+					</div>
+				</div>
+				<!--编剧-->
+				<div class="act1 act2">
+					<div class="act1_head1"><img src="images/act2_img1.png"/></div>
+					<ul class="act1_time displayFlex">
+						<li>
+							<p>征集时间</p>
+							<p>3.28 - 4.11</p>
+						</li>
+						<li>
+							<p>晋级时间</p>
+							<p>4.13 - 5.2</p>
+						</li>
+						<li>
+							<p>评选时间</p>
+							<p>5.3 - 6.6</p>
+						</li>
+					</ul>
+					<div class="act1_head1 act1_head2"><img src="images/act2_img2.png"/></div>
+					<div class="act1_main">
+						<div class="act1_list displayFlex flexCenter flexMidle">
+							<p>
+								请<a href="javascript:;" onclick="gotoLogin()">登录</a>后，参与活动!<br>
+								没有账号？请<a href="javascript:;" onclick="gotoReg()">注册</a>
+							</p>
+						</div>
+						<div class="page displayFlex flexMidle" data-index="1">
+							<a href="javascript:;" class="prev" onclick="prevPage(this)">&lt;</a>
+							<span class="pageInfo"><i class="now_page">0</i>/<i class="total_page">0</i></span>
+							<a href="javascript:;" class="next" onclick="nextPage(this)">&gt;</a>
+						</div>
+						<div class="con-btn displayFlex">
+							<a href="javascript:;" onclick="gotoLogin()">立即参与</a>
+							<a href="javascript:;" onclick="gotoLogin()">提交记录</a>
+						</div>
+					</div>
+				</div>
+				<!--男主-->
+				<div class="act1 act3">
+					<div class="act1_head1"><img src="images/act3_img1.png"/></div>
+					<ul class="act1_time displayFlex">
+						<li>
+							<p>征集时间</p>
+							<p>3.28 - 6.6</p>
+						</li>
+						<li>
+							<p>晋级时间</p>
+							<p>6.8 - 6.27</p>
+						</li>
+						<li>
+							<p>评选时间</p>
+							<p>6.28 - 8.1</p>
+						</li>
+					</ul>
+					<div class="act1_head1 act1_head2"><img src="images/act3_img2.png"/></div>
+					<div class="act1_main">
+						<div class="act1_list displayFlex flexCenter flexMidle">
+							<p>
+								请<a href="javascript:;" onclick="gotoLogin()">登录</a>后，参与活动!<br>
+								没有账号？请<a href="javascript:;" onclick="gotoReg()">注册</a>
+							</p>
+						</div>
+						<div class="page displayFlex flexMidle" data-index="2">
+							<a href="javascript:;" class="prev" onclick="prevPage(this)">&lt;</a>
+							<span class="pageInfo"><i class="now_page">0</i>/<i class="total_page disbled">0</i></span>
+							<a href="javascript:;" class="next" onclick="nextPage(this)">&gt;</a>
+						</div>
+						<div class="con-btn displayFlex">
+							<a href="javascript:;" onclick="gotoLogin()">立即参与</a>
+							<a href="javascript:;" onclick="gotoLogin()">提交记录</a>
+						</div>
+					</div>
+				</div>
+				<!--女主-->
+				<div class="act1 act4">
+					<div class="act1_head1"><img src="images/act4_img1.png"/></div>
+					<ul class="act1_time displayFlex">
+						<li>
+							<p>征集时间</p>
+							<p>3.28 - 6.6</p>
+						</li>
+						<li>
+							<p>晋级时间</p>
+							<p>6.8 - 6.27</p>
+						</li>
+						<li>
+							<p>评选时间</p>
+							<p>6.28 - 8.1</p>
+						</li>
+					</ul>
+					<div class="act1_head1 act1_head2"><img src="images/act4_img2.png"/></div>
+					<div class="act1_main">
+						<div class="act1_list displayFlex flexCenter flexMidle">
+							<p>
+								请<a href="javascript:;" onclick="gotoLogin()">登录</a>后，参与活动!<br>
+								没有账号？请<a href="javascript:;" onclick="gotoReg()">注册</a>
+							</p>
+						</div>
+						<div class="page displayFlex flexMidle"  data-index="3">
+							<a href="javascript:;" class="prev" onclick="prevPage(this)">&lt;</a>
+							<span class="pageInfo"><i class="now_page">0</i>/<i class="total_page">0</i></span>
+							<a href="javascript:;" class="next" onclick="nextPage(this)">&gt;</a>
+						</div>
+						<div class="con-btn displayFlex">
+							<a href="javascript:;" onclick="gotoLogin()">立即参与</a>
+							<a href="javascript:;" onclick="gotoLogin()">提交记录</a>
+						</div>
+					</div>
+				</div>
+				<!--歌手-->
+				<div class="act1 act5">
+					<div class="act1_head1"><img src="images/act5_img1.png"/></div>
+					<ul class="act1_time displayFlex">
+						<li>
+							<p>征集时间</p>
+							<p>3.28 - 6.6</p>
+						</li>
+						<li>
+							<p>晋级时间</p>
+							<p>6.8 - 6.27</p>
+						</li>
+						<li>
+							<p>评选时间</p>
+							<p>6.28 - 8.1</p>
+						</li>
+					</ul>
+					<div class="act1_head1 act1_head2"><img src="images/act5_img2.png"/></div>
+					<div class="act1_main">
+						<div class="act1_list displayFlex flexCenter flexMidle">
+							<p>
+								请<a href="javascript:;" onclick="gotoLogin()">登录</a>后，参与活动!<br>
+								没有账号？请<a href="javascript:;" onclick="gotoReg()">注册</a>
+							</p>
+						</div>
+						<div class="page displayFlex flexMidle" data-index="4">
+							<a href="javascript:;" class="prev" onclick="prevPage(this)">&lt;</a>
+							<span class="pageInfo"><i class="now_page">0</i>/<i class="total_page">0</i></span>
+							<a href="javascript:;" class="next" onclick="nextPage(this)">&gt;</a>
+						</div>
+						<div class="con-btn displayFlex">
+							<a href="javascript:;" onclick="gotoLogin()">立即参与</a>
+							<a href="javascript:;" onclick="gotoLogin()">提交记录</a>
+						</div>
+					</div>
+				</div>
+				<div class="footer">
+					<!--<a ><img src="images/downBtn.png"/></a>-->
+					
+					<p>本次活动最终解释权 归未来无限网所有</p>
+				</div>
+			</div>
+			<!--我要推荐弹层-->
+			<div class="ruleModal">
+				<div class="rule_box">
+					<div class="content">
+						<p class="rule_btn"><button class="close_btn" onclick="hideModal()"></button></p>
+						<div class="rule_main">
+							<img src="images/rule_text.png"/>
+							<p>1.每个组，用户每天最多可提交3次参选人。（自荐/推荐总计为3次）；</p>
+							<p>2.自荐/推荐的参选人按照提交时间的先后顺序审核，一旦参选人被通过后，其他用户将不能再提交；</p>
+							<p>3.每个用户在每个组别中的推荐最多可采纳1个参选人，采纳奖励为2元现金红包。采纳后直接发放到用户现金账户内；</p>
+							<p>4.所有采纳通过的参选人会进入后续的入围评选阶段，最终按清算价对参选人排名，前20名的推荐人可获得星探奖。</p>
+						</div>
+					</div>
+					<div class="partake_box displayFlex">
+						<a href="javascript:;" onclick="gotoRecom()">我要推荐</a>
+						<a href="javascript:;" onclick="gotoCover()">我要自荐</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/alert.js"></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>		
+		<script src="../../js/base_app.js?v=50"></script>
+		<!-- <script src="js/bury.js" async defer></script> -->
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<!-- <script src="../../js/wxShare.js?v=04"></script> -->
+		<script>
+			var newHd = new AppCommon();
+			newHd.share.name='电影《杜月笙》主创主演海选大奖赛';
+			newHd.share.introduce='立即报名，圆你电影梦！人人有奖，瓜分20W现金！';
+			var cookieUrl = 'https://www.ifuturex.com/wap/activity/duyuesheng/index.html?activityId='+newHd.GetQueryString('activityId')
+			// newHd.setCookie('setUrl',cookieUrl);
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',trackDesc);
+			}
+			// newHd.uriedPoints(1,'duyuesheng',newHd.GetQueryString('activityId'),trackDesc);
+			
+			if(newHd.GetQueryString('from') != null){
+				newHd.setCookie('channel','qudao'+newHd.GetQueryString('from'));
+			}
+			
+			var flag = true;
+			function gotoDown(){
+				// newHd.uriedPoints(0,'download','undefined',trackDesc);
+				window.location.href = '/webApp/download/download.html'
+			}
+			// alert(111)
+			// if(isWeixinBrowser){
+			// 	var shareData = {
+			// 		title:newHd.share.introduce,
+			// 		desc:newHd.share.name,
+			// 		link:window.location.href,
+			// 		imgUrl:'https://www.ifuturex.com/wap/activity/duyuesheng/share/share.jpg'
+			// 	}
+			// 	shareInit(shareData)
+			// }
+			if (window.android) {
+				newHd.token = 'Bearer '+ window.android.getToken();
+				newHd.browser = 'mhexpresss';
+				// newHd.init();
+			}
+			//此方法只在IOS下调用
+			function getToken(v){
+				newHd.token = v;
+				newHd.browser = 'mhexpresss';
+				// newHd.init();
+				
+			}
+			function getTokenss(s){
+				window.webkit.messageHandlers.getToken.postMessage('')
+			}
+			setTimeout(function(){
+				if(newHd.browser != 'mhexpresss'){
+					$('.download_top').slideDown();
+					// newHd.init();
+				}
+			},1000)
+			// newHd.init(record);
+			
+			var config = {
+				areaActId: [],
+				shortName: [],
+				arrPage: [],
+				haveAccept: '',
+				commitTimes: ''
+				
+			}
+			function hideModal() {
+				$('.ruleModal').hide()
+			}
+			function gotoLogin(){
+				newHd.setCookie('backUrl',cookieUrl)
+				window.location.href='../../login.html';
+			}
+			function gotoReg(){
+				newHd.setCookie('backUrl',cookieUrl)
+				window.location.href='../../register.html';
+			}
+
+			function rankModal() {
+				$('.main').alert({
+				    text:'甄选结果敬请期待'
+				})
+			}
+			//立即参与方法
+			function canyuEvent(index){
+				var id = config.areaActId[index];
+				newHd.inviteClick(id);
+			}
+			//查看结果方法
+			function resultEvent(index){
+				var id = config.areaActId[index];
+				var data = {
+					activityId:id
+				}
+				newHd.$POST('/activity/v1/activity/selectRankImg',data,function(data) {
+					if(data.resultCode == 200){
+						newHd.openPH(id);
+					}
+				})
+				
+			}
+
+			//跳转我的记录
+			function gotoRecords(index){
+				if(config.areaActId[index] == undefined){
+					$('.main').alert({
+					    text:'请您返回首页，登录后参与活动'
+					})
+				}else{
+					var islogin = newHd.isLogin();
+					if(islogin){
+						window.location.href='records.html?activityId='+newHd.activityId+'&groupId='+config.areaActId[index];
+					}else{
+						alert('新活动，请重新登录');
+						newHd.setCookie('backUrl',window.location.href)
+						window.location.href='../../login.html';
+					}
+				}
+			}
+			//跳转我要自荐
+			function gotoCover(index){
+				var islogin = newHd.isLogin();
+				if(islogin){
+					var index = $('.ruleModal').attr('data-index');
+					window.location.href='cover.html?activityId='+newHd.activityId+'&groupId='+config.areaActId[index]+'&shortName='+config.shortName[index];
+				}else{
+					alert('新活动，请重新登录');
+					newHd.setCookie('backUrl',window.location.href)
+					window.location.href='../../login.html';
+				}
+			}
+			//跳转我要推荐
+			function gotoRecom(index){
+				var islogin = newHd.isLogin();
+				if(islogin){
+					var index = $('.ruleModal').attr('data-index');
+					window.location.href='recommend.html?activityId='+newHd.activityId+'&groupId='+config.areaActId[index]+'&shortName='+config.shortName[index];
+				}else{
+					alert('新活动，请重新登录');
+					newHd.setCookie('backUrl',window.location.href)
+					window.location.href='../../login.html';
+				}
+			}
+			/*分页*/
+			function nextPage(obj) {
+				var page = $(obj).parent('.page');
+				var index = page.attr('data-index');
+				var curPage = page.find('.now_page').text()*1;
+				var totalPage = page.find('.total_page').text()*1;
+				if(curPage == totalPage){
+					return false;
+				}
+				if(curPage > 1){
+					page.find('.prev').removeClass('disbled');
+				}
+				if(curPage < totalPage){
+					curPage++;
+				}
+				if(curPage == totalPage){					
+					$(obj).addClass('disbled');
+				}
+				var data = {
+					activityId: config.areaActId[index],
+				  	page: curPage-1,
+					shortName: config.shortName[index],
+					size: 6,
+				}
+				newHd.$POST('/account/v1/userSubject/areaPageMsg',data,function(data) {
+					if(data.resultCode == 200) {
+						page.find('.now_page').text(curPage);
+						var list = data.resultValue.areaMsg;
+						var str = '';
+						for(var i = 0; i < list.length; i++){
+							str += '<li><p><img src="'+ list[i].imgUrl +'"/></p><p>'+ list[i].name +'</p></li>';
+						}
+						$('.act1_list').eq(index).html(str);
+					}
+				})
+			}
+			function prevPage(obj) {
+				var page = $(obj).parent('.page');
+				var index = page.attr('data-index');
+				var curPage = page.find('.now_page').text()*1;
+				var totalPage = page.find('.total_page').text()*1;
+				if(curPage == 1){
+					return false;
+				}
+				if(curPage == totalPage){
+					page.find('.next').removeClass('disbled');
+				}
+				if(curPage > 1){
+					curPage--;
+				}
+				if(curPage == 1){
+					$(obj).addClass('disbled');
+				}
+				var data = {
+					activityId: config.areaActId[index],
+				  	page: curPage-1,
+					shortName: config.shortName[index],
+					size: 6,
+				}
+				newHd.$POST('/account/v1/userSubject/areaPageMsg',data,function(data) {
+					if(data.resultCode == 200) {
+						page.find('.now_page').text(curPage);
+						var list = data.resultValue.areaMsg;
+						var str = '';
+						for(var i = 0; i < list.length; i++){
+							str += '<li><p><img src="'+ list[i].imgUrl +'"/></p><p>'+ list[i].name +'</p></li>';
+						}
+						$('.act1_list').eq(index).html(str);
+					}
+				})
+			}
+		</script>
+	</body>
+</html>

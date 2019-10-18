@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>提交记录</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css?v=01"/>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?v=048"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+		<style>
+			body,html{height: 100%; overflow: hidden; overflow-y: auto; background: url(images/jilu_bg.jpg) no-repeat; background-position: center; background-size: 100% 100%;max-width: 750px; margin: auto;}
+			.record{width: 100%; overflow-y: auto; margin: auto;position: relative;}
+			.return_btn{width: 100%; height: 0.98rem; max-width: 750px; background: url(images/return.png) no-repeat center; background-size: cover; position: absolute; top: 0; left: 0; right: 0; margin: auto; z-index: 99;}
+			.return_btn>a{width: 2.23rem; height: 0.98rem; display: block; margin-left: 0.2rem;}
+			.recordMain{padding-top: 1rem; width: 92%; height: 96%;  margin:0 auto;}
+			.record_box{width: 100%; padding: 0.14rem 0; border-bottom: 1px solid #bb9e78; color: #6e5338;}
+			.record_box_top{justify-content: space-between;}
+			.name{font-size: 0.3rem; margin-right: 0.25rem;}
+			.record_topR>img{width: 1.13rem; height: 0.31rem; vertical-align: middle;}
+			.isView{text-align: right; overflow: hidden; line-height: .28rem;}
+			.isView a{display: inline-block;font-size: .24rem; vertical-align: top;}
+			.isView a:after{content:''; display: inline-block; width: .14rem; height: .16rem; vertical-align: middle;margin-left: .04rem; background: url(images/jiantou1.png) no-repeat center; background-size: 100%;}
+			.isView a.up:after{transform: rotate(180deg);}
+			.record_time{line-height: 0.26rem; font-size: 0.2rem;}
+			.record_text{font-size: 0.24rem; line-height: 0.36rem; word-wrap: break-word;}
+			.record_text>i{width: 82%;display: inline-block;vertical-align: text-top;}
+			.tishi{font-size: 0.2rem;}
+			.pass{color: #d1231c;}
+			.go{color: #029c15;}
+			.record_con{display: none;}
+			.show{display: block;}
+			.noData{position: absolute;left: 50%; top: 50%; margin-left: -11%; margin-top: -21%; color: #333; font-size: 0.4rem;}
+		</style>
+	</head>
+	<body>
+		<header class="download_top displayFlex flexMidle">
+			<div class="logo displayFlex flex1">
+				<h1 class="logo-img"></h1>
+				<p class="logo-text">
+					<span class="text-span1">未来无限APP</span>
+					<span class="text-span2">新手注册立享大礼包</span>
+				</p>
+			</div>
+			<a class="logo-right" href="/webApp/download/download.html">下载有礼</a>
+		</header>
+		<div class="record">
+			<div class="return_btn"><a href="index.html?activityId=179897837369163776"></a></div><!--179897837369163776-->
+			<div class="recordMain"></div>
+		</div>
+		<script>
+			var newHd = new AppCommon();
+			newHd.share.name='电影《杜月笙》主创主演海选大奖赛';
+			newHd.share.introduce='立即报名，圆你电影梦！人人有奖，瓜分20W现金！';
+			var shareUrl = newHd.getCookie('setUrl');
+			// newHd.uriedPoints(1,'duyuesheng',newHd.GetQueryString('activityId'));
+			newHd.share.url = shareUrl;
+			//判断cookie中有没有setUrl
+			if(shareUrl == null){
+				window.location.href = "index.html?activityId=179897837369163776"
+			}
+			if(isWeixinBrowser){
+				var shareData = {
+					title:newHd.share.introduce,
+					desc:newHd.share.name,
+					link:newHd.getCookie('setUrl'),
+					imgUrl:'https://www.ifuturex.com/wap/activity/duyuesheng/share/share.jpg'
+				}
+				shareInit(shareData)
+			}
+			var activityId = newHd.GetQueryString('groupId');
+			// newHd.delCookie('tokeb
+			if (window.android) {
+				newHd.token = 'Bearer '+ window.android.getToken();
+				newHd.browser = 'mhexpresss';
+				newHd.init(getRecords);
+			}
+			//此方法只在IOS下调用
+			function getToken(v,m){
+				newHd.token = v;
+				newHd.browser = 'mhexpresss';
+				newHd.init(getRecords);
+				
+			}
+			//判断app是否登录
+			// function getTokenss(s){
+			// 	window.webkit.messageHandlers.getToken.postMessage('')
+			// }
+			setTimeout(function(){
+				if(newHd.browser != 'mhexpresss'){
+					$('.download_top').slideDown();
+					newHd.init(getRecords);
+				}
+			},1000)
+			$(document).on('click','.isView a',function(){
+				var cls = $(this).attr('class');
+				var $con = $(this).parents('.record_box_top')
+				var $sibCon = $(this).parents('.record_box')
+				if(cls != 'up'){
+					$con.siblings('.record_con').addClass('show');
+					$sibCon.siblings().find('.record_con').removeClass('show')
+					$sibCon.siblings().find('.isView a').removeClass('up').text('展开')
+					$(this).text('收起').addClass('up');
+				}else{
+					$con.siblings('.record_con').removeClass('show');
+					$(this).text('展开').removeClass('up');
+				}
+			})
+			//时间戳转换
+			function add0(m){return m<10?'0'+m:m }
+			function format(format){
+				//shijianchuo是整数，否则要parseInt转换
+				var time = new Date(format);
+				var y = time.getFullYear();
+				var m = time.getMonth()+1;
+				var d = time.getDate();
+				var h = time.getHours();
+				var mm = time.getMinutes();
+				var s = time.getSeconds();
+				return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+			}
+			/*提交记录*/
+			function getRecords() {
+				var data = {
+		      		activityId: activityId,
+					page: 0,
+					size: 100000
+		      	}
+				newHd.$POST('/account/v1/userSubject/queryUserSubject',data,function(data){
+		  			if(data.resultCode === 200){
+		  				var list = data.resultValue.userSubjectEntitys;
+		  				var total = data.resultValue.userSubjectEntitysCount;
+		  				var temp = '';
+		  				if(list.length != 0){
+			  				for(var i =0,len=list.length;i<len;i++){
+			  					var stat = list[i].status + 1;
+			  					var timestamp = list[i].createTime;
+								var date = format(timestamp);
+								temp +='<div class="record_box"><div class="record_box_top displayFlex"><div class="record_topL displayFlex flexMidle"><p class="name">'+list[i].title
+									 +'</p><p class="isView"><a href="javascript:;">展开</a></p></div><div class="record_topR"><img src="images/state'+stat
+									 +'.png"/></div></div><div class="record_time">'+date
+									 +'</div><div class="record_con"><p class="record_text">'+list[i].content
+									 +'</p></div>'
+			  					if(list[i].subjectOption != ''){
+				  					if(list[i].status == 2){
+				  						temp +='<div class="tishi go">'
+				  					}else if(list[i].status == 1){
+				  						temp +='<div class="tishi pass">'
+				  					}
+				  					temp +=list[i].subjectOption + '</div>'
+			  					}
+			  					temp +='</div>'
+			  				}
+			  				$('.recordMain').html(temp);
+		  				}else{
+		  					temp+='<p class="noData">暂无数据...</p>'
+		  					$('.recordMain').html(temp)
+		  				}
+		  			}else{
+		  				$('.record').alert({
+						    text: data.resultMessages
+						})
+		  			}
+		  		})
+			}
+		</script>
+	</body>
+</html>

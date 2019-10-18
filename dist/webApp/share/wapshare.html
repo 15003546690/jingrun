@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/share/share.css"/>
+	</head>
+	<body>
+		<div class="share">
+			<header>
+				<div class="logo">
+					<p class="logo-img"><img src="../img/share/3.png"/></p>
+					<p class="logo-text">
+						<span class="text-span1">未来无限APP</span>
+						<span class="text-span2">新手注册立享大礼包</span>
+					</p>
+				</div>
+				<a class="logo-right" href="/webApp/download/download.html">下载有礼</a>
+			</header>
+			<div class="share-main">
+				<div class="main-name">
+					<p class="main-name-p1"></p>
+				</div>
+				<div class="main-img"><img class="img" src=""/></div>
+			</div>
+			<div class="share-prize">
+				<p><img src="../img/share/share.jpg"/></p>
+			</div>
+			<!-- <div class="share-detail">
+				<div class="share-detail-main">
+					<p class="share-detail-p1">详情介绍</p>
+					<div class="share-detail-box">
+						<div>
+							<p>不怕你黑我，就怕你不理我！未来无限网现进行全民收集神吐槽！<br/>各位少侠对产品有任何的意见或者想法，均可参与此次活动！<br/>不要犹豫了！再叨叨一遍！只要被吸纳的计策~三万现金为你转身！</p>
+						</div>
+						<div>
+							<span><i>活动时间：</i></span>
+							<span>征集阶段：5月1日~5月31日</span>
+							<span>申购阶段：6月1日~6月12日（选出20人入围）</span>
+							<span>评鉴阶段：6月13日~6月28日</span>
+							<span>结果公布：6月29日</span>
+						</div>
+						<div>
+							<span><i>参与方式：</i></span>
+							<span>1、PC端-登录后-个人中心-客户服务-意见建议</span>
+							<span>2、APP端-登录后-我的-用户反馈</span>
+						</div>
+						<div class="share-detail-bottom">
+							<span>注：请提交时填写有效正确的个人信息，以便我们联系您</span>
+							<span>（主办方将代扣20%个人所得税 本活动最终解释权归未来无限网所有）</span>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script>
+			/*function GetQueryString(name){
+			     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			     var r = window.location.search.substr(1).match(reg);
+			     if(r!=null)return  unescape(r[2]); return null;
+			}*/
+			function getUrlParam(key) {
+			    // 获取参数
+			    var url = window.location.search;
+			    // 正则筛选地址栏
+			    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+			    // 匹配目标参数
+			    var result = url.substr(1).match(reg);
+			    //返回参数值
+			    return result ? decodeURIComponent(result[2]) : null;
+			}
+			var title = getUrlParam('title');
+			var img = getUrlParam('img');
+			// alert(title)
+			
+			$('.main-name-p1').html(decodeURI(title));
+			$('.img').prop('src',img);
+		</script>
+	</body>
+</html>

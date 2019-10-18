@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>立即报名，圆你电影梦！人人有奖，瓜分20W现金！</title>
+		<meta name="Description" content="电影《杜月笙》主创主演海选大奖赛" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css?v=01"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/alert.js"></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js?v=04"></script>
+		<script src="../../js/jquery.form.js"></script>
+		<script src="../../js/base_app.js?v=048"></script>
+		<style>
+			.app{width: 100%; max-width: 750px; margin: auto;}
+			.banner{height: 4.75rem;}
+			.banner img{width: 100%; height: 100%;}
+			.rank_main{height: 6.59rem; background: url(images/rank/rank_bg.jpg) no-repeat center; background-size: cover;}
+			.rank_main_box{width: 5.6rem; margin: auto;}
+			.rank_main_box a{height: 1.23rem; display: block; margin-bottom: 0.06rem;}
+			.rank_main_box a img{width: 100%;}
+			.rank_tishi{height: 2.66rem;}
+			.rank_tishi img{width: 100%;}
+		</style>
+	</head>
+	<body>
+		<div class="app">
+			<div class="banner"><img src="images/rank/rank_banner.jpg"/></div>
+			<div class="rank_main">
+				<div class="rank_main_box">
+					<a href="javascript:;" onclick="rank(0)"><img src="images/rank/img1.png"/></a>
+					<a href="javascript:;" onclick="rank(1)"><img src="images/rank/img2.png"/></a>
+					<a href="javascript:;" onclick="rank(2)"><img src="images/rank/img3.png"/></a>
+					<a href="javascript:;" onclick="rank(3)"><img src="images/rank/img4.png"/></a>
+					<a href="javascript:;" onclick="rank(4)"><img src="images/rank/img5.png"/></a>
+				</div>
+			</div>
+			<div class="rank_tishi"><img src="images/rank/rank_tishi.jpg"/></div>
+		</div>
+		<script>
+			var newHd = new AppCommon();
+			// newHd.commonUrl='http://192.168.0.202';
+			if (window.android) {
+				newHd.token = 'Bearer '+ window.android.getToken();
+				newHd.browser = 'mhexpresss';
+				// newHd.init();
+			}
+			//此方法只在IOS下调用
+			function getToken(v){
+				newHd.token = v;
+				newHd.browser = 'mhexpresss';
+				// newHd.init();
+			}
+			function getTokenss(s){
+				window.webkit.messageHandlers.getToken.postMessage('')
+			}
+			function rank(index){
+				var rankImg = newHd.commonUrl+'/wap/activity/duyuesheng/images/rank/rank'+index+'.jpg'
+				if(index>2){
+					newHd.openPH(rankImg)
+				}else{
+					$('.app').alert({
+					    text:'甄选结果敬请期待'
+					})
+				}
+			}
+		</script>
+	</body>
+</html>

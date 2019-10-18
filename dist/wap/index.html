@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>预测达人</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/rem.js"></script>
+		<script src="js/base_app.js?v=011"></script>
+		<!-- 以上内容为固定不允许修改 -->
+		<style>
+			.section2{position: relative;}
+			.section2 .menu{position: absolute; left: 0; top: 0; width: 100%;}
+			.section2 .menu li{padding:0 3%;}
+			.section2 .menu li img{cursor: pointer;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<img src="images/p1.jpg" alt="">
+			<div class="section2">
+				<img src="images/p2.jpg" alt="">
+				<ul class="menu displayFlex">
+					<li class="flex1"><img src="images/menu1.png" alt="" onclick="gotoDetail()"></li>
+					<li class="flex1"><img src="images/menu2.png" alt="" onclick="gotoEvent()"></li>
+					<li class="flex1"><img src="images/menu3.png" alt="" onclick="gotoPH()"></li>
+				</ul>
+			</div>
+			<div id="detail1">
+				<img src="images/p3.jpg" alt="">
+			</div>
+		</div>
+		<!-- <script src="http://192.168.0.13/newAct/public/js/base_app.js"></script> -->
+		<script type="text/javascript">
+		var newHd = new AppCommon();//new一个新活动子类
+		newHd.baseUrl = 'http://192.168.0.13:7500/';//测试地址 正式上线可删除
+		newHd.commonUrl = 'http://192.168.0.13';
+		// 以下设置分享内容  注意必须分别设置 不能newHd.share={}
+		newHd.share.name = '预测达人';
+		newHd.share.introduce = '预测准，赢奖金';
+		newHd.share.url = newHd.commonUrl + '/newAct/view/tipster2018/app/index.html';
+		if (window.android) {
+			newHd.token = 'Bearer '+ window.android.getToken();
+			// alert('token==>'+newHd.token)
+			newHd.init();
+		}
+		//此方法只在IOS下调用
+		function getToken(v){
+			newHd.token = v;
+			newHd.init();//初始化页面功能
+		}
+		
+		//以下内容自己编写
+
+		//跳转详情判断
+		function gotoDetail(){
+			newHd.scrollTo('detail1');
+		}
+		//全部话题判断
+		function gotoEvent(){
+			if(newHd.token == ''){
+				window.location.href=newHd.downUrl;
+			}else{
+				newHd.inviteClick();
+			}
+		}
+		//排行点击判断
+		function gotoPH(){
+			if(newHd.token == ''){
+				window.location.href=newHd.downUrl;
+			}else{
+				if(newHd.actStage == 3){
+					newHd.openPH();//查看排行公共方法
+				}else{
+					showDialog1('将于2月14日公布');
+				}
+			}
+		}
+		</script>
+	</body>
+</html>
+

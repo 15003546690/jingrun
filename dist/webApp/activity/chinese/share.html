@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width,initial-scale=0.1,minimum-scale=0.1,maximum-scale=0.1,user-scalable=no" />
+		<title>2017年度汉字评选</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			em,i{
+				font-style:normal;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{ 
+				text-decoration:none; 
+				cursor:pointer; 
+			}
+			img{width: 100%; display: block;}
+			body{
+			    font-family:"SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+			    background: #fdecd2;
+				margin:0 auto;
+			}
+			a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+			.chinese_tab{position: relative;background: #c60c1b;}
+			.chinese_tab .tab_box{width: 100%; position: absolute; left:0; top:0;}
+			.chinese_tab .tab_box ul{width: 100%; position: absolute; left:0; top: .1rem; display: flex; display: -webkit-flex;}
+			.chinese_tab .tab_box ul li{flex:1;}
+			.chinese_tab .tab_box ul li span{display: block; width: 2rem; height: .78rem; margin:0 auto; background-repeat: no-repeat; background-size: 100%;}
+			.chinese_tab .tab_box ul li span.n1{background-image: url(images/tab_01.png);}
+			.chinese_tab .tab_box ul li span.n2{background-image: url(images/tab_n2_2.png);}
+			.chinese_tab .tab_box ul li span.n3{background-image: url(images/tab_03.png);}
+
+			/*.chinese_word{ padding-bottom: .4rem; padding-left: .2rem;}*/
+			.rank_img{width: 100%; height: 4.98rem;}
+			.rank_img>img{width: 100%; height: 100%;}
+			
+			.chinese_info{background: #fdecd2; padding-bottom:.4rem;}
+			.rule_bg{width: 100%; height: 5.66rem; overflow: hidden; background: url(images/rule_bg2.png) no-repeat center; background-size: 100%;}
+			.chinese_info .txt_box{width: 95%; margin:0 auto;margin-top: 0.17rem;}
+
+			.canyu_btn{width: 47%; margin:0 auto; margin-top: .35rem; margin-bottom: .23rem; cursor: pointer;}
+			.see_me{text-align: center; margin-bottom: .8rem; font-size: .28rem;}
+			.see_me a{text-decoration: underline; color: #bf403a;}
+			.see_me a.end{opacity: .5;}
+
+			.chuti_box{}
+			.chuti_box .chuti_title{background: #f8f8f8; border-top: solid 1px #000; border-bottom: solid 1px #000; height: .6rem; line-height: .6rem; padding-left: .2rem; color: #333; font-size: .23rem;}
+			.chuti_box .chuti_title small{font-size: .2rem; display: inline-block; margin-left: .2rem; color: #999; cursor: pointer;}
+			.chuti_box .chuti_title2{background: #f8f8f8; border-top: solid 1px #000; border-bottom: solid 1px #000; height: .4rem; line-height: .4rem; padding-left: .2rem; color: #e63034; font-size: .14rem;}
+			.chuti_box .chuti_nr{padding:0 .2rem; position: relative;background: #fff;}
+			.chuti_box .chuti_nr input,.chuti_box .chuti_nr textarea{width: 100%; font-size: .2rem; border-width:0; margin:0; padding: 0; outline: none; display: block}
+			.chuti_box .chuti_nr input{height: .8rem; line-height: .8rem;}
+			.chuti_box .chuti_nr textarea{height: 3rem; padding-top: .2rem;}
+			.wordsNum{width: 100%; position: absolute; bottom:.1rem; right: .2rem; text-align: right; color: #c9c9c9; font-size: .2rem;}
+
+			.submit_btn{display: block; width: 4rem; height: .8rem; line-height: .8rem; border-radius: .1rem; background: #e63034; color: #fff; text-align: center; font-size: .26rem; margin:0 auto; margin-top: .8rem;}
+
+			.bx_a{display: block; width: 50%; height: .78rem; position: absolute; top: .6rem;}
+			.bx_a.cash{left: 0;}
+			.bx_a.bx{right: 0;}
+		</style>
+	</head>
+	<body>
+		<a href="https://www.ifuturex.com/webApp/download/download.html">
+		<div>
+			<img src="images/main1.jpg" alt="">
+			<div class="chinese_tab">
+				<div class="tab_box">
+					<img src="images/tab_bg.png" alt="">
+					<ul>
+						<li><span class="n1"></span></li>
+						<li><span class="n2"></span></li>
+						<li><span class="n3"></span></li>
+					</ul>
+				</div>
+				<img src="images/award_img01.png">
+				<div class="chinese_word">
+					<p class="rank_img"><img src="images/rank_img.png"/></p>
+				</div>
+			</div>
+			
+			<div class="chinese_info">
+				<div class="rule_bg">
+					<div class="txt_box">
+						<img src="images/rule_img2.png">
+					</div>
+				</div>
+				<div class="canyu_btn"><img src="images/canyu_btn.png" alt=""></div>
+				<div class="see_me">
+					<a href="https://www.ifuturex.com/webApp/download/download.html">查看我的汉字</a>
+				</div>
+				<div style="position: relative;">
+					<a href="https://www.ifuturex.com/webApp/download/download.html" class="bx_a cash"></a>
+					<a href="https://www.ifuturex.com/webApp/download/download.html" class="bx_a bx"></a>
+					<img src="images/foot_bt.png" alt="">
+					<img src="images/txt2.png" alt="">
+				</div>
+			</div>
+
+		</div>
+		</a>
+		<script type="text/javascript">
+			(function (doc, win) {    
+			    var docEl = doc.documentElement,    
+			    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+			    recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();    
+			})(document, window);
+
+		</script>
+	</body>
+</html>
+

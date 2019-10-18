@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>2017年度汉字评选</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			em,i{
+				font-style:normal;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{ 
+				text-decoration:none; 
+				cursor:pointer; 
+			}
+			img{width: 100%; display: block;}
+			body{
+			    font-family:"SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+			    background: #f8f8f8;
+				margin:0 auto;
+			}
+			.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+			.clearfix { display: inline-block; }
+			* html .clearfix { height: 1%; }
+			.clearfix { display: block; }
+
+			.flex{ display: flex; display: -webkit-flex; flex-wrap: wrap; -webkit-flex-wrap:wrap; width:100%; align-items:center;}
+			input,textarea,button{font-family: "Microsoft YaHei","Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif; border-width:0; padding:0; margin:0; outline:none; resize:none; color:#000; font-size: .24rem;}
+			
+			.chuti_title{background: #f8f8f8; border-top: solid 1px #d9d9d9; border-bottom: solid 1px #d9d9d9; height: .6rem; line-height: .6rem; padding-left: .2rem; font-size: .24rem; color: #333;}
+			.chuti_title .small{font-size: .2rem; display: inline-block; margin-left: .2rem;}
+			.chuti_title.fu2{height: .4rem; line-height: .4rem; font-size: .16rem; color: #e63034;}
+			.chuti_nr{padding:0 .2rem; position: relative;background: #fff;}
+			.chuti_nr input{width: 100%; height: .8rem; line-height: .8rem; border-width:0; display: block;}
+			.chuti_nr textarea{height: 3rem; padding-top: .2rem;}
+			.wordsNum{width: 100%; position: absolute; bottom:.1rem; right: .2rem; text-align: right; color: #c9c9c9; font-size: .2rem;}
+
+			.submit_btn{display: block; width: 4rem; height: .8rem; border-radius: .1rem; background: #e63034; color: #fff; text-align: center; font-size: .26rem; margin:0 auto; margin-top: .8rem;}
+
+			
+		</style>
+	</head>
+	<body>
+		<div>
+			<div class="chuti_title">我的汉字<span class="small" id="shili">示例</span></div>
+			<div class="chuti_nr"><input type="text" placeholder="只可输入一个汉字" maxlength="1" id="title" />
+			</div>
+			<div class="chuti_title fu2">只可输入一个汉字</div>
+			<div class="chuti_nr" style="border-bottom: solid 1px #d9d9d9;">
+				<textarea name="" id="content" placeholder="参选缘由" cols="30" rows="10" maxlength="500"></textarea>
+				<div class="wordsNum">0/500</div>
+			</div>
+			<div>
+				<a href="javascript:;" class="submit_btn" id="submit_btn">提交</a>
+			</div>
+		</div>
+
+		<div class="dialog_com">
+			<div class="dialog_content">
+				<a href="javascript:;" class="dia_close" onclick="dialog_close()"><img src="images/tip_dialog_close.png" alt=""></a>
+				<img src="images/tip_dialog_bg.png" alt="">
+				<div class="dialog_nr">
+					
+				</div>
+				<div class="dialog_btn">
+					<a href="javascript:;" class="yes" onclick="dialog_close()"><img src="images/tip_dialog_btn.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/layer.js" ></script>
+		<script type="text/javascript">
+			(function (doc, win) {    
+			    var docEl = doc.documentElement,    
+			    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+			    recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();    
+			})(document, window);
+		</script>
+	</body>
+</html>
+

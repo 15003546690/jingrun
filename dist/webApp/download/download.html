@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<title>下载</title>
+		<link rel="stylesheet" href="../css/download/download.css"/>
+	</head>
+	<body>
+		<section>
+			<div class="logo"><img src="../img/download/logo.png"/></div>
+			<div class="versions">
+			<div class="apple">
+				<p id="download"><img src="../img/download/download.png"/></p>
+			</div>	
+			</div>
+			<img class="download_downup" src="../img/download/download_downup.png"/>
+		</section>
+		<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js" ></script>	
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>	
+		<script>
+		/*<![CDATA[*/
+			var flag = false;
+		    if (navigator.userAgent.match(/(MicroMessenger|Weibo)/i)) {
+		    	$('.download_downup').show();
+		    	flag = true;
+		    }else{
+		    	$('.download_downup').hide();
+		    	flag = false;
+		    }
+			$('#download').click(function () {
+				if (flag) {
+					alert('请在浏览器中打开')
+				} else {
+					if (navigator.userAgent.match(/(iPhone|iPod|iPad|ios)/i)) {
+						location.href = 'https://itunes.apple.com/cn/app/%E6%9C%AA%E6%9D%A5%E6%97%A0%E9%99%90/id1189430265?mt=8'
+					} else if (navigator.userAgent.match(/Android/i)) {
+						location.href = 'https://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/kinrank-android-apk/iFuturex.apk'
+					}
+				}
+			})
+		/*]]>*/
+		</script>
+	</body>
+</html>

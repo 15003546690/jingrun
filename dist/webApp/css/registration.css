@@ -1,0 +1,36 @@
+@charset "utf-8";
+body, h1, h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, input,textarea,th,td,select { margin:0; padding:0;}
+em,i { font-style:normal;}
+ul,li { list-style:none;}
+a { text-decoration:none; cursor:pointer; }
+body{
+	font-family: "microsoft yahei";
+	width: 750px;  
+    margin: 0 auto; 
+	background: #fff;
+	overflow-x: hidden;
+}
+.registration{
+	width: 670px;
+	margin: auto;
+	margin-bottom: 80px;
+}
+.registration-main{
+	width: 100%;
+}
+.registration-main-head{
+	width: 100%;
+	line-height: 40px;
+	padding-top: 35px;
+	font-size: 28px;
+	color: #272424;
+}
+.helpState-main-body-p1,.helpState-main-body-p2{
+	width: 100%;
+	line-height: 36px;
+	color: #727272;
+	font-size: 24px;
+}
+.helpState-main-body-p1{
+	margin-top: 35px;
+}

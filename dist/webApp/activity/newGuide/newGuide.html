@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=0.1,minimum-scale=0.1,maximum-scale=0.1,user-scalable=no" />
+		<title>新手教学</title>
+		<script>
+			(function (doc, win) {    
+				var docEl = doc.documentElement,    
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+					recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();
+			})(document, window);
+		</script>		
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			body{
+				font-family: "微软雅黑";
+				background: #fff;
+			}
+			.newGuide{
+				width: 7.5rem;
+				margin: auto;
+				font-size: 0;
+			}
+			.newGuide_p1>img{
+				width: 100%;
+				height: 7.94rem;
+			}
+			.newGuide_p2>img{
+				width: 100%;
+				height: 8.45rem;
+			}
+			.newGuide_p3>img{
+				width: 100%;
+				height: 10.7rem;
+			}
+			.newGuide_p4>img{
+				width: 100%;
+				height: 10.24rem;
+			}
+			.newGuide_p5>img{
+				width: 100%;
+				height: 12.34rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="newGuide">
+			<p class="newGuide_p1"><img src="../../img/activity/newGuide/mobile_01.jpg?v=201711210108"/></p>
+			<p class="newGuide_p2"><img src="../../img/activity/newGuide/mobile_02.jpg?v=201711210108"/></p>
+			<p class="newGuide_p3"><img src="../../img/activity/newGuide/mobile_03.png?v=201711210108"/></p>
+			<p class="newGuide_p4"><img src="../../img/activity/newGuide/mobile_04.png?v=201711210108"/></p>
+			<p class="newGuide_p5"><img src="../../img/activity/newGuide/mobile_05.png?v=201711210108"/></p>
+		</div>
+	</body>
+</html>

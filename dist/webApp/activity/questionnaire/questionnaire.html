@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0"/>
+		<title>有奖调查问卷！</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				font-family: "微软雅黑";
+				background: #ffb001;
+				margin: auto;
+			}
+			.question_main{
+				width: 750px;
+				margin: auto;
+				font-size: 0;
+			}
+			.question_main_p1>img{
+				width: 100%;
+				height: 454px;
+			}
+			.question_main_p2>img{
+				width: 100%;
+				height: 897px;
+			}
+			.question_main_p3{
+				position: relative;
+			}
+			.question_main_p3>img{
+				width: 100%;
+				height: 480px;
+			}
+			.question_main_p3>a{
+			    width: 246px;
+			    height: 90px;
+			    position: absolute;
+			    left: 253px;
+			    top: 13px;
+			    opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="question_main">
+			<p class="question_main_p1">
+				<img src="../../img/activity/questionnaire/question_img1.png?v=201708221008"/>
+			</p>
+			<p class="question_main_p2">
+				<img src="../../img/activity/questionnaire/question_img2.png?v=201708221008"/>
+			</p>
+			<p class="question_main_p3">
+				<img src="../../img/activity/questionnaire/question_img3.png?v=201708221008"/>
+				<a href="https://www.wenjuan.com/s/Y7FJNre/"></a>
+			</p>
+		</div>
+		<script>
+			if (window.webkit) {
+				window.webkit.messageHandlers.share.postMessage({name: '完成问卷领奖励！', introduce: '有奖调查问卷！', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: location.href})
+			} else if (window.android) {
+				window.android.share('完成问卷领奖励！', '有奖调查问卷！', 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', location.href)
+			}
+		</script>
+	</body>
+</html>

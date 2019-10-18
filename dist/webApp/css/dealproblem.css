@@ -1,0 +1,80 @@
+@charset "utf-8";
+body, h1, h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, input,textarea,th,td,select { margin:0; padding:0;}
+em,i { font-style:normal;}
+ul,li { list-style:none;}
+a { text-decoration:none; cursor:pointer; }
+body{
+	font-family: "microsoft yahei";
+	width: 750px;  
+    margin: 0 auto; 
+	background: #f8f8f8;
+	overflow-x: hidden;
+}
+.helpCenter{
+	width: 750px;
+	margin: auto;
+}
+.helpCenter-main{
+	width: 750px;
+	height: 80px;
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+}
+.helpCenter-main>p{
+	width: 700px;
+	height: 100%;
+	line-height: 80px;
+	margin: auto;
+	padding-left: 10px;
+	color: #272424;
+	font-size: 28px;
+}
+.helpCenter-main>p>img{
+	vertical-align: middle;
+	margin-right: 10px;
+}
+.helpCenter-body{
+	width: 750px;
+	background: #fff;
+	border-bottom: 1px solid #D9D9D9;
+    margin-bottom: 150px
+}
+.helpCenter-content{
+	width: 730px;
+	float:right;
+}
+.helpCenter-content-p{
+	display: block;
+	padding: 28px 0;
+	padding-left: 10px;
+	font-size: 28px;
+	color: #272424;
+	border-bottom: 1px solid #D9D9D9;
+}
+.helpCenter-content-p1{
+	border: 0;
+}
+.helpCenter-content-left{
+	display: inline-block;
+	line-height: 40px;
+    vertical-align: middle;
+    width: 670px;
+}
+.helpCenter-content-p>p{
+	width: 710px;
+    line-height: 30px;
+	display: inline-block;
+    vertical-align: middle;
+}
+.helpCenter-content-p>p>img{
+	vertical-align: top;
+	margin-top: 4px;
+}
+.helpCenter-content-p>p>a{
+	color: #272424;
+}
+.helpCenter-content-p>p>a>img{
+	vertical-align: middle;
+	margin-right: 6px;
+	margin-top: -5px;
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<meta name="description" content="未来无限网夏季路虎保养知识测验">
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?v=53"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js?v=04"></script>
+		<style>
+			html,body{height:100%;}
+			#app{height: 100%; position: relative;}
+			.headImg{width: .78rem; height: .78rem; border-radius: 50%; overflow: hidden; position: absolute; left: .16rem; top: .2rem; border:solid 2px #4b5056;}
+			.text1,.ceshiBtn,.copy{position: absolute; width: 100%; left: 0;}
+			.text1{top:1.25rem;}
+			.ceshiBtn{bottom:.9rem;}
+			.copy{text-align: center; color: #8e969f; bottom: .2rem;}
+			a.guize{display: inline-block; color: #4b5056; font-size: .28rem; position: absolute; right: .2rem; top: .25rem;}
+			.question_layer{width: 100%;height: 100%;background: rgba(0,0,0,.7);position: fixed;top: 0;z-index: 999;overflow: hidden;display: none;}
+			.questionL_Nresult{width: 80%;height: 2.80rem;border-radius: 10px;background: #fff;position: relative;top: 50%;left: 50%;margin-left: -40%;margin-top: -1.40rem;overflow: hidden;}
+			.questionL_Nresult .questionL_result_btn{width: 100%;height: .80rem;position: absolute;bottom: 0;border-top: solid 1px #bbbbbb;display: flex;justify-content: center;align-items: center;color: #108b00;}
+			.questionL_Nresult .questionL_result_btn a{display: block; line-height: .8rem;color: #108b00;}
+			.questionL_network_text{width: 70%;font-size: .30rem;height: 2.00rem;display:flex;align-items: center;justify-content: center;color: #000;margin: auto;text-align: center;}
+			.questionL_result_close{width: .22rem;height: .22rem;position: absolute;right: .12rem;top: .12rem; background:url(img/close.png) no-repeat;background-size: 100%;}
+			
+			/*查看规则*/
+			.main{width: 7.5rem;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(255,255,255,0.85);display: none;}
+	        .main_center{height: 100%;}
+	          .main_header{text-align: right;width: 100%;height: 5%;}
+	          #app .main_header img{width:0.40rem;margin-top: 0.20rem;margin-right: 0.20rem;display: inline-block;}
+	          .header_title{height: 6%;font-size: 0.32rem;text-align: center;color: #343434;}
+	          .main_body{width: 6.70rem;height: 70%;margin: 0 auto;margin-bottom: 0.2rem;overflow: auto;}
+	          .main_body p{line-height: 0.52rem;font-size: 0.28rem;}
+	          .main_name{width: 100%;margin: 0 auto;text-align: center;font-size: 0.24rem;line-height: 0.44rem;}
+	          .main_name p a{color: #0057ce;}
+	          .phone{margin-bottom: 0.15rem;}
+		</style>
+    	
+	</head>
+	<body>
+		<div id="app">
+			<div class="headImg">
+				<img src="" alt="">
+			</div>
+			<a href="javascript:;" class="guize">隐私与规则</a>
+			<div class="ceshiBtn">
+				<img src="img/ceshi_btn.png" alt="">
+			</div>
+			<div class="copy">此活动由未来无限网技术支持</div>
+			<!-- 弹层 -->
+			<div class="question_layer">
+				<div class="questionL_Nresult">
+					<div class="questionL_result_close">
+					</div>
+					<div class="questionL_network_text">
+						还没有测试结果！
+					</div>
+					<div class="questionL_result_btn">
+						<a href="submitInfo.html" id="gotoCeshi">
+						立即测试
+						</a>
+					</div>
+				</div>
+			</div>
+			<!--查看规则-->
+			<div class="main">
+				<div class="main_center">
+				<header class="main_header"><img class="main_close" src="img/closeBtn.png"/></header>
+				<p class="header_title">活动规则</p>
+				<div class="main_body">
+					
+				</div>
+				<div class="main_name">
+					<p>本活动技术支持由未来无限网提供</p>
+					<p class="phone"><a href="tel:4006919939">400-691-9939</a></p>
+					<p>用智慧参与预测，赚现金</p>
+					<p><a href="https://www.ifuturex.com/webApp/download/download.html">www.ifuturex.com</a></p>
+				</div>
+				</div>
+		</div>
+		<audio controls preload="load" src="img/voice.mp3" id="video1" style="display:none; visibility:hidden; width:0px; height:0px; background:none;"></audio>
+	</div>
+		<script>
+			var newHd = new AppCommon();
+			newHd.baseUrl='https://np.ifuturex.com:7500/';//记得删除
+			newHd.activityId = newHd.GetQueryString('activityId');
+			newHd.setCookie('activityId',newHd.activityId);
+			var flag = true;
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			var gotoUrl='';
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',trackDesc)
+			}
+			
+			if(newHd.refreshToken == null){
+				var code = newHd.GetQueryString('code');
+				if(code == null){
+					var url = window.location.href;
+					window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx798d96bd5a689a90&redirect_uri='+url+'&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect'
+				}else{
+					$.get(newHd.baseUrl+'/account/callback/v2/auth/wechat?code='+code,function(data){
+						var postData = data.resultValue;
+						if(postData == undefined){
+							var url = 'http://www.ifuturex.com/wap/activity/benz/index.html?activityId='+newHd.getCookie('activityId');
+							window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx798d96bd5a689a90&redirect_uri='+url+'&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect'
+						}
+						$('.headImg img').attr('src',postData.img);
+						newHd.setCookie('nickname',encodeURIComponent(postData.nickname));
+						newHd.setCookie('headerImg',postData.img);
+						newHd.setCookie('inviteCode',postData.inviteCode);
+						$.post(newHd.baseUrl+'/uaa/oauth/token?client_id=ifuturex_swagger&client_secret=gKWwZI1g&grant_type=social',{username:postData.mobile,password:postData.unionid,account_type:1},function(data){
+							newHd.token = data.token_type.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())+' '+data.access_token;
+							newHd.refreshToken = data.refresh_token;
+							newHd.setCookie('token',newHd.token,data.expires_in);
+							newHd.setCookie('refreshToken',data.refresh_token,data.expires_in);
+
+							render();
+						})
+					})
+				}
+			}else{
+				render();
+			}
+			var shareIndex={
+				activityName:'',
+				img:'',
+				title:'',
+				url:window.location.href
+			};
+			function render(){
+				newHd.uriedPoints(1,'landrover',newHd.activityId,trackDesc);
+				var headerImg = newHd.getCookie('headerImg');
+				$('.headImg img').attr('src',headerImg);
+				newHd.$POST('/activity/v1/syrvey/showSurveyActBenz',
+				{
+					"activityId": newHd.activityId,
+					"tenantId": 0
+				},
+				function(data){
+					if(data.resultCode == 200){
+						if(data.resultValue == '问卷不存在,或已过期'){
+							flag = false;
+							alert(data.resultValue)
+							return false;
+						}
+						if(data.resultValue.haveMsg){
+							newHd.setCookie('mobile',data.resultValue.mobile);							
+							gotoUrl = 'question.html';
+						}else{
+							gotoUrl = 'submitInfo.html';
+						}
+						$('body').css({
+							'background':'url('+data.resultValue.activityImg+') no-repeat',
+							'backgroundSize':'100% 100%' 
+						})
+						$('.main_body').html(data.resultValue.activityDesc)
+						shareIndex.activityName=data.resultValue.shareMsg.activityName;
+						shareIndex.title=data.resultValue.shareMsg.title;
+						shareIndex.img=data.resultValue.shareMsg.img || newHd.shareIcon;
+						newHd.setCookie('shareDesc',encodeURIComponent(shareIndex.title));
+						newHd.setCookie('shareTitle',encodeURIComponent(shareIndex.activityName));
+						newHd.setCookie('shareImg',encodeURIComponent(shareIndex.img));
+						// $(document).attr('title',shareIndex.activityName); 
+						if(isWeixinBrowser) {
+							var shareData = {
+								title: shareIndex.activityName,
+								desc: shareIndex.title,
+								link: shareIndex.url,
+								imgUrl: shareIndex.img
+							}
+							shareInit(shareData,bury)
+						}
+					}else{
+						alert(data.resultValue);
+					}
+				})
+			}
+			function bury(){
+				newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc,1)
+			}
+			var myVideo = document.getElementById("video1");
+			$(document).on('touchstart', function() {
+				myVideo.load()
+			})
+			// render()
+			// 点击头像查看结果
+			$('.headImg').on('click',function(){
+				newHd.$POST('/order/v1/syrvey/userSeeResult',
+				{
+					"activityId": newHd.activityId
+				},
+				function(data){
+					if(data.resultCode != 200){
+						$('.question_layer').css('display','block')
+					}else{
+						window.location.href='http://www.ifuturex.com/wap/activity/benz/information.html'
+					}
+				})
+			})
+			// 点击关闭弹层
+			$('.questionL_result_close').on('click',function(){
+				$(this).parents('.question_layer').css('display','none')
+			})
+			// 点击答题
+			$('.ceshiBtn').on('click',function(){
+				if(flag){
+					if(newHd.refreshToken == null){
+						var url = 'http://www.ifuturex.com/wap/activity/benz/index.html?activityId='+newHd.getCookie('activityId');
+						window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx798d96bd5a689a90&redirect_uri='+url+'&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect'
+					}else{
+						window.location.href='http://www.ifuturex.com/wap/activity/benz/'+gotoUrl;
+					}
+				}
+			})
+			$('.guize').click(function(){
+				$('.main').css('display','block')
+			})
+			$('.main_close').click(function(){
+				$('.main').css('display','none')
+			})
+
+		</script>
+	</body>
+</html>

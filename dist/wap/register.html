@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+		<script src="js/rem.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/sign.js"></script>
+		<script src="js/layer.js"></script>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="js/base_app.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="js/wxShare.js"></script>
+		<script src="js/commonShare.js"></script>
+	</head>
+	<body>
+		<div class="app" id="app">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper displayFlex">
+			        <div class="swiper-slide">
+			        	<div class="register_box">
+				        	<div class="reg_main displayFlex">
+								<p class="displayFlex flexMidle"><img src="img/phone_img6.png"/></p>
+								<input type="text" value="国家 +86" readonly/>
+							</div>
+							<div class="reg_main displayFlex">
+								<p class="displayFlex flexMidle"><img src="img/phone_img3.png"/></p>
+								<input type="text" placeholder="请填写验证码" class="numInput" v-model="imgCode"/>
+								<div class="numImg"><img :src="imgCodeUrl" @click="refreshshCode" /></div>
+							</div>
+							<div class="reg_main displayFlex">
+								<p class="displayFlex flexMidle"><img src="img/phone_img2.png"/></p>
+								<input type="tel" placeholder="请填写手机号" class="numInput" v-model="mobile" maxlength="11" />
+								<button class="numBtn" @click="getCode">发送验证码</button>
+							</div>
+							<div class="reg_main displayFlex border_none">
+								<p class="displayFlex flexMidle"><img src="img/phone_img3.png"/></p>
+								<input type="text" placeholder="请输入手机验证码" v-model="code"/>
+							</div>
+						</div>
+						<div class="reg_btn next_btn"><button class="success" @click="nextBtn">下一步</button></div>
+						<div class="loginUrl"><a href="login.html">登录</a></div>
+			        </div>
+			        <div class="swiper-slide">
+			        	<div class="register_box">
+							<div class="reg_main displayFlex">
+								<p class="displayFlex flexMidle"><img src="img/phone_img4.png"/></p>
+								<input type="text" placeholder="请填写邀请码（选填）" v-model="inviteCode"/>
+							</div>
+							<div class="reg_main displayFlex">
+								<p class="displayFlex flexMidle"><img src="img/phone_img5.png"/></p>
+								<input type="password" placeholder="请输入密码" v-model="password"/>
+							</div>
+							<div class="reg_main displayFlex border_none">
+								<p class="displayFlex flexMidle"><img src="img/phone_img5.png"/></p>
+								<input type="password" placeholder="请再次确认密码" v-model="againPassword"/>
+							</div>
+						</div>
+						<div class="reg_btn" v-if="yesAgree"><button :class="loginBtnClass" @click="register">注册</button></div>
+						<div class="reg_btn" v-if="noAgree"><button :class="loginBtnClass" @click="showLayer">注册</button></div>
+						<div class="reg_deal">
+							<i @click="toggle()"><img v-show="dealBtn" src="img/duihao.png"/></i>
+							<span>我已阅读并同意<a href="registration.html">《未来无限网服务协议》</a></span>
+						</div>
+			        </div>
+			    </div>
+			</div>
+			<div class="service">客服热线：400-6919-939</div>
+		</div>
+		<script src="js/register.js?v=02" ></script>
+	</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.1, maximum-scale=0.1, minimum-scale=0.1, user-scalable=no">
+		<title>呼朋唤友赚福利</title>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<link rel="stylesheet" href="css/inviteUser.css" />
+	</head>
+	<body>
+		<div class="inviteBox">
+			<p class="inviteBox_banner"><img src="images/user_banner.jpg"/></p>
+			<div class="inviteNum">
+				<div class="inviteNum_main">
+					<div class="inviteNum_top">
+						<div class="inviteNum_top_left" id="userInfo">
+							<p class="inviteNum_top_left_head">
+								<img src="https://img.ifuturex.com/image/user/male.png"/>
+							</p>
+							<p class="inviteNum_top_left_text">尚未登录</p>
+						</div>
+						<div class="inviteNum_top_right">
+							<p class="inviteNum_top_code">您的邀请码：<i id="invitedCode"></i></p>
+							<p class="inviteNum_top_num">您已成功邀请<i id="invitedCount"></i>人</p>
+							<button class="inviteNum_top_btn">立即邀请</button>
+						</div>
+					</div>
+					<ul class="inviteNum_list">
+						<li>
+							<img src="images/redpacker_img1.png" />
+							<div class="inviteNum_list_box">
+								<p class="inviteNum_list_num">成功邀请<i>5人及以上</i>，已有<span id="five"></span>人完成</p>
+							</div>
+						</li>
+						<li>
+							<img src="images/redpacker_img2.png" />
+							<div class="inviteNum_list_box">
+								<p class="inviteNum_list_num">成功邀请<i>10人及以上</i>，已有<span id="ten"></span>人完成</p>
+							</div>
+						</li>
+						<li>
+							<img src="images/redpacker_img3.png" />
+							<div class="inviteNum_list_box">
+								<p class="inviteNum_list_num inviteNum_list_time">成功邀请<i>100人及以上</i>，已有<span id="fiftyECard"></span>人完成</p>
+								<p class="inviteNum_list_amount">(每时段限量发放15张)</p>
+							</div>
+						</li>
+						<li>
+							<img src="images/redpacker_img4.png" />
+							<div class="inviteNum_list_box">
+								<p class="inviteNum_list_num inviteNum_list_time">成功邀请<i>300人及以上</i>，已有<span id="oneHundredECard"></span>人完成</p>
+								<p class="inviteNum_list_amount">(每时段限量发放5张)</p>
+							</div>
+						</li>
+						<li>
+							<img src="images/redpacker_img5.png" />
+							<div class="inviteNum_list_box">
+								<p class="inviteNum_list_num inviteNum_list_time">成功邀请<i>500人及以上</i>，已有<span id="twoHundredECard"></span>人完成</p>
+								<p class="inviteNum_list_amount">(每时段限量发放3张)</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="getPrize">
+				<ul class="getPrize_time">
+					<li>
+						<p class="getPrize_time_num" id="hour"></p>
+						<p class="getPrize_time_type">时</p>
+					</li>
+					<li>
+						<p class="getPrize_time_num" id="minute"></p>
+						<p class="getPrize_time_type">分</p>
+					</li>
+					<li>
+						<p class="getPrize_time_num" id="second"></p>
+						<p class="getPrize_time_type">秒</p>
+					</li>
+				</ul>
+				<ul class="getPrize_cash">
+					<li>
+						<div class="prize_img1">
+							<p class="prize_invite">成功邀请5人及以上</p>
+						</div>
+						<button class="prize_btn prize_btn_ban" id="prize_btn1" value="1">立即领取</button>
+					</li>
+					<li>
+						<div class="prize_img2">
+							<p class="prize_invite">成功邀请10人及以上</p>
+						</div>
+						<button class="prize_btn prize_btn_ban" value="2" id="prize_btn2">立即领取</button>
+					</li>
+				</ul>
+				<ul class="getPrize_prize">
+					<li>
+						<div class="prize_img3">
+							<p class="prize_invite_num prize_invite_top">成功邀请100人及以上</p>
+							<p class="prize_invite_num" id="fiftyECardCount"></p>
+						</div>
+						<button class="prize_btn prize_btn_ban" id="prize_btn3" value="3">立即领取</button>
+					</li>
+					<li>
+						<div class="prize_img4">
+							<p class="prize_invite_num prize_invite_top">成功邀请300人及以上</p>
+							<p class="prize_invite_num" id="oneHundredECardCount"></p>
+						</div>
+						<button class="prize_btn prize_btn_ban" id="prize_btn4" value="4">立即领取</button>
+					</li>
+					<li>
+						<div class="prize_img5">
+							<p class="prize_invite_num prize_invite_top">成功邀请500人及以上</p>
+							<p class="prize_invite_num" id="twoHundredsECardCount"></p>
+						</div>
+						<button class="prize_btn prize_btn_ban" id="prize_btn5" value="5">立即领取</button>
+					</li>
+				</ul>
+			</div>
+			<p class="flow"><img src="images/flow.jpg"/></p>
+			<p class="explain"><img src="images/explain.jpg"/></p>
+			
+			<input id="token_input" type="hidden" />
+		</div>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+<script>
+	var config={
+	token:'',
+	 // baseUrl:'http://192.168.0.13:7500',
+	baseUrl:'https://api.ifuturex.com:443',
+	utc:0,
+	fiftyNum:0,
+	oneHundredNum:0,
+	twoHundredNum:0,
+	timer:null,
+	shareCode: '',
+	activityId:'',
+	init:function(){
+		var _this = this;
+		if (window.webkit) {
+			// _this.token = getToken();
+//			window.webkit.messageHandlers.getToken.postMessage('')
+			window.webkit.messageHandlers.share.postMessage({name: '奖励这么大，带朋友一起来看看！', introduce: '呼朋唤友赚福利，邀请好友一起玩！', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: location.href})
+		} else if (window.android) {
+			_this.token = 'Bearer '+ window.android.getToken();
+			window.android.share('奖励这么大，带朋友一起来看看！', '呼朋唤友赚福利，邀请好友一起玩！', 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', location.href);
+			save(_this.token);
+		}
+		// save(_this.token);
+		inviteClick()
+	},
+	time:function(date){
+	  	var hour = Math.floor(date/(60*60*1000));
+	  	var leave2 = date%(3600*1000); //计算小时数后剩余的毫秒数
+	  	var minute = Math.floor(leave2/(60*1000));
+	  	var leave3 = leave2%(60*1000) //计算分钟数后剩余的毫秒数
+	  	var second = Math.round(leave3/1000);
+	  	hour = this.checkTime(hour)
+	  	minute = this.checkTime(minute)
+	  	second = this.checkTime(second)
+	  	$('#hour').text(hour)
+	  	$('#minute').text(minute)
+	  	$('#second').text(second)
+   },
+   $POST:function(url,data,success){
+		  var xhr = getXMLHttpRequest();  
+          var url = this.baseUrl+url
+          xhr.open("post",url);  
+          xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+          xhr.setRequestHeader("Authorization",this.token);  
+          xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+          var data = data || '{}';  
+          xhr.send(JSON.stringify(data));  
+          xhr.onreadystatechange= function() {  
+          	// alert('readyState==>'+xhr.readyState+'xhr.status==>'+xhr.status)
+               if(xhr.readyState == 4 && xhr.status == 200) {  
+                    var data = JSON.parse(xhr.responseText); 
+                    if(typeof success === 'function'){
+                    	success(data);
+                    }
+               }  
+      		};  
+	},
+   timestamp:function(){
+   	 var _this = this;
+		this.timer=setInterval(function(){
+			if(_this.utc>1000){
+		  		_this.utc -= 1000;
+		  		_this.time(_this.utc);
+	  }else{
+	    		clearInterval(_this.timer);
+	    		save(_this.token);
+	    	}
+		},960)
+    },
+    checkTime:function (i){
+    	if (i<10){
+    		i="0" + i
+    	}
+		return i
+    },
+    lingquCLick:function(){
+    	var _this = this;
+    	$(document).on('click','.prize_btn',function(){
+    		var prizeLevel = $(this).val();	  	
+    		var data = {
+			  	activityId: _this.activityId,
+//				activityId: '142629151201820672',
+			  	prizeLevel: prizeLevel
+			  }
+	  	  if (window.confirm("邀请奖励只可获得一次，您确认领取吗？")) {
+	  	  	_this.$POST('/activity/v1/invitation/claimPrize',data,function(data){
+	  	  		if(data.resultCode != 200){
+		  			console.log(data)
+		  			alert(data.resultMessages)
+		  		}else{
+		  			alert('恭喜您，领取成功')
+		  		}
+		  	  if(prizeLevel == 3 || prizeLevel == 4 || prizeLevel == 5){
+		  	  	if(prizeLevel == 3 && this.fiftyNum == 0){
+		  	  		alert('很抱歉，奖品已领完，下个时段请加油')
+		  	  	}else if(prizeLevel == 4 && this.oneHundredNum == 0){
+		  	  		alert('很抱歉，奖品已领完，下个时段请加油')
+		  	  	}else if(prizeLevel == 5 && this.twoHundredNum == 0){
+		  	  		alert('很抱歉，奖品已领完，下个时段请加油')
+		  	  	}else{
+		  	  		alert('我们会在2个工作日核实发放至您的注册手机号码及站内消息，请注意查收')
+		  	  	}
+		  	  }
+		  	  window.location.reload();
+	  	  	})
+		  } 
+    	})
+    }
+    
+}
+//获取token
+function getToken(v){
+	config.token = v;
+	save(config.token);
+	// return v;				
+}
+//获取token兼容旧版本
+function getTokenss(s){
+	window.webkit.messageHandlers.getToken.postMessage('')
+}
+config.init();
+
+ function getXMLHttpRequest() {
+  var xhr;
+  if(window.ActiveXObject) {  
+   xhr= new ActiveXObject("Microsoft.XMLHTTP");  
+  }else if (window.XMLHttpRequest) {  
+    xhr= new XMLHttpRequest();
+  }else {  
+    xhr= null;  
+  }  
+  return xhr; 
+}  
+function GetQueryString(name){
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+function save(token) {
+  var activityId = GetQueryString('activityId');
+  config.activityId = activityId;
+  var xhr = getXMLHttpRequest();  
+  var url = config.baseUrl+'/activity/v1/invitation/userInvitationJanuary';
+  var data = {
+	activityId: activityId
+//	activityId: '142629151201820672'
+  }
+  xhr.open("post",url);  
+  xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+  xhr.setRequestHeader("Authorization",token);  
+  xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+  xhr.send(JSON.stringify(data))
+  xhr.onreadystatechange= function() {  
+   if(xhr.readyState == 4 && xhr.status == 200) {
+    var data = JSON.parse(xhr.responseText); 
+    var invite = data.resultValue;
+    var code = '<p class="inviteNum_top_left_head"><img src="'+invite.userInvitationInfo.img+'"/></p><p class="inviteNum_top_left_text">'+invite.userInvitationInfo.nickName+'</p>';
+    $('#userInfo').html(code);
+    $('#invitedCount').text(invite.userInvitationInfo.invitedCount)
+    $('#invitedCode').text(invite.userInvitationInfo.invitedCode)
+    $('#five').text(invite.five);
+    $('#ten').text(invite.ten);
+    $('#fiftyECard').text(invite.fiftyECard);
+    $('#oneHundredECard').text(invite.oneHundredECard);
+    $('#twoHundredECard').text(invite.twoHundredsECard);
+    $('#fiftyECardCount').text('（库存：'+invite.fiftyECardCount+'）');
+    $('#oneHundredECardCount').text('（库存：'+invite.oneHundredECardCount+'）');
+    $('#twoHundredsECardCount').text('（库存：'+invite.twoHundredsECardCount+'）');
+    config.fiftyNum = invite.fiftyECardCount
+	config.oneHundredNum = invite.oneHundredECardCount
+	config.twoHundredNum = invite.twoHundredsECardCount
+	config.shareCode = "https://www.ifuturex.com/webApp/activity/inviteUser/share.html?code="+invite.userInvitationInfo.invitedCode
+    	var start = String(invite.currentTime);
+	  	var end = invite.nextReplenishmentTime;
+	  	var tt = start.substr(0,start.length - 3);
+	  	var ttm = Number(tt)*1000;
+	  	config.utc = end-ttm;
+	  	config.timestamp()
+	var isReceive = invite.isReceive
+	if(isReceive===0){
+		var lel = invite.userCurrentInvitedLevel;
+		for(var i = 0; i < lel; i++) {
+			$('.prize_btn').eq(i).addClass('prize_btn_allow');
+		}
+	}else{
+		$('.prize_btn').removeClass('prize_btn_allow')
+	}
+	config.lingquCLick()
+
+	  
+	}
+  };
+};
+
+function inviteClick(){
+	$('.inviteNum_top_btn').on('click',function(){
+		if (window.webkit) {
+			window.webkit.messageHandlers.YQ_HY_1.postMessage({name: '奖励这么大，带朋友一起来看看！', introduce: '呼朋唤友赚福利，邀请好友一起玩！', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: location.href})
+		} else if (window.android) {
+			window.android.SC_FX('奖励这么大，带朋友一起来看看！', '呼朋唤友赚福利，邀请好友一起玩！', 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', location.href)
+		}
+	})
+}
+</script>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		 <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?a=7"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<style>
+			html,body{background:-webkit-gradient(linear, 0 0, 0 bottom, from(#d6c6b9), to(#4b5056)); height: 100%;}
+			#app{height: 100%; width:95%; margin:0 auto;  position: relative; overflow: hidden; overflow-y:auto;}
+			.question_box{margin-bottom: .3rem; }
+			.progra_box{padding-top: .37rem; text-align: center;}
+			.progra_box h3{padding-bottom: .1rem; color: #fff;}
+			.progress{width: 5.6rem; background:rgba(255,255,255,.3); height: .06rem; margin:0 auto; position: relative; border-radius: .06rem; overflow: hidden;}
+			.progress_bar{position: absolute; height: 100%; background:#fff; border-radius: .06rem; left:0; top: 0;}
+			.question_title{position: relative; margin-top: .1rem; text-align: center;font-size: .32rem; color: #fff; margin-bottom: .4rem;}
+			.question_txt{padding-top: .5rem; margin-bottom: .6rem;}
+
+			.qus_cont{padding-left: .5rem; position: relative;}
+			.qus_cont .mask{width: 100%; height: 100%; position: absolute; z-index: 10; background: transparent; display: none;}
+			.qus_cont li{cursor: pointer; color: #fff; font-size: .32rem; padding:.15rem 0;}
+			.qus_cont li>p{width: 5.3rem; text-align: left; line-height: .34rem;}
+			.qus_cont li>em{width: .34rem; height: .34rem; background:url(img/radio_ico.png) no-repeat; background-size: 100%; margin-right: .2rem;}
+			.qus_cont ul.single li.on>em{background-position: bottom;}
+			.qus_cont ul.mutil li.on>em{background:url(img/check_ico.png) no-repeat; background-size: 100%;}
+			.qus_cont ul.judge{justify-content:space-between; padding:0 .4rem; margin-top: 2.3rem;}
+			.qus_cont ul.judge li{width: 2.4rem; height: .7rem; line-height: .7rem; border-radius: .7rem; text-align: center; font-size: .44rem;; padding:0; text-transform: uppercase; border:solid 2px #fff; color: #fff;}
+			.qus_cont ul.judge li.on{background: #fff; color: #4b5056;}
+			/*弹层*/
+			.question_layer{width: 100%;height: 100%;background: rgba(0,0,0,.7);position: fixed;top: 0;z-index: 999;overflow: hidden;display: none;}
+			/*提交弹层*/
+			.questionL_commit{width: 80%;height: 4.22rem;border-radius: 10px;background: #fff;position: relative;top: 50%;left: 50%;margin-left: -40%;margin-top: -2.11rem;overflow: hidden;display: none;}
+			.questionL_commit_close{width: .22rem;height: .22rem;position: absolute;right: .12rem;top: .12rem; background:url(img/close.png) no-repeat;background-size: 100%;}
+			.questionL_commit_text{width: 3.33rem;height: .73rem;margin: auto;font-size: .30rem;color: #000;text-align: center;margin-top: .95rem;margin-bottom: .35rem;}
+			.questionL_commit div:last-child{width: 100%;width: 4.40rem;margin: auto;height: .66rem;}
+			.questionL_commit input{width: 4.40rem;margin: auto;height: .66rem;border:solid 1px #bbbbbb;border-radius: 8px;display: block;padding-left: .64rem;box-sizing: border-box;}
+			.questionL_commit button{width: 100%;height: .88rem;position: absolute;bottom: 0;border-top: solid 1px #bbbbbb;background: #fff;font-size: .30rem;color: #108b00}
+			/*结果弹层*/
+			.questionL_result{width: 80%;height: 2.80rem;border-radius: 10px;background: #fff;position: relative;top: 50%;left: 50%;margin-left: -40%;margin-top: -1.40rem;overflow: hidden;display: none;}
+			.questionL_result_close{width: .22rem;height: .22rem;position: absolute;right: .12rem;top: .12rem; background:url(img/close.png) no-repeat;background-size: 100%;}
+			.questionL_result_text{width: 100%;font-size: .30rem;height: 2.00rem;display:flex;align-items: center;justify-content: center;color: #000;}
+			.questionL_result_btn{width: 100%;height: .80rem;position: absolute;bottom: 0;border-top: solid 1px #bbbbbb;display: flex;}
+			.questionL_result_btn div{flex: 1;justify-content: center;align-items: center;display: flex;font-size: .30rem;cursor: pointer;}
+			.questionL_result_btn div:first-child{color: #8a8a8a;border-right: solid 1px #bbbbbb;}
+			.questionL_result_btn div:last-child{color: #108b00;}
+			/*网络故障弹层*/
+			.questionL_network{width: 80%;height: 2.80rem;border-radius: 10px;background: #fff;position: relative;top: 50%;left: 50%;margin-left: -40%;margin-top: -1.40rem;overflow: hidden;display: none;}
+			.questionL_network_text{width: 70%;font-size: .30rem;height: 2.00rem;display:flex;align-items: center;justify-content: center;color: #000;margin: auto;text-align: center;}
+			/*分享弹层*/
+			.questionL_share{width: 80%;height: 2.80rem;border-radius: 10px;background: #fff;position: relative;top: 50%;left: 50%;margin-left: -40%;margin-top: -1.40rem;overflow: hidden;display: none;}
+			/*没有结果*/
+			.questionL_Nresult{width: 80%;height: 2.80rem;border-radius: 10px;background: #fff;position: relative;top: 50%;left: 50%;margin-left: -40%;margin-top: -1.40rem;overflow: hidden;display: none;}
+			.questionL_Nresult .questionL_result_btn{width: 100%;height: .80rem;position: absolute;bottom: 0;border-top: solid 1px #bbbbbb;display: flex;justify-content: center;align-items: center;color: #108b00;}
+			#bannerPic{border-radius: 5px; overflow: hidden;-webkit-box-shadow:0px 3px 6px rgba(0,0,0,.3); box-shadow:0px 3px 6px rgba(0,0,0,.3); margin-top: .2rem;}
+			.next_btn,.submit_btn{width: 3rem; margin:0 auto; margin-top: 1rem; margin-bottom: .2rem;}
+		</style>
+		<script>
+			// window.onbeforeunload = function(){
+			// 		// return '确定离开？'
+			// 		var allPage=$('#propressTotal').text(),
+			// 		nextPage=$('#progressCur').text();
+			// 		if(nextPage<allPage){
+			// 			$('.questionL_result').show();
+			// 			return;
+			// 		}
+					
+					
+			// 	}
+			// 	window.onbeforeunload = function(event) {
+			//     // if (!forceF5) {
+			//         event = event || window.event;
+			//         var confirmClose = '亲，只需再点几下就出结果了！';
+			//         // For IE and Firefox prior to version 4
+			//         if (event) {
+			//             event.returnValue = confirmClose;
+			//         }
+			//         // For Safari
+			//         return confirmClose;
+			//     // }
+			// };
+
+			// window.onunload = function(e){
+			// 	try{
+			// 			$('.questionL_result').show();
+			// 		}catch(e){}
+			// };
+			function checkLeave(){ 
+				// $('.questionL_result').show();
+				// alert(123123)
+	　　　　return "确定离开当前页面吗？"; 
+	　　　} 
+		</script>
+    	
+	</head>
+	<body>
+		<div id="app">
+			<div class="swiper-container" id="bannerPic">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><img src="img/question_bg.jpg" alt=""></div>
+				</div>
+			</div>
+			<div class="question_box">
+				<div class="question_txt">
+					<img src="img/question_txt.png" alt="">
+				</div>
+				<div class="swiper-container"  id="questionSwiper">
+    				<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="question_title">
+								<h2>路虎XXX的最大涉水深度是多少？</h2>
+							</div>
+							<div class="qus_cont">
+								<ul class="judge displayFlex flexTwo">
+									<li>yes</li>
+									<li>no</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="progra_box">
+					<h3><span id="progressCur">1</span>/<span id="propressTotal"></span></h3>
+					<div class="progress">
+						<div class="progress_bar" style="width:30%"></div>
+					</div>
+				</div>
+			</div>
+			<!-- 弹层 -->
+			
+		</div>
+		<div class="question_layer">
+				<div class="questionL_commit">
+					<!-- <div class="questionL_commit_close">
+					</div> -->
+					<div class="questionL_commit_text">
+						输入您的真实手机号码， 查看结果！
+					</div>
+					<div>
+						<input type="tel" placeholder="请输入11位手机号" maxlength="11">
+					</div>
+					<button>提交</button>
+				</div>
+				<div class="questionL_result">
+					<div class="questionL_result_close">
+					</div>
+					<div class="questionL_result_text">
+						亲，只需再点几下就出结果了！
+					</div>
+					<div class="questionL_result_btn">
+						<div onclick="javascript:window.close()">决意离开</div>
+						<div onclick="javascript:$('.questionL_result').hide()">继续</div>
+					</div>
+				</div>
+				<div class="questionL_network">
+					<div class="questionL_result_close">
+					</div>
+					<div class="questionL_network_text">
+						网络故障等原因，分享失败。 重试一下！
+					</div>
+					<div class="questionL_result_btn">
+						<div>取消</div>
+						<div>重试</div>
+					</div>
+				</div>
+				<div class="questionL_share">
+					<div class="questionL_result_close">
+					</div>
+					<div class="questionL_network_text">
+						炫酷到底！就要分享到微信群。
+					</div>
+					<div class="questionL_result_btn">
+						<div>取消</div>
+						<div>继续分享</div>
+					</div>
+				</div>
+				<div class="questionL_Nresult">
+					<div class="questionL_result_close">
+					</div>
+					<div class="questionL_network_text">
+						还没有测试结果！
+					</div>
+					<div class="questionL_result_btn">
+						立即测试
+					</div>
+				</div>
+			</div>
+		<script>
+			var newHd = new AppCommon();
+			var AnArr=[];
+			newHd.baseUrl='https://np.ifuturex.com:7500/';
+			var mySwiper;
+			var bannerSwiper;
+			var config={
+				groupId:[],
+				backgroundColor:[],
+				backgroundImg:[],
+				flag:true
+			}
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',newHd.getCookie('activityId'),trackDesc)
+			}
+			//埋点
+			newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc)
+			var shareTitle = decodeURIComponent(newHd.getCookie('shareTitle'));
+			var shareDesc = decodeURIComponent(newHd.getCookie('shareDesc'));
+			var shareImg = decodeURIComponent(newHd.getCookie('shareImg'));
+			var fromTo = newHd.getCookie('fromTo')
+			// $(document).attr('title',shareDesc); 
+			if(isWeixinBrowser) {
+				var shareData = {
+					title: shareTitle,
+					desc: shareDesc,
+					link: 'https://www.ifuturex.com/wap/activity/landrover/index.html?activityId='+newHd.getCookie('activityId'),
+					imgUrl: shareImg
+				}
+				shareInit(shareData,bury)
+			}
+			function bury(){
+				newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc,1)
+			}
+
+			$('#questionSwiper .swiper-wrapper').on('click','ul.single li,.judge li',function(){
+				var $ul = $(this).parent('ul');
+				$ul.find('li.on').removeClass('on');
+				$(this).addClass('on');
+				$ul.prev('.mask').show();
+				var Answer={
+					eventIds:[],
+					groupId:'',
+					singleChoose:0,
+					memo:''
+				};
+				$ul.find('li.on').each(function(index, el) {
+					Answer.eventIds.push($(this).attr('data-event'))
+				});
+				Answer.singleChoose=$(this).attr('data-choose');
+				Answer.groupId=$(this).attr('data-group');
+				Answer.memo='';
+				AnArr.push(Answer)
+				var allPage=$('#propressTotal').text(),
+					nextPage=$('#progressCur').text();
+				if(nextPage==allPage){
+					$('.question_layer').css('display','block');
+					$('.questionL_commit').css('display','block');
+				}
+				if(config.flag){
+					config.flag = false;
+					setTimeout(function(){
+						mySwiper.slideNext();
+						bannerSwiper.slideNext();
+						// $ul.find('li.on').removeClass('on');
+					},500)
+				}
+				
+			}).on('click','ul.mutil li',function(){
+				$(this).toggleClass('on');
+			}).on('click','.next_btn,.submit_btn',function(){
+				var $ul = $(this).prev('ul');
+				var Answer={
+					eventIds:[],
+					groupId:'',
+					singleChoose:0,
+					memo:''
+				};
+				$ul.find('li.on').each(function(index, el) {
+					Answer.eventIds.push($(this).attr('data-event'))
+				});
+				Answer.singleChoose=$(this).attr('data-choose');
+				Answer.groupId=$(this).attr('data-group');
+				Answer.memo='';
+				AnArr.push(Answer);
+				var allPage=$('#propressTotal').text(),
+					nextPage=$('#progressCur').text();
+				if(nextPage==allPage){
+					$('.question_layer').css('display','block');
+					$('.questionL_commit').css('display','block');
+				}else{
+					mySwiper.slideNext();
+					bannerSwiper.slideNext();
+				}
+			})
+			function prograssCur(){
+				var cur = parseInt($('#progressCur').text());
+				var total = parseInt($('#propressTotal').text());
+				cur++;
+				var barW = (cur/total).toFixed(2) * 100 + '%'
+				console.log(barW)
+				$('.progress_bar').css('width',barW);
+				$('#progressCur').text(cur)
+			}
+			// 页面初始函数
+			render();
+			//渲染题
+			function render(){
+				newHd.$POST('/activity/v1/syrvey/surveyGroupList',
+				{
+					"activityId": newHd.getCookie('activityId'),
+					"page":0,
+					"size": 1000,
+					"tenantId": 0
+				},
+				function(data){
+					if(data.resultCode == 200){
+						var len=data.resultValue.groupInfos.length,
+							info=data.resultValue.groupInfos;
+						$('#propressTotal').text(len);
+						var cur = parseInt($('#progressCur').text());
+						var total = parseInt($('#propressTotal').text());
+						var barW = (cur/total).toFixed(2) * 100 + '%'
+						console.log(barW)
+						$('.progress_bar').css('width',barW);
+						var str='';
+						var bannerHtml='';
+						for(var i=0;i<info.length;i++){
+							config.groupId.push(info[i].groupId);
+							// config.backgroundColor.push(info[i].groupId)
+							bannerHtml+='<div class="swiper-slide"><img src="'+info[i].groupImgpath+'"></div>'
+							str+=`
+								<div class="swiper-slide">
+										<div class="question_title">
+											<h2>${info[i].groupName}</h2>
+										</div>
+										<div class="qus_cont"><div class="mask"></div>`;
+									if(info[i].singleChoose === 1){
+										str+='<ul class="mutil">';
+									}else if(info[i].singleChoose === 2){
+										str += '<ul class="judge displayFlex flexTwo">';
+									}else{
+										str+='<ul class="single">';
+									}
+									for(var j=0;j<info[i].eventInfo.length;j++){
+										if(info[i].singleChoose === 2){
+											str+=`
+												<li data-event="${info[i].eventInfo[j].eventId}" data-group="${info[i].groupId}"  data-choose="${info[i].singleChoose}">${info[i].eventInfo[j].eventName}</li>
+														
+											`;
+										}else{
+											str+=`
+												<li class="displayFlex" data-event="${info[i].eventInfo[j].eventId}" data-group="${info[i].groupId}" data-choose="${info[i].singleChoose}"><em></em><p>${info[i].eventInfo[j].eventName}</p></li>
+														
+											`;
+										}
+									}
+								str+='</ul>';
+								if(info[i].singleChoose === 1){
+									if(i==info.length-1){
+										str+='<div class="submit_btn" data-group="'+info[i].groupId+'" data-choose="'+info[i].singleChoose+'"><img src="img/submit_btn.png"></div>';
+									}else{
+										str+='<div class="next_btn" data-group="'+info[i].groupId+'" data-choose="'+info[i].singleChoose+'"><img src="img/next_btn.png"></div>';
+									}
+								}
+								str+='</div></div>';
+									
+							}
+						$('#questionSwiper .swiper-wrapper').html(str);
+						$('#bannerPic .swiper-wrapper').html(bannerHtml);
+						mySwiper = new Swiper('#questionSwiper',{
+							 autoHeight: true,
+							 allowTouchMove:false,
+							 on:{
+							    slideNextTransitionEnd: function(){
+							    	config.flag = true;
+							    	prograssCur();
+							    },
+							  },
+						});
+						bannerSwiper = new Swiper('#bannerPic',{
+							 autoHeight: true,
+							 allowTouchMove:false
+						});
+					}else{
+						alert(data.resultValue)
+					}
+				})
+			}
+			//点击关闭弹层
+			$('.questionL_commit_close').on('click',function(){
+				$(this).parents('.question_layer').css('display','none');
+			})
+			//点击提交答案
+			$('.questionL_commit button').on('click',function(){
+				var phone=$('.questionL_commit input').val();
+				if($.trim(phone) == ''){
+					alert('请输入手机号');
+					return false;
+				}
+				var myreg=/^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+				 if (!myreg.test(phone)) {
+				 	alert('请输入正确的手机号');
+					return false;
+				 }
+				$('.questionL_commit input').val('')
+				newHd.$POST('/order/v1/syrvey/submitAnser',
+				{
+					"activityId": newHd.getCookie('activityId'),
+					"anserMsgs":AnArr,
+					"phoneNum":phone
+				},
+				function(data){
+					if(data.resultCode == 200){
+						$('.question_layer').css('display','none');
+						$('.questionL_commit').css('display','none');
+						var url=encodeURI(data.resultValue.typeMsg.typeImg);
+						var random = Math.random(100);
+						window.location.replace('result.html?isLoca=0&score='+data.resultValue.score+'&url='+url);
+					}else{
+						alert(data.resultMessages);
+					}
+				})
+			})
+				
+			
+		</script>
+	</body>
+</html>

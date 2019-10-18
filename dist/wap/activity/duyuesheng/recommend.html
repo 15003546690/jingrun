@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>我要推荐</title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css?v=01"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/cover.css?v=01"/>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/alert.js"></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js?v=04"></script>
+		<script src="../../js/jquery.form.js"></script>
+		<script src="../../js/base_app.js?v=048"></script>
+		<script src="js/lrz.bundle.js?v=01"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+
+		
+	</head>
+	<body>
+		<header class="download_top displayFlex flexMidle">
+			<div class="logo displayFlex flex1">
+				<h1 class="logo-img"></h1>
+				<p class="logo-text">
+					<span class="text-span1">未来无限APP</span>
+					<span class="text-span2">新手注册立享大礼包</span>
+				</p>
+			</div>
+			<a class="logo-right" href="/webApp/download/download.html">下载有礼</a>
+		</header>
+		<div class="cover" id="box">
+			<div class="return_btn"><a href="index.html?activityId=179897837369163776"></a></div>
+			<div class="cover_main">
+				<!--姓名-->
+				<div class="cover_name displayFlex">
+					 <span>姓<i></i>名：</span>
+					 <input type="text" class="cover_name_btn" id="name" maxlength="10" onblur="nameBlur()" placeholder="输入被推荐人的姓名"/>
+			    </div>
+			    <!--性别-->
+				<div class="cover_name displayFlex">
+					 <span>性<i></i>别：</span>
+					 <div class="gender cover-gender">
+					 	<label for="man" class="man"></label>
+						<label for="woman" class="woman"></label>
+						<input type="radio" name='gender' checked='true' id="man" value="man" onclick="sex1()">男
+						<input type="radio" name='gender' id="woman" value="woman" onclick="sex2()">女
+					 </div>
+			    </div>
+			    <!--个人简介-->
+			    <div class="brief displayFlex">
+					 <span>理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由：</span>
+					 <div>
+					 	<section>
+						 	<textarea name="" id="content" cols="30" rows="10" onfocus="jisuan()" onblur="clearblur()"></textarea>
+						 	<a class="wordsNum">0/500</a>
+						 </section>
+					 	<p class="note_text">提交内容请勿使用特殊字符：“<” “>”</p>
+					 </div>
+			    </div>
+			    <!--上传图片-->
+			    <div class="upload displayFlex">
+			    	<span>上传图片：</span>
+			    	<div>
+						<div class="z_photo clear" >
+							<div class="item">
+								<form action="" id="pageForm1" name="pageForm1" enctype="multipart/form-data">
+									<div class="item_img"></div>
+							        <img class="icon addImg" onclick="clickImg(this);" src="images/add.png" />
+							        <input name="upload" type="file" value="" class="upload_input" onchange="change(this,1)"/>
+							        <div class="preBlock">
+							          <img class="preview" alt="" name="pic" />
+							        </div>      
+							        <img class="delete" onclick="deleteImg(this)" src="images/delete.png"/>
+							        <input type="hidden" class="imgInput">
+						        </form>
+						    </div>
+						    <div class="item">
+						    	<form action="" id="pageForm2" name="pageForm2" enctype="multipart/form-data">
+						    		<div class="item_img"></div>
+							        <img class="icon addImg" onclick="clickImg(this);" src="images/add.png" />
+							        <input name="upload" type="file" class="upload_input" onchange="change(this,2)"/>
+							        <div class="preBlock">
+							          <img class="preview" alt="" name="pic" />
+							        </div>      
+							        <img class="delete" onclick="deleteImg(this)" src="images/delete.png"/>
+							        <input type="hidden" class="imgInput">
+						    	</form>
+						    </div>
+						    <div class="item">
+						    	<form action="" id="pageForm3" name="pageForm3" enctype="multipart/form-data">
+						    		<div class="item_img"></div>
+							        <img class="icon addImg" onclick="clickImg(this);" src="images/add.png" />
+							        <input name="upload" type="file" class="upload_input" onchange="change(this,3)"/>
+							        <div class="preBlock">
+							          <img class="preview" alt="" name="pic" />
+							        </div>      
+							        <img class="delete" onclick="deleteImg(this)" src="images/delete.png"/>
+							        <input type="hidden" class="imgInput">
+							    </form>
+						    </div>
+					   	</div>
+			    		<p class="clear">您可以上传3张小于6M的gif，jpg，jpeg，bmp，png格式的图片</p>
+			    		<p class="check displayFlex flexMidle"><i onclick="checkText(this)" class="checkbox checkImg"><img src="images/check.png"/></i><a href="statements.html">免责声明</a></p>
+			    	</div>
+			    </div>
+			</div>
+			 <!--提交报名-->
+		    <div class="submit">
+		    	<button class="submit_btn" onclick="submitBtn()"></button>
+		    </div>
+		</div>
+		
+	<script>
+	var newHd = new AppCommon();
+	newHd.share.name='电影《杜月笙》主创主演海选大奖赛';
+	newHd.share.introduce='立即报名，圆你电影梦！人人有奖，瓜分20W现金！';
+	var activityId = newHd.GetQueryString('groupId');
+	var shortName = newHd.GetQueryString('shortName');
+	var shareUrl = newHd.getCookie('setUrl');
+	// newHd.uriedPoints(1,'duyuesheng',newHd.GetQueryString('activityId'));
+	newHd.share.url = shareUrl;
+	//判断cookie中有没有setUrl
+	if(shareUrl == null){
+		window.location.href = "index.html?activityId=179897837369163776"
+	}
+	if(isWeixinBrowser){
+		var shareData = {
+			title:newHd.share.introduce,
+			desc:newHd.share.name,
+			link:newHd.getCookie('setUrl'),
+			imgUrl:'https://www.ifuturex.com/wap/activity/duyuesheng/share/share.jpg'
+		}
+		shareInit(shareData)
+	}
+        if (getIos()) {
+        	$('.upload_input').removeAttr('capture');
+        }
+        function getIos() {
+            var ua=navigator.userAgent.toLowerCase();
+            if (ua.match(/iPhone\sOS/i) == "iphone os") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+	if (window.android) {
+		newHd.token = 'Bearer '+ window.android.getToken();
+		newHd.browser = 'mhexpresss';
+		newHd.init(recommend);
+	}
+	//此方法只在IOS下调用
+	function getToken(v,m){
+		newHd.token = v;
+		newHd.browser = 'mhexpresss';
+		newHd.init(recommend);
+
+		
+	}
+	//判断app是否登录
+	function getTokenss(s){
+		window.webkit.messageHandlers.getToken.postMessage('')
+	}
+	setTimeout(function(){
+		if(newHd.browser != 'mhexpresss'){
+			$('.download_top').slideDown();
+			newHd.init(recommend);
+		}
+	},1000)
+	var config = {
+		gender: 0,
+		flag:true
+	}
+	function recommend(){}
+	//字数
+	function jisuan(){
+		config.timer = setInterval(function() {
+			var valu = $('#content').val();
+			var newvalue = valu.replace(/[^\x00-\xff]/g, "**");
+			var len = newvalue.length;
+			if(len < 1002){
+				$('.wordsNum').html(Math.floor(parseInt(len)/2 )+'/500');
+			}else{
+				$('#box').alert({
+				    text:'字数不能超过500'
+				})
+			}
+			console.log(config.timer)
+		},100)
+	}
+	function clearblur(){
+		clearInterval(config.timer)
+	}
+	//验证重复姓名
+	function nameBlur(){
+		var name = $('#name').val();
+		if($.trim(name) == ''){
+			return false;
+		}
+		newHd.$POST('/account/v1/userSubject/validUserInputName',{activityId:activityId,name:name,shortName:shortName},function(data){
+				if(data.resultValue == true){
+
+				}else{
+					$('#box').alert({
+					    text:'这位参选人已被采纳，请您推荐其他人!'
+					})
+					$('#name').val('');
+				}
+		})
+	}
+    //提交按钮
+    function submitBtn(){
+    	var name = $(".cover_name_btn").val();
+    	var introduction = $("#content").val();
+    	var check = $(".checkbox").hasClass('checkImg');
+    	var imgArr = [];
+    	$('.imgInput').each(function(index, el) {
+    		if($(this).val() != ''){
+    			imgArr.push($(this).val());
+    		}
+    	});
+    	console.log(JSON.stringify(imgArr))
+    	if(name==''){
+    		$('#box').alert({
+			    text:'姓名不能为空！'
+			})
+			return false;
+    	}
+    	if(introduction == ''){
+    		$('#box').alert({
+			    text:'个人简介不能为空！'
+			})
+			return false;
+    	}
+    	if(introduction.length >= 500){
+    		$('#box').alert({
+			    text:'字数不能超过500！'
+			})
+			return false;
+    	}
+    	if(imgArr.length == 0){
+    		$('#box').alert({
+			    text:'请至少上传一张照片！'
+			})
+			return false;
+    	}
+    	if(check==false){
+    		$('#box').alert({
+			    text:'请阅读并同意免责声明！'
+			})
+			return false;
+		}
+		var postData = {
+			activityId:activityId,
+			topicId:'177365527116312577',
+			name:name,
+			sex:config.gender,
+			msg:introduction,
+			img1:imgArr[0] || '',
+			img2:imgArr[1] || '',
+			img3:imgArr[2] || '',
+			shortName:shortName,
+			recommendType:1
+		}
+		if(config.flag){
+			config.flag = false;
+			newHd.$POST('/account/v1/userSubject/userCommitRecommend',postData,function(data){
+					if(data.resultCode == 200){
+						var btnShow = null;
+						if(newHd.browser != 'mhexpresss'){
+							btnShow=0;
+						}
+						$('#box').alert({
+						    text:'提交成功，请耐心等待审核！',
+						    isDownApp: btnShow
+						})
+						$('#name').val('');
+						$("#content").val('');
+						$('.imgInput').val('');
+						$('.wordsNum').html('0/500');
+						$('.delete').trigger('click');
+					}else{
+						$('#box').alert({
+						    text:data.resultMessages
+						})
+					}
+					config.flag = true;
+			})
+		}
+    }
+    /*性别*/
+    function sex1() {
+    	config.gender=0
+		$('.man').css('background-image','url("images/ck.png")');
+		$('.woman').css('background-image','url("images/isCk.png")');
+    }
+    function sex2() {
+    	config.gender=1
+		$('.woman').css('background-image','url("images/ck.png")');
+		$('.man').css('background-image','url("images/isCk.png")');
+		
+    }
+    /*选中免责申明*/
+   	function checkText(val){
+   		$(val).toggleClass('checkImg')
+   	}
+	</script>
+	<script src="js/upload.js?v=63" async defer></script>
+	</body>
+</html>

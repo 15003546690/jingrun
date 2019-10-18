@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css" />
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery-3.2.1.min.js"></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?a=5"></script>
+		<script src="js/echarts.min.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+		<style>
+		html,
+		body {width: 100%;height: 100%;background: -webkit-gradient(linear, 0 0, 0 bottom, from(#d6c6b9), to(rgba(36, 36, 36, 0.8)));}}
+		#app {width: 100%;height: 100%;position: relative;overflow: hidden;background: #210d32;}
+		.app_titlt {width: 100%;height: 0.9rem;background: #4b5056;}
+		.app_titlt a {width: 50%;font-size: 0.28rem;color: #818589;text-align: center;height: 0.9rem;line-height: 0.9rem;}
+		.app_titlt a.select_cole {color: #fff;background: url(../landrover/img/yell_coorm.png) no-repeat center 0.8rem;}
+		.app_main {width: 6.90rem;margin: 0 auto;margin-top: 0.30rem;}
+		.app_main_block {height: 2.10rem;margin-bottom: 0.20rem;position: relative;}
+		.app_main_block_pic {width: 3.00rem;height: 2.10rem;position: relative;border-radius: 0.08rem 0 0 0.08rem;}
+		.block_pic {
+			width: 100%;
+			height: 100%;
+			border-radius: 0.08rem 0 0 0.08rem;
+		}
+		#app .block_already {
+			width: 3.00rem;
+			height: 2.10rem;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#app .block_already_time {
+			width: 3.00rem;
+			height: 2.10rem;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.app_main_block_title {
+			width: 3.45rem;
+			background: white;
+			padding: 0.26rem 0.21rem 0 0.21rem;
+			border-radius: 0 0.08rem 0.08rem 0;
+		}
+		.block_title {
+			color: #474747;
+			font-size: 0.28rem;
+		}
+		.block_time {
+			color: #008e11;
+			font-size: 0.24rem;
+			margin-top: 0.30rem;
+		}
+		#overlay_prize {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background: rgba(0, 0, 0, 0.3);
+			display: none;
+		}
+		.overlay_prize_main {
+			width: 100%;
+			height: 100%;
+			display: table;
+		}
+		.prize_main {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		.prize_main_body {
+			width: 6.60rem;
+			height: 8.80rem;
+			background: white;
+			margin: 0 auto;
+			border-radius: 0.08rem;
+			position: relative;
+		}
+		.prize_main_body_pic {
+			height: 4.20rem;
+			position: relative;
+			margin-bottom: 1rem;
+		}
+		.prize_main_body_pic img {
+			width: 100%;
+			height: 100%;
+			border-radius: 0.08rem 0.08rem 0 0;
+		}
+		.ody_pic {
+			width: 100%;
+			height: 1.40rem;
+			position: absolute;
+			bottom: -0.65rem;
+			left: 0;
+			background: url(../landrover/img/ribbon.png) no-repeat center;
+			background-size: contain;
+		}
+		.ody_pic p {
+			font-size: 0.38rem;
+			color: white;
+			text-align: center;
+			line-height: 0.80rem;
+		}
+		.prize_main_body_til {
+			width: 5.20rem;
+			line-height: 0.30rem;
+			font-size: 0.28rem;
+			color: #474747;
+			margin: 0 auto;
+		}
+		.scrollbar {
+			width: 5.20rem;
+			line-height: 0.40rem;
+			font-size: 0.28rem;
+			color: #6d6d6d;
+			margin: 0 auto;
+			margin-top: 0.32rem;
+		}
+		.scrollbar_min {
+			height: 2.0rem;
+			overflow-y: auto;
+		}
+		#overlay_prize .close {
+			width: 5.20rem;
+			position: absolute;
+			right: 0rem;
+			bottom: -1.6rem;
+			left: 0;
+			text-align: center;
+			margin: 0 auto;
+		}
+		.disabled {
+			pointer-events: none;
+		}
+		.app_main_zhe {
+			width: 6.90rem;
+			height: 2.10rem;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background: red;
+		}
+		.app_main_tishi {
+			width: 6.90rem;
+			height:4.0rem;
+			line-height: 4.0rem;
+			margin: 0 auto;
+			font-size: 0.34rem;
+			color: #6d6d6d;
+			display: none;
+			text-align: center;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="app_titlt displayFlex">
+				<a href="javascript:;" class="information">个人信息</a>
+				<a href="javascript:;" class="select_cole">获得奖品</a>
+			</div>
+			<div class="app_main">
+				<div class="app_main_tishi">
+					暂无奖品！
+				</div>
+			</div>
+		</div>
+		<div id="overlay_prize">
+			<div class="overlay_prize_main">
+				<div class="prize_main">
+					<div class="prize_main_body">
+						<div class="prize_main_body_pic">
+							<img class="body_picImg" src="img/22222.jpg" />
+							<div class="ody_pic">
+								<p>秋名山车神</p>
+							</div>
+						</div>
+						<div class="prize_main_body_til">复仇者联盟3IMAX电影票万达专场X电影票万达票万达专场X电 x1</div>
+						<div class="scrollbar">
+							<div class="scrollbar_min">
+								<p>1.规则第一条</p>
+							</div>
+						</div>
+						<p class="close">
+							<a href="javascript:;"><img class="close_btn" src="img/choujiang_close.png"></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var newHd = new AppCommon();
+						newHd.baseUrl='https://np.ifuturex.com:7500/';//记得删除
+//			newHd.baseUrl = 'http://192.168.10.136:7500/'; //记得删除
+			// newHd.activityId = newHd.GetQueryString('activityId');
+			var trackDesc = sessionStorage.getItem("trackDesc");
+			var shareTitle = decodeURIComponent(newHd.getCookie('shareTitle'));
+			var shareDesc = decodeURIComponent(newHd.getCookie('shareDesc'));
+			var shareImg = decodeURIComponent(newHd.getCookie('shareImg'));
+			var fromTo = newHd.getCookie('fromTo')
+
+			// $(document).attr('title',shareDesc); 
+			if(isWeixinBrowser) {
+				var shareData = {
+					title: shareTitle,
+					desc: shareDesc,
+					link: 'https://www.ifuturex.com/wap/activity/landrover/index.html?activityId='+newHd.getCookie('activityId'),
+					imgUrl: shareImg
+				}
+				shareInit(shareData,bury)
+			}
+			function bury(){
+				newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc,1)
+			}
+			var flag = true;
+			if(trackDesc == null) {
+				trackDesc = new Date().getTime();
+				sessionStorage.setItem('trackDesc', trackDesc)
+			}
+			var infoData = []
+			var postData = {
+				activityId: newHd.getCookie('activityId'),
+				page: 0,
+				size: 1000
+			}
+			
+			
+			newHd.$POST('activity/v1/syrvey/showUserPrize', postData, function(data) {
+				if(data.resultValue == '暂无奖品') {
+					$('.app_main_tishi').css('display', 'block')
+				}
+				var resValue = data.resultValue;
+				var prizedtos = infoData = data.resultValue.prizeDTOS;
+				if(data.resultValue != '暂无奖品' && data.resultCode == 200) {
+					var html = '';
+					for(var i = 0; i < prizedtos.length; i++) {
+						html += '<div class="app_main_block displayFlex" data-index="' + i + '">' +
+							'<span class="app_main_block_pic">' +
+							'<img class="block_pic" src=" ' + prizedtos[i].prizeImg + '"/>'
+						if(prizedtos[i].status == 1) {
+							html += '<img class="block_already" src="img/already.png"/>'
+						} else if(prizedtos[i].status == 2) {
+							html += '<img class="block_already_time" src="img/alredy_time.png"/>'
+						}
+						html += '</span>' +
+							'<div class="app_main_block_title">' +
+							'<p class="block_title">' + prizedtos[i].prizeName + '</p>' +
+							'<p class="block_time">有效期：' + prizedtos[i].expiryTime + '</p>' +
+							'</div>'
+						html += '</div>'
+						$('.app_main').html(html);
+				}
+				}
+
+			})
+			//弹层显示
+			$('.app_main').on('click', '.app_main_block',function() {
+				var index = $(this).attr('data-index');
+				if(infoData[index].status == 0) {
+					$('.body_picImg').attr('src', infoData[index].prizeImg)
+					$('.ody_pic p').text(infoData[index].designation);
+					$('.prize_main_body_til').text(infoData[index].prizeName + 'X' + infoData[index].prizeNum);
+					$('.scrollbar_min p').html(infoData[index].memo);
+					$('#overlay_prize').css('display', 'block');
+				}
+			})
+			//弹层关闭
+			$('.close_btn').on("click", function() {
+				$('#overlay_prize').css('display', 'none')
+			})
+			$('.information').on('click', function() {
+				if(flag) {
+					if(newHd.refreshToken == null) {
+						var url = 'http://www.ifuturex.com/wap/activity/landrover/information.html?activityId=' + newHd.getCookie('activityId');
+						window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx798d96bd5a689a90&redirect_uri=' + url + '&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect'
+					} else {
+						window.location.href = 'http://www.ifuturex.com/wap/activity/landrover/information.html';
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

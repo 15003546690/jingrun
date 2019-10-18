@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>2017年度汉字评选</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			em,i{
+				font-style:normal;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{ 
+				text-decoration:none; 
+				cursor:pointer; 
+			}
+			img{width: 100%; display: block;}
+			body{
+			    font-family:"SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+			    background: #f8f8f8;
+				margin:0 auto;
+			}
+			.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+			.clearfix { display: inline-block; }
+			* html .clearfix { height: 1%; }
+			.clearfix { display: block; }
+			
+			.record_item{background: #fff; border:solid .01rem #d9d9d9; border-width:1px 0; padding:.14rem; margin-top: .2rem;}
+			.record_item h2{font-size: .4rem; color: #333; position: relative; margin-bottom: .2rem;}
+			.record_item h2 small{display: inline-block; font-size: .2rem; margin-left: .3rem;}
+			.record_item h2 .state{width: 1.14rem; position: absolute; right: 0; top: 0;}
+			.record_item article{ line-height: .32rem;font-size: .28rem; color: #333; margin-bottom: .1rem;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+			.record_item article.show{white-space: normal;}
+			.record_item .isView{text-align: right; overflow: hidden; line-height: .28rem; margin-bottom: .1rem;}
+			.record_item .isView a{display: inline-block; color: #3869ab;font-size: .28rem; vertical-align: top;}
+			.record_item .isView a:after{content:''; display: inline-block; width: .13rem; height: .16rem; vertical-align: middle;margin-left: .04rem; background: url(images/record_arrow.png) no-repeat center center; background-size: 100%;}
+			.record_item .isView a.up:after{transform: rotate(180deg);}
+			.record_item .comment{font-size: .2rem; line-height: .28rem; padding-top: .1rem;}
+			.record_item .comment.go{color: #029c15;}
+			.record_item .comment.pass{color: #e63034;}
+
+			.noTip{text-align: center; color: #999; font-size: .2rem; padding:.2rem 0; display: none;}
+
+			@-webkit-keyframes ball-beat {
+			  50% {
+			    opacity: 0.2;
+			    -webkit-transform: scale(0.75);
+			            transform: scale(0.75); }
+
+			  100% {
+			    opacity: 1;
+			    -webkit-transform: scale(1);
+			            transform: scale(1); } }
+
+			@keyframes ball-beat {
+			  50% {
+			    opacity: 0.2;
+			    -webkit-transform: scale(0.75);
+			            transform: scale(0.75); }
+
+			  100% {
+			    opacity: 1;
+			    -webkit-transform: scale(1);
+			            transform: scale(1); } }
+			.loader-inner{padding: 10px 0;}
+			.ball-beat{text-align: center; display: none;}
+			.ball-beat > div {
+			  background-color: #ddd;
+			  width: .2rem;
+			  height: .2rem;
+			  border-radius: 100%;
+			  margin: .02rem;
+			  -webkit-animation-fill-mode: both;
+			          animation-fill-mode: both;
+			  display: inline-block;
+			  -webkit-animation: ball-beat 0.7s 0s infinite linear;
+			          animation: ball-beat 0.7s 0s infinite linear; }
+			  .ball-beat > div:nth-child(2n-1) {
+			    -webkit-animation-delay: 0.35s !important;
+			            animation-delay: 0.35s !important; }
+		</style>
+	</head>
+	<body>
+		<div id="recordBox">
+			<!-- <div class="record_item">
+				<h2>
+					安<small>2017/12/09  12:41</small>
+					<div class="state"><img src="images/record_state1.png" alt=""></div>
+				</h2>
+				<article>
+					预测未来定天下，评鉴当日定江山。
+				</article>
+			</div>
+			<div class="record_item">
+				<h2>
+					安<small>2017/12/09  12:41</small>
+					<div class="state"><img src="images/record_state2.png" alt=""></div>
+				</h2>
+				<article>
+					预测未来定天下，评鉴当日定江山。预测未来定天下，评鉴当日定江山。预测未来定天下，评鉴当日定江山。预测未来定天下，评鉴当日定江山。
+				</article>				
+				<p class="isView">
+					<a href="javascript:;">展开</a>
+				</p>
+				<div class="comment pass">
+					“您征集的“地”字未被采纳，原因：已有其他用户在您之前征集该文字并该采纳感
+谢您的征集，请您更换其他汉字重新征集，谢谢。”
+				</div>
+			</div>
+			<div class="record_item">
+				<h2>
+					安<small>2017/12/09  12:41</small>
+					<div class="state"><img src="images/record_state3.png" alt=""></div>
+				</h2>
+				<article>
+					预测未来定天下，评鉴当日定江山。
+				</article>
+				<div class="comment go">
+					您的建议非常好，已被采纳。
+				</div>
+			</div> -->
+			
+		</div>
+		<div class="noTip">
+			没有更多内容了！
+		</div>
+		<div class="loader-inner ball-beat">
+	       <div></div>
+	       <div></div>
+	       <div></div>
+	    </div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/layer.js" ></script>
+		<script type="text/javascript">
+			(function (doc, win) {    
+			    var docEl = doc.documentElement,    
+			    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+			    recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();    
+			})(document, window);
+			
+			var config={
+				token:'',
+				page:0,
+				total:1,
+				activityId:'',
+				baseUrl:'https://api.ifuturex.com:443',
+				// baseUrl:'http://192.168.0.13:7500',
+				init:function(){
+					var _this = this;
+					// alert('执行了')
+					if (window.webkit) {
+						// _this.token = getToken();
+						window.webkit.messageHandlers.share.postMessage({name: '回首这一年，哪个字最能代表你的2017？参与评选获千元奖金！', introduce: '2017年度汉字评选', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: config.shareUrl()})
+					} else if (window.android) {
+						_this.token = 'Bearer '+ window.android.getToken();
+						window.android.share('回首这一年，哪个字最能代表你的2017？参与评选获千元奖金！','2017年度汉字评选',  'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', config.shareUrl())
+						// alert(_this.token)
+						this.activityId = this.getParm(window.location.href,'activityId') || '';
+						// alert('this.activityId==>'+this.activityId)
+						getRecords();
+						
+					}
+					console.log('activityId===>'+this.activityId)
+					$(document).on('click','.isView a',function(){
+						var cls = $(this).attr('class');
+						var $artic = $(this).parent('.isView').prev('article');
+						var $articAll = $('#recordBox article.show');
+						if(cls != 'up'){
+							$('#recordBox article.show').removeClass('show');
+							$('#recordBox .isView a.up').text('展开').removeClass('up');
+							$artic.addClass('show');
+							$(this).text('收起').addClass('up');
+						}else{
+							$artic.removeClass('show');
+							$(this).text('展开').removeClass('up');
+						}
+					})
+				},
+				shareUrl:function(){
+					return window.location.protocol + '//' + window.location.host +'/webApp/activity/chinese/share.html';
+				},
+				$POST:function(url,data,success){
+					  var xhr = getXMLHttpRequest();  
+			          var url = config.baseUrl+url
+			          xhr.open("post",url);  
+			          xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+			          xhr.setRequestHeader("Authorization",config.token);  
+			          xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+			          var data = data || '{}';  
+			          xhr.send(JSON.stringify(data));  
+			          xhr.onreadystatechange= function() {  
+			          	// alert('readyState==>'+xhr.readyState+'xhr.status==>'+xhr.status)
+		                   if(xhr.readyState == 4 && xhr.status == 200) {  
+		                        var data = JSON.parse(xhr.responseText); 
+		                        if(typeof success === 'function'){
+		                        	success(data);
+		                        }
+		                   }else if(xhr.readyState == 4 && xhr.status != 200){
+		                   		alert('您还没有登录');
+		                   		window.history.go(-1);
+		                   }
+		          		};  
+				},
+				getParm : function(url, key) {
+					var escapeReg = function(source) {
+						return String(source)
+								.replace(new RegExp("([.*+?^=!:\x24{}()|[\\]\/\\\\])", "g"), '\\\x241');
+					};
+					var reg = new RegExp(
+										"(^|&|\\?|#)" 
+										+ escapeReg(key) 
+										+ "=([^&]*)(&|\x24)", 
+									"");
+					var match = url.match(reg);
+					if (match) {
+						var result=match[2].substring(match[2].length-1,match[2].length);
+						return result=='#'?match[2].substring(0,match[2].length-1):match[2];
+					}
+					
+					return null;
+				}
+			}
+			Date.prototype.format = function(format) {
+			       var date = {
+			              "M+": this.getMonth() + 1,
+			              "d+": this.getDate(),
+			              "h+": this.getHours(),
+			              "m+": this.getMinutes(),
+			              "s+": this.getSeconds(),
+			              "q+": Math.floor((this.getMonth() + 3) / 3),
+			              "S+": this.getMilliseconds()
+			       };
+			       if (/(y+)/i.test(format)) {
+			              format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+			       }
+			       for (var k in date) {
+			              if (new RegExp("(" + k + ")").test(format)) {
+			                     format = format.replace(RegExp.$1, RegExp.$1.length == 1
+			                            ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+			              }
+			       }
+			       return format;
+			}
+			function getToken(v){
+				config.token = v;
+					config.activityId = config.getParm(window.location.href,'activityId') || '';
+				// config.token = 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTE2ODMxNjUsInVzZXJJZCI6MzgwNjcyLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiODcwZWM3OGItMzc3MC00NThhLWJlYmQtODE1MGU4NzRhMDRjIiwiY2xpZW50X2lkIjoiaWZ1dHVyZXg3MHNoNWRsMyIsInNjb3BlIjpbInVzZXIiXX0.TzRsy0NtXon3cb6u_A5pHyIhdmUF3xOFgdHs5y2d8pTeoK7-OTJCRnVNlgf2dW9PjK9kIizmeyEdqHjReHpRAirhgNL6Ex0lYqCFfJCPu8TWXyDcmnAQe5MyjughRFTx_KwJreoOEiVZkMBWdjN7XFvCqlROQkGeb9MFJ176oiXZzKCsCA6wfB-w6_X8l_G_mX8fYCZ89DfgaSlR_O8mvFfxBUnlYH3nJXnOecPEv1ET0okqWM3QQIuUKDuL7VdjXQsY_S2znbT8d8hU0iHK1VjpaA_GUKhWoMfTsxq74WvPxaweCGQnaFTjrX99wAEex_1uWjHe0ZMsONBsNAoNSQ'
+				// alert('record==>'+config.token)
+				getRecords();
+			}
+			config.init();
+			// getToken()
+
+			$(window).on('scroll', function() {
+	            if($(document).scrollTop()>=$(document).height()-$(window).height()){
+	            	console.log($(document).height()-$(window).height());
+	            	var totalPage = Math.ceil(config.total / 10);
+	                if (config.page < totalPage) {
+	                    config.page++;
+	                    getRecords();
+	                }else{
+	                	$('.noTip').show();
+	                }
+	            }
+	        });
+
+			 function getXMLHttpRequest() {  
+			          var xhr;  
+			          if(window.ActiveXObject) {  
+			                   xhr= new ActiveXObject("Microsoft.XMLHTTP");  
+			          }else if (window.XMLHttpRequest) {  
+			                   xhr= new XMLHttpRequest();  
+			          }else {  
+			                   xhr= null;  
+			          }  
+			          return xhr;  
+			}  
+  
+			function getRecords() {  
+				$('.ball-beat').show();
+				var data = {
+	          		"activityId": '141898831263432704',
+					"page": config.page,
+					"size": 10
+	          	};
+	          	// alert(JSON.stringify(data))
+	          	config.$POST('/account/v1/userSubject/queryUserSubject',data,function(data){
+	          		// alert(data.resultCode)
+		  			if(data.resultCode === 200){
+		  				var list = data.resultValue.userSubjectEntitys;
+		  				config.total = data.resultValue.userSubjectEntitysCount;
+		  				var temp = [];
+		  				for(var i =0,len=list.length;i<len;i++){
+		  					var stat = list[i].status + 1;
+		  					var timestamp = list[i].createTime;
+							var newDate = new Date();
+							newDate.setTime(timestamp);
+							var date = newDate.format('yyyy-MM-dd h:m:s');
+		  					temp.push('<div class="record_item"><h2>'+list[i].title+'<small>'+date+'</small><div class="state"><img src="images/record_state'+stat+'.png" alt=""></div></h2><article>'+list[i].content+'</article>');
+		  					var vv = list[i].content;
+		  					var newvalue = vv.replace(/[^\x00-\xff]/g, "**");
+		  					if(vv.length > 20){
+		  						temp.push('<p class="isView"><a href="javascript:;">展开</a></p>')
+		  					}
+		  					if(list[i].subjectOption != ''){
+			  					if(list[i].status === 2){
+			  						temp.push('<div class="comment go">');
+			  					}else if(list[i].status === 1){
+			  						temp.push('<div class="comment pass">');
+			  					}
+			  					temp.push(list[i].subjectOption + '</div>')
+		  					}
+		  					temp.push('</div>');
+		  				}
+		  				$('.ball-beat').hide();
+		  				$('#recordBox').append(temp.join(''));
+		  			}else{
+		  				layer.open({
+					    content: data.resultMessages
+					    ,btn: '确定'
+					  });
+		  			}
+		  		})
+			} 
+
+
+		</script>
+	</body>
+</html>
+

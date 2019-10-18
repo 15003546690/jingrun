@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+		<script src="js/rem.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/sign.js"></script>
+		<script src="js/layer.js"></script>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="js/base_app.js?v=100"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="js/wxShare.js"></script>
+		<script src="js/commonShare.js"></script>
+	</head>
+	<body>
+		<div class="app" id="app">
+			<div class="register_box">
+				<div class="reg_main displayFlex">
+					<p class="displayFlex flexMidle">手机号</p>
+					<input type="text" placeholder="请输入手机号" id="userName" maxlength="11" v-model="userName" />
+				</div>
+				<div class="reg_main displayFlex">
+					<p class="displayFlex flexMidle">密&nbsp;&nbsp;&nbsp;码</p>
+					<input type="password" placeholder="请输入密码" class="numInput" id="password" v-model="password" />
+				</div>
+				
+			</div>
+			<div class="reg_btn"><button :class="loginBtnClass" @click="loginSubmit">登录</button></div>
+			<div class="service"><a href="tel:4006919939">客服热线：400-6919-939</a></div>
+			<div class="forget"><a href="register.html">注册</a><a href="forget.html">忘记密码</a></div>
+		</div>
+		<script src="js/login.js?v=06"></script>
+	</body>
+</html>

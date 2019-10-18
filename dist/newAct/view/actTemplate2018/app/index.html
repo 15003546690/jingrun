@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>活动标题</title>
+		<style link="../../../public/css/common.css"></style>
+		<script src="../../../public/js/rem.js"></script>
+		<script src="../../../public/js/base_app.js"></script>
+		<!-- 以上内容为固定不允许修改 -->
+	</head>
+	<body>
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script type="text/javascript">
+			var newHd = new AppCommon();//new一个新活动子类
+			newHd.baseUrl = 'http://192.168.0.13:7500/';//测试地址 正式上线可删除
+			// 以下设置分享内容  注意必须分别设置 不能newHd.share={}
+			newHd.share.name = '分享标题';
+			newHd.share.introduce = '分享内容';
+			newHd.share.url = '分享url';
+			//此方法只在IOS下调用
+			function getToken(v){
+				newHd.token = v;
+			}
+			setTimeout(newHd.init(newHandle),50);//初始化页面功能 
+			//以下内容自己编写
+			function newHandle(){
+				var data = {
+					activityId:newHd.activityId
+				}
+				//公用ajax方法
+				newHd.$POST('url',data,function(data){
+					if(data.resultCode === 200){
+						//页面处理逻辑
+					}else{
+						//容错提示  alert换成自己的弹层样式
+						alert(data.resultMessage);
+					}
+				})
+			}
+
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>2017年度汉字评选</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			em,i{
+				font-style:normal;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{ 
+				text-decoration:none; 
+				cursor:pointer; 
+			}
+			img{width: 100%; display: block;}
+			body{
+			    font-family:"SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+			    background: #fdecd2;
+				margin:0 auto;
+			}
+			a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+			.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+			.clearfix { display: inline-block; }
+			* html .clearfix { height: 1%; }
+			.clearfix { display: block; }
+			.chinese_tab{position: relative;background: #c60c1b;}
+			.chinese_tab .tab_box{width: 100%; position: absolute; left:0; top:0;}
+			.chinese_tab .tab_box ul{width: 100%; position: absolute; left:0; top: .1rem; display: flex; display: -webkit-flex;}
+			.chinese_tab .tab_box ul li{flex:1;}
+			.chinese_tab .tab_box ul li a{display: block; width: 2rem; height: .78rem; margin:0 auto; background-repeat: no-repeat; background-size: 100%;}
+			.chinese_tab .tab_box ul li a.n1{background-image: url(images/tab_n1.png);}
+			.chinese_tab .tab_box ul li a.n2{background-image: url(images/tab_n2_2.png);}
+			.chinese_tab .tab_box ul li a.n3{background-image: url(images/tab_n3_2.png);}
+
+			.chinese_word{ padding-bottom: .4rem; padding-left: .2rem;}
+			.chinese_word ul{margin-bottom: .2rem;}
+			.chinese_word ul li{width: .78rem; height: .78rem; border:solid 1px #fff; float: left; margin-right: .09rem; margin-bottom: .09rem; font-size: .52rem; color: #fff; line-height: .8rem; text-align: center; background:url(images/word_bg1.png) no-repeat; background-size: 100%;}
+			.chinese_word ul li.on{background:url(images/word_bg2.png) no-repeat; color: #fce836;}
+
+			.page{text-align: center;}
+			.page a{display: inline-block; vertical-align: middle; width: .33rem; margin:0 .5rem;}
+			.page a.end{opacity: .5;}
+			.page span{display: inline-block; vertical-align: middle; line-height: .33rem; color: #fff; font-size: .32rem;}
+
+			.chinese_info{background: #fdecd2; padding:.4rem 0;}
+			.chinese_info .txt_box{width: 95%; margin:0 auto;}
+
+			.canyu_btn{width: 47%; margin:0 auto; margin-top: .5rem; margin-bottom: .23rem; cursor: pointer;}
+			.see_me{text-align: center; margin-bottom: .8rem; font-size: .28rem;}
+			.see_me a{text-decoration: underline; color: #bf403a;}
+			.see_me a.end{opacity: .5;}
+
+			.chuti_box{}
+			.chuti_box .chuti_title{background: #f8f8f8; border-top: solid 1px #000; border-bottom: solid 1px #000; height: .6rem; line-height: .6rem; padding-left: .2rem; color: #333; font-size: .23rem;}
+			.chuti_box .chuti_title small{font-size: .2rem; display: inline-block; margin-left: .2rem; color: #999; cursor: pointer;}
+			.chuti_box .chuti_title2{background: #f8f8f8; border-top: solid 1px #000; border-bottom: solid 1px #000; height: .4rem; line-height: .4rem; padding-left: .2rem; color: #e63034; font-size: .14rem;}
+			.chuti_box .chuti_nr{padding:0 .2rem; position: relative;background: #fff;}
+			.chuti_box .chuti_nr input,.chuti_box .chuti_nr textarea{width: 100%; font-size: .2rem; border-width:0; margin:0; padding: 0; outline: none; display: block}
+			.chuti_box .chuti_nr input{height: .8rem; line-height: .8rem;}
+			.chuti_box .chuti_nr textarea{height: 3rem; padding-top: .2rem;}
+			.wordsNum{width: 100%; position: absolute; bottom:.1rem; right: .2rem; text-align: right; color: #c9c9c9; font-size: .2rem;}
+
+			.submit_btn{display: block; width: 4rem; height: .8rem; line-height: .8rem; border-radius: .1rem; background: #e63034; color: #fff; text-align: center; font-size: .26rem; margin:0 auto; margin-top: .8rem;}
+
+			.dialog_com{width: 100%; height: 100%; position: fixed; z-index: 9999; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+			.dialog_com .dialog_content{width: 84%; position: absolute; left: 8%; top: 20%;}
+			.dialog_com .dialog_content .dia_close{display: block; width: .5rem; height: .5rem; position: absolute; right: 0; top: .44rem;}
+
+			.dialog_com2{width: 100%; height: 100%; position: fixed; z-index: 9999; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+			.dialog_com2 .dialog_content{width: 96%; position: absolute; left: 2%; top: 20%;}
+			.dialog_com2 .dialog_content .dia_close{display: block; width: .36rem; height: .36rem; position: absolute; right: 0; top: -.2rem;}
+			.dialog_com2 .dialog_nr{width: 80%; left: 10%; position: absolute; top: 1rem; color: #8e5e5c; font-size: .32rem; line-height: .4rem; text-align: center;}
+			.dialog_com2 .dialog_btn{width: 100%; position: absolute; text-align: center; bottom:.47rem;}
+			.dialog_com2 .dialog_btn .yes{width: 1.7rem; display: inline-block;}
+
+			.dialog_com3{width: 100%; height: 100%; position: fixed; z-index: 9999; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+			.dialog_com3 .dialog_content{width: 100%; position: absolute; left: 0; top: 20%;}
+			.dialog_com3 .dialog_content .dia_close{display: block; width: .55rem; height: .55rem; position: absolute; right: .28rem; top: 0;}
+			.dialog_com3 .dialog_nr{width: 74%; left: 13%; position: absolute; top: 1.5rem; color: #8e5e5c; font-size: .26rem; line-height: .34rem; text-align: left; height: 2.72rem; overflow: hidden; overflow-y: auto;}
+
+			.bx_a{display: block; width: 50%; height: .78rem; position: absolute; top: .6rem;}
+			.bx_a.cash{left: 0;}
+			.bx_a.bx{right: 0;}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="images/main1.jpg" alt="">
+			<div class="chinese_tab">
+				<div class="tab_box">
+					<img src="images/tab_bg.png" alt="">
+					<ul>
+						<li><a href="javascript:;" class="n1"></a></li>
+						<li><a href="javascript:;" onclick="gotoUrl('enclose.html')" class="n2"></a></li>
+						<li><a href="javascript:;" onclick="gotoUrl('appraise.html')" class="n3"></a></li>
+					</ul>
+				</div>
+				<img src="images/main2.jpg" alt="">
+				<div class="chinese_word">
+					<ul class="clearfix" id="words_box">
+					</ul>
+					<div class="page">
+						<a href="javascript:;" class="prev"><img src="images/page_prev.png" alt=""></a>
+						<span id="pageInfo">1/1</span>
+						<a href="javascript:;" class="next"><img src="images/page_next.png" alt=""></a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="chinese_info">
+				<div class="txt_box">
+					<img src="images/txt1.png?v=001" alt="">
+				</div>
+				<div class="canyu_btn"><a href="javascript:;" onclick="showDialog2('本阶段已结束')"><img src="images/canyu_btn.png" alt=""></a></div>
+				<div class="see_me">
+					<a href="javascript:;" onclick="gotoUrl('record.html')">查看我的汉字</a>
+				</div>
+				<div style="position: relative;">
+					<a href="javascript:;" class="bx_a cash" onclick="showDialog('cash')"></a>
+					<a href="javascript:;" class="bx_a bx" onclick="showDialog('bx')"></a>
+					<img src="images/foot_bt.png" alt="">
+					<img src="images/txt2.png" alt="">
+				</div>
+			</div>
+
+		</div>
+		<!-- 宝箱弹层 -->
+		<div class="dialog_com">
+			<div class="dialog_content">
+				<a href="javascript:;" class="dia_close" onclick="dialog_close()"></a>
+				<img src="images/baoxiang_dialog.png" alt="" id="nr_img">
+			</div>
+		</div>
+		<!-- 提示弹层 -->
+		<div class="dialog_com2">
+			<div class="dialog_content">
+				<a href="javascript:;" class="dia_close" onclick="dialog_close()"><img src="images/tip_dialog_close.png" alt=""></a>
+				<img src="images/tip_dialog_bg.png" alt="">
+				<div class="dialog_nr">
+					
+				</div>
+				<div class="dialog_btn">
+					<a href="javascript:;" class="yes" onclick="dialog_close()"><img src="images/tip_dialog_btn.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+		<!-- 评选缘由弹层 -->
+		<div class="dialog_com3">
+			<div class="dialog_content">
+				<a href="javascript:;" class="dia_close" onclick="dialog_close()"></a>
+				<img src="images/pingxuan_bg.png" alt="">
+				<div class="dialog_nr"></div>
+			</div>
+		</div>
+		<script type="text/html" id="publicBox">
+			<div class="chuti_box">
+				<div class="chuti_title">我的汉字<small id="shili">示例</small></div>
+				<div class="chuti_nr">
+					<input type="text" placeholder="只可输入一个汉字" maxlength="1" id="title" />
+				</div>
+				<div class="chuti_title2">只可输入一个汉字</div>
+				<div class="chuti_nr" style="border-bottom: solid 1px #000;">
+					<textarea name="" id="content" placeholder="参选缘由" cols="30" rows="10" maxlength="500"></textarea>
+					<div class="wordsNum">0/500</div>
+				</div>
+				<div>
+					<a href="javascript:;" class="submit_btn" id="submit_btn">提交</a>
+				</div>
+			</div>
+		</script>
+
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script type="text/javascript">
+			(function (doc, win) {    
+			    var docEl = doc.documentElement,    
+			    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+			    recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();    
+			})(document, window);
+			function gotoUrl(url){
+				window.location.href = url+'?activityId='+config.activityId
+			}
+			function dialog_close(){
+				$('.dialog_com,.dialog_com2,.dialog_com3').hide();
+			}
+			function showDialog(type){
+				var url = ''
+				switch(type){
+					case 'cash':
+					url = 'images/hongbao_dailog.png';
+					break;
+					case 'bx':
+					url = 'images/baoxiang_dialog.png';
+					break;
+				}
+				$('.dialog_com').fadeIn(300).find('#nr_img').attr('src',url);
+			}
+			function showDialog2(txt){
+				$('.dialog_com2').fadeIn(300).find('.dialog_nr').html(txt);
+			}
+			function showDialog3(txt){
+				$('.dialog_com3').fadeIn(300).find('.dialog_nr').html(txt);
+			}
+			var config={
+				token:'',
+				page:0,
+				total:1,
+				activityId:'',
+				wordsArr:[],
+				baseUrl:'https://api.ifuturex.com:443',
+				// baseUrl:'http://192.168.0.13:7500',
+				init:function(){
+					var _this = this;
+					// alert(this.shareUrl())
+					if (window.webkit) {
+						// _this.token = getToken();
+						window.webkit.messageHandlers.share.postMessage({name: '回首这一年，哪个字最能代表你的2017？参与评选获千元奖金！', introduce: '2017年度汉字评选', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: config.shareUrl()})
+						this.activityId = this.getParm(window.location.href,'activityId') || '';
+					} else if (window.android) {
+						_this.token = 'Bearer '+ window.android.getToken();
+						this.activityId = this.getParm(window.location.href,'activityId') || '';
+						window.android.share('回首这一年，哪个字最能代表你的2017？参与评选获千元奖金！','2017年度汉字评选',  'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', config.shareUrl())
+						getWords();
+					}
+					// alert('activityId===>'+this.activityId)
+				},
+				$POST:function(url,data,success){
+					  var xhr = getXMLHttpRequest();  
+			          var url = config.baseUrl+url
+			          xhr.open("post",url);  
+			          xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+			          xhr.setRequestHeader("Authorization",config.token);  
+			          xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+			          var data = data || '{}';  
+			          xhr.send(JSON.stringify(data));  
+			          xhr.onreadystatechange= function() {  
+			          	// alert('readyState==>'+xhr.readyState+'xhr.status==>'+xhr.status)
+		                   if(xhr.readyState == 4 && xhr.status == 200) {  
+		                        var data = JSON.parse(xhr.responseText); 
+		                        if(typeof success === 'function'){
+		                        	success(data);
+		                        }
+		                   }  
+		          		};  
+				},
+
+				shareUrl:function(){
+					return window.location.protocol + '//' + window.location.host +'/webApp/activity/chinese/share.html';
+				},
+				getParm : function(url, key) {
+					var escapeReg = function(source) {
+						return String(source)
+								.replace(new RegExp("([.*+?^=!:\x24{}()|[\\]\/\\\\])", "g"), '\\\x241');
+					};
+					var reg = new RegExp(
+										"(^|&|\\?|#)" 
+										+ escapeReg(key) 
+										+ "=([^&]*)(&|\x24)", 
+									"");
+					var match = url.match(reg);
+					if (match) {
+						var result=match[2].substring(match[2].length-1,match[2].length);
+						return result=='#'?match[2].substring(0,match[2].length-1):match[2];
+					}
+					
+					return null;
+				}
+			}
+			function getToken(v){
+				config.token = v;
+				// alert(config.activityId)
+				// alert(config.token)
+				// config.token = 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTE2ODMxNjUsInVzZXJJZCI6MzgwNjcyLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiODcwZWM3OGItMzc3MC00NThhLWJlYmQtODE1MGU4NzRhMDRjIiwiY2xpZW50X2lkIjoiaWZ1dHVyZXg3MHNoNWRsMyIsInNjb3BlIjpbInVzZXIiXX0.TzRsy0NtXon3cb6u_A5pHyIhdmUF3xOFgdHs5y2d8pTeoK7-OTJCRnVNlgf2dW9PjK9kIizmeyEdqHjReHpRAirhgNL6Ex0lYqCFfJCPu8TWXyDcmnAQe5MyjughRFTx_KwJreoOEiVZkMBWdjN7XFvCqlROQkGeb9MFJ176oiXZzKCsCA6wfB-w6_X8l_G_mX8fYCZ89DfgaSlR_O8mvFfxBUnlYH3nJXnOecPEv1ET0okqWM3QQIuUKDuL7VdjXQsY_S2znbT8d8hU0iHK1VjpaA_GUKhWoMfTsxq74WvPxaweCGQnaFTjrX99wAEex_1uWjHe0ZMsONBsNAoNSQ'
+				// alert('ssss')
+				// alert(config.token)
+				getWords();
+			}
+			config.init();
+			// getToken()
+
+			 function getXMLHttpRequest() {  
+			          var xhr;  
+			          if(window.ActiveXObject) {  
+			                   xhr= new ActiveXObject("Microsoft.XMLHTTP");  
+			          }else if (window.XMLHttpRequest) {  
+			                   xhr= new XMLHttpRequest();  
+			          }else {  
+			                   xhr= null;  
+			          }  
+			          return xhr;  
+			}  
+  
+			function getWords() {  
+	          var xhr = getXMLHttpRequest();  
+	          var url = config.baseUrl+'/account/v1/userSubject/queryAllActivitySubject'
+	          xhr.open("post",url);  
+	          xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+	          xhr.setRequestHeader("Authorization",config.token);  
+	          xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+	          var data = {
+	          		"activityId": '141898831263432704',
+					"page": config.page,
+					"size": 24
+	          };  
+	          // alert(JSON.stringify(data))
+	          xhr.send(JSON.stringify(data));  
+	          xhr.onreadystatechange= function() {  
+	          	// alert('readyState==>'+xhr.readyState+'xhr.status==>'+xhr.status)
+                   if(xhr.readyState == 4 && xhr.status == 200) {  
+                        var data = JSON.parse(xhr.responseText); 
+                        // alert('data==>'+xhr.responseText)
+                        config.total = Math.ceil(data.resultValue.userSubjectEntitysCount/24);
+                        var list = data.resultValue.userSubjectEntitys;
+                        // config.wordsArr = list;
+                        // alert(list)
+                        var code = '';
+                        for(var i=0,len=list.length;i<len;i++){
+                        	if(list[i].userId == data.resultValue.userId){
+                        		code+='<li class="on" data-index="'+i+'">'+list[i].title+'</li>';
+                        	}else{
+								code+='<li data-index="'+i+'">'+list[i].title+'</li>';
+                        	}
+                        	
+                        }
+                        $('#words_box').empty().html(code);
+                        var cur = config.page + 1;
+                        $('#pageInfo').html(''+cur+'/'+config.total+'')
+						pageState();
+						// pageClick();
+                   }  
+          		};  
+			} 
+
+			function pageClick(){
+				$('#words_box').on('click','li',function(){
+					var index = parseInt($(this).attr('data-index'));
+					var txt = config.wordsArr[index].content;
+					showDialog3(txt)
+				})
+				
+			}
+			function pageState(){
+				if(config.page === 1){
+					$('.prev').addClass('end');
+				}else{
+					$('.prev').off().on('click',function(){
+						if(config.page > 0){
+							config.page--;
+							getWords();
+						}
+					})
+				}
+				if(config.page === config.total){
+					$('.next').addClass('end');
+				}else{
+					$('.next').off().on('click',function(){
+						if(config.page < (config.total - 1)){
+							config.page++;
+							getWords();
+						}
+					})
+				}
+			}
+
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,72 @@
+@charset "utf-8";
+body, h1, h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, input,textarea,th,td,select { margin:0; padding:0;}
+em,i { font-style:normal;}
+ul,li { list-style:none;}
+a { text-decoration:none; cursor:pointer; }
+@font-face {
+	font-family: invite;
+	src: url('invite.ttf');
+}
+body,html{
+	font-family: "microsoft yahei";
+	height: 100%;  
+	background:url(../img/invite/invite-bg.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+    overflow: hidden;
+}
+.logo{
+	height:230px;
+	line-height: 230px;
+	margin-top:160px;
+	text-align: center;
+}
+.logo>img{
+	vertical-align: middle;
+}
+.invite-num{
+	width: 100%;
+	height: 70px;
+	text-align: center;
+	margin-top: 180px;
+	margin-bottom: 124px;
+}
+.invite-img>i{
+	display: inline-block;
+	vertical-align: middle;
+}
+.invite-img>span{
+	display: inline-block;
+	vertical-align: middle;
+	font-family: invite;
+	font-size: 45px;
+	color: #01c5ff;
+}
+.invite-btn{
+	width: 100%;
+	height: 272px;
+	overflow: hidden;
+	background: url(../img/invite/invite-btn.png) no-repeat center;
+}
+.invite-btn>p{
+	width: 108px;
+	height: 99px;
+	margin: auto;
+	margin-top: 42px;
+}
+.invite-text{
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #01c5ff;
+	font-size: 30px;
+	margin-top: 25px;
+}
+.download_downup{
+	position:absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}

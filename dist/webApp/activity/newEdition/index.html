@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=0.1,minimum-scale=0.1,maximum-scale=0.1,user-scalable=no" />
+		<title>新版上线</title>
+		<script>
+			(function (doc, win) {    
+				var docEl = doc.documentElement,    
+					resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+					recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();
+			})(document, window);
+		</script>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			body{
+				font-family: "微软雅黑";
+				background: #fff;
+			}
+			.newEdition{
+				width: 7.5rem;
+				font-size: 0;
+				margin: auto;
+			}
+			.newEdition>img{
+				width: 100%;
+				height: 13.34rem;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="newEdition"><img src="../../img/activity/newEdition/newEdition.png"/></p>
+	</body>
+</html>

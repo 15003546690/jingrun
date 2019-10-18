@@ -1,0 +1,84 @@
+/* CSS Document */
+html,body{height:100%; margin:0; padding: 0;}
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;font-weight:normal;height: auto;list-style:none;}
+header,footer,section,article,aside,title,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th,label{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary,img{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%; font-weight:normal;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer; color:#666;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:14px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";color:#666;outline:0; border-width:0;}
+body{background:#fff; font-weight:normal;}
+a{-moz-transition: all .4s ease 0s; transition: all .4s ease 0s; -webkit-transition: all .4s ease 0s;font-weight:normal;}
+#app{max-width: 750px; margin:0 auto; position: relative;}
+#app img{width: 100%; display: block;}
+
+
+/*CLEARFIX
+-------------------------------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { display: inline-block; }
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/*---------------------------------------------------*/
+.reltive{ position:relative;}
+
+.displayFlex{display: -webkit-flex; display: flex; flex-direction: row; flex-wrap:wrap;}
+.flex1{flex: 1; -webkit-flex:1;}
+/*水平居中*/
+.flexCenter{justify-content:center;}
+/*垂直居中*/
+.flexMidle{align-items:center;}
+
+header.download_top{
+	width: 100%;
+	padding:.1rem 0;
+	background: #232227;
+	position: relative;
+	max-width: 750px;
+	margin:0 auto;
+	display: none;
+}
+header.download_top .logo{
+	padding-left: .2rem;
+}
+header.download_top .logo-img{
+	width: .6rem;
+	height: .6rem;
+	background: url(../img/logo.png) no-repeat center;
+	background-size: 100%;
+	margin-right: .1rem;
+}
+
+header.download_top .logo-text>span{
+	font-size: .2rem;
+	display: block;
+	line-height: 1.2;
+}
+header.download_top .text-span1{
+	color: #fff;
+}
+header.download_top .text-span2{
+	color: #fff;
+	opacity: 0.6;
+}
+header.download_top .logo-right{
+	width: 1.8rem;
+	height: .8rem;
+	line-height: .8rem;
+	text-align: center;
+	background: #ed0e0e;
+	font-size: .28rem;
+	color: #fff;
+	position: absolute;
+	right: 0;
+	top: 0;
+}

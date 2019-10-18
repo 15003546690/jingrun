@@ -1,0 +1,58 @@
+@charset "utf-8";
+html{ max-width: 750px;min-height: 100%; margin: auto;background:url(../images/jilu_bg.jpg) no-repeat center;background-size: 100% 100%;}
+body{background: none;}
+.cover{overflow: auto;height: 98%;width: 100%; position: relative;}
+.return_btn{width: 100%; height: 0.98rem; max-width: 750px; background: url(../images/return.png) no-repeat center; background-size: cover; position: absolute; top: 0; left: 0; right: 0; margin: auto; z-index: 99;}
+.return_btn>a{width: 2.23rem; height: 0.98rem; display: block; margin-left: 0.2rem;}
+.cover_main{width: 6.60rem;margin: 0 auto;margin-top: 1.1rem;}
+.cover_name{height: 0.76rem;line-height:0.76rem;font-size:0.28rem;color:#6e5338;margin-top: 0.16rem;}
+.cover_name>span>i,.brief_lmde>span>i{width: 0.6rem;display: inline-block;}
+.cover_name>input{width: 3.7rem;background: none;border-bottom: solid 1px #bb9e78;padding-left: 0.1rem;}
+.gender{height: 0.76rem;line-height: 0.76rem;font-size: 0.28rem;color: #6e5338;display: -webkit-box;}
+.gender>span{width:0.28rem;height: 0.28rem;line-height:0.28rem;text-align:center;border: solid 0.01rem #6e5338;border-radius: 50%;background: #ffefc0;display:block;margin-right: 0.08rem;margin-top: 0.2rem;}
+.gender>span+span{margin-left: 0.88rem;}
+.gender>span>a{width:0.18rem;height: 0.18rem;display: inline-block;}
+.genderboy{background: #6e5338;display: inline-block;border-radius: 50%;}
+
+.brief{margin-top: 0.3rem;font-size:0.28rem;color:#6e5338;position: relative;}
+.brief>div{flex: 1;text-align: left;}
+.brief section{background: #fff;}
+.brief>div textarea{width: 96%;height: 3rem; padding: 5px 5px 0 5px; }
+.brief>div a{display:block; font-size: 0.22rem;color: #6e5338;text-align: right;margin-right: 0.1rem;}
+.brief>div p{text-align: left;}
+.note_text{font-size: 0.22rem; margin-top: 0.1rem; color: #62462d;}
+.works{margin-top: 0.3rem;font-size:0.28rem;color:#6e5338;}
+.works>div{width: 5.10rem;position: relative;}
+.works>div>p{border-bottom: solid 1px #bb9e78;margin-bottom: 0.2rem;}
+.works>div>p>input{width: 3.6rem;height: 100%;background: none;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.works>div>button{width: 1.03rem;height: 0.38rem; line-height: 0.38rem; position:absolute;bottom:0.25rem;right:0;border: solid 1px #99805d;border-radius: 2px;cursor: pointer;background: none;font-size: 0.22rem;color: #6e5338;}
+
+.upload{margin-top: 0.3rem;font-size:0.28rem;color:#6e5338;}
+.upload>div{width: 5.20rem;}
+.clear{font-size: 0.24rem;color: #6e5338;text-align: left;line-height: 0.28rem;}
+.check{height: 0.6rem;}
+.check>i{width: 0.19rem; height: 0.19rem; line-height: 0.1rem; border: 1px solid #5b3f27; border-radius: 0.02rem; display: inline-block;  margin-right: 0.05rem;}
+.check>i>img{width: 0.19rem; height: 0.19rem; vertical-align: middle; display: none;}
+.check>i>input{vertical-align: middle;margin-right: 0.07rem;}
+.check>a{line-height: 0.6rem;font-size: 0.22rem;font-weight: bold;color: #62462d;text-decoration: underline;}
+.check>i.checkImg>img{display: inline;}
+
+.submit{width:100%;height:1.82rem;text-align: center;margin-top: 0.67rem;}
+.submit>button{width:4rem;height: 0.8rem;background: url(../images/submin.png) no-repeat center;background-size: cover;}
+.submit_rem{margin-top: 4rem;}
+
+.man{display: inline-block;width: 0.35rem;height: 0.35rem;background: url(../images/ck.png) no-repeat; position: absolute;left: 0.08rem; top: 0.19rem;}
+.woman{display: inline-block;width: 0.35rem;height: 0.35rem;background: url(../images/isCk.png) no-repeat; position: absolute;left: 0.95rem; top: 0.2rem;}
+#man{margin-left: 0.08rem;margin-right: 0.2rem; opacity: 0;}
+#woman{margin-left: 0.09rem;margin-right: 0.05rem; opacity: 0;}
+.cover-gender{width: 2.38rem;position: relative;}
+
+/*上传图片*/
+.z_photo{height: 0.91rem; margin-bottom: 0.1rem;clear: both;}
+.item {width: 0.91rem;height: 0.91rem;float: left;position: relative;margin-right: 0.2rem;}
+.addImg {width: 0.91rem;height: 0.91rem;position: absolute;left: 0;top: 0;z-index: 2;cursor: pointer;}
+.preview,.preBlock{position: absolute;display: block;width: 0.91rem;height: 0.91rem;left: 0;top: 0;}
+.delete {width: 0.4rem;position: absolute;right: -0.18rem;top: -0.15rem;cursor: pointer;display: none;}
+.preBlock img {display: block;width: 0.91rem;height: 0.91rem;}
+.upload_input{display: block;width: 0;height: 0;opacity: 0;}
+.item_img{width: 0.91rem;height: 0.91rem;position: absolute;left: 0; top: 0; z-index: 20; background:url(../images/loading.svg) no-repeat center; background-size: 70%; display: none;}

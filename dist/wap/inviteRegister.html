@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/inviteRegister.css"/>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+	</head>
+	<body>
+		<div class="app" id="app">
+			<div class="swiper-container">
+			    <div class="swiper-wrapper displayFlex">
+			        <div class="swiper-slide">
+			        	<div class="register_box">
+			        		<div class="inviteR_banner"><img src="img/inviteR/invite_banner.jpg"/></div>
+				        	<div class="reg_main displayFlex flexMidle">
+								<p class="displayFlex flexMidle"><img class="icon1" src="img/inviteR/icon1.png"/></p>
+								<input type="text" placeholder="输入手机号" maxlength="11" v-model="mobile"/>
+				        	</div>
+							<div class="reg_main displayFlex flexMidle">
+								<p class="displayFlex flexMidle icon2"><img class="icon2" src="img/inviteR/icon2.png"/></p>
+								<input type="text" placeholder="输入图形验证码" class="numInput" v-model="imgCode"/>
+								<div class="numImg"><img :src="imgCodeUrl" @click="refreshshCode" /></div>
+							</div>
+						</div>
+						<div class="reg_btn next_btn"><a href="javascript:;" @click="nextBtn"><img src="img/inviteR/nextBtn.png"/></a></div>
+						<div class="service">本活动最终解释权 归未来无限网所有</div>
+			        </div>
+			        <div class="swiper-slide">
+			        	<div class="register_box">
+			        		<div class="inviteR_banner"><img src="img/inviteR/invite_banner.jpg"/></div>
+							<div class="reg_main displayFlex flexMidle">
+								<p class="displayFlex flexMidle"><img class="icon3" src="img/inviteR/icon3.png"/></p>
+								<input type="text" placeholder="输入验证码" class="numInput" v-model="code"/>
+								<button class="numBtn" @click="getCode">获取验证码</button>
+							</div>
+							<div class="reg_main displayFlex flexMidle">
+								<p class="displayFlex flexMidle"><img class="icon4" src="img/inviteR/icon4.png"/></p>
+								<input type="password" class="pwdInput" maxlength="20" placeholder="设置密码" v-model="password"/>
+							</div>
+						</div>
+						<div class="reg_deal">
+							<i @click="toggle()"><img v-show="dealBtn" src="img/inviteR/agree.png"/><img v-show="!dealBtn" src="img/inviteR/noagree.png"/></i>
+							<span>我已阅读并同意<a href="javascript:;" @click="showModal">《未来无限网服务协议》</a></span>
+						</div>
+						<div class="reg_btn" v-if="yesAgree"><a href="javascript:;" @click="register"><img src="img/inviteR/nextBtn.png"/></a></div>
+						<div class="reg_btn" v-if="noAgree"><a href="javascript:;" @click="showLayer"><img src="img/inviteR/nextBtn.png"/></a></div>
+						<div class="service">本活动最终解释权 归未来无限网所有</div>
+			        </div>
+			        <div class="swiper-slide">
+			        	<div class="finish_box">
+			        		<img src="img/inviteR/finish.jpg"/>
+			        		<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.presaint.mhexpress"></a>
+			        	</div>
+			        </div>
+			    </div>
+			</div>
+			<div class="modal_con">
+				<div class="backBtn"><a href="javascript:;" @click="closeModal"><span></span>返回</a></div>
+				<div class="registration">
+				<div class="registration-main">
+					<p class="registration-main-head">尊敬的用户</p>
+					<p class="helpState-main-body-p1">欢迎您使用【未来无限网】（以下简称“【本网站】”）！【本网站】由【北京京润恒远科技有限责任公司】（以下简称“本公司”）运营及维护，网址为：www.ifuturex.com。 为使用【本网站】服务（以下简称“本服务”），一旦您注册成为【本网站】的用户，便表示您（以下 简称“用户”）已经完全理解并同意接受本协议（以下简称“协议”）。 您应当阅读并遵守【本网站】的《服务协议》（以下简称“本协议”）。请您务必审慎阅读、充分理解各条款内容，并选择接受或不接受。 除非您已阅读并接受本协议所有条款，否则您无权使用本服务。您对本服务的登录、查看、发布信息等行为即视为您已阅读并同意受本协议的约束。 如果您未满18周岁，请在法定监护人的陪同下阅读本协议。</p>
+					<p class="registration-main-head">一、协议的范围</p>
+					<p class="helpState-main-body-p1">本协议是您与【本网站】之间关于使用本服务所订立的协议。</p>
+					<p class="registration-main-head">二、用户使用规则 </p>
+					<p class="helpState-main-body-p1">2.1 用户应自行诚信向【本网站】提供注册资料，用户同意其提供的注册资料真实、准确、完整、合法有效，用户注册资料如有变动的，应及时更新其注册资料。如果用户提供的注册资料不合法、不真实、不准确、不详尽的，用户需承担因此引起的相应责任及后果并且【本网站】保留终止用户使用【本网站】各项服务的权利。</p>
+					<p class="helpState-main-body-p1">2.2 用户完成注册登记程序后，维持该密码及账号的机密安全是用户的责任，用户应对所有用本人的密码及账号的活动负完全的责任。您的账号仅限您本人使用，不可转让、借用、赠与、继承。</p>
+					<p class="helpState-main-body-p1">2.3 用户在【本网站】发布信息（包括注册用户名）时，必须遵守国家有关法律规定，并承担一切因自己发布信息不当导致的民事、行政和/或刑事法律责任。用户在【本网站】所发布的信息（包括注册用户名、图像），不得含有以下任何内容：</p>
+					<p class="helpState-main-body-p2">2.3.1 违反宪法确定的基本原则的； </p>
+					<p class="helpState-main-body-p2">2.3.2 危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；</p>
+					<p class="helpState-main-body-p2">2.3.3 损害国家荣誉和利益，攻击党和政府的；</p>
+					<p class="helpState-main-body-p2">2.3.4 煽动民族仇恨、民族歧视，破坏民族团结的；</p>
+					<p class="helpState-main-body-p2">2.3.5 破坏国家、地区间友好关系的；</p>
+					<p class="helpState-main-body-p2">2.3.6 违背中华民族传统美德、社会公德、论理道德、以及社会主义精神文明的； </p>
+					<p class="helpState-main-body-p2">2.3.7 破坏国家宗教政策，宣扬邪教和封建迷信的； </p>
+					<p class="helpState-main-body-p2">2.3.8 散布谣言或不实消息，扰乱社会秩序，破坏社会稳定的；</p>
+					<p class="helpState-main-body-p2">2.3.9 煽动、组织、教唆恐怖活动、非法集会、结社、游行、示威、聚众扰乱社会秩序的；</p>
+					<p class="helpState-main-body-p2">2.3.10 散布淫秽、色情、赌博、暴力、恐怖或者教唆犯罪的； </p>
+					<p class="helpState-main-body-p2">2.3.11 侮辱或诽谤他人，侵害他人合法权益的； </p>
+					<p class="helpState-main-body-p2">2.3.12 侵犯他人肖像权、姓名权、名誉权、隐私权或其他人身权利的； </p>
+					<p class="helpState-main-body-p2">2.3.13 使用漫骂、辱骂、中伤、恐吓、诅咒等不文明语言的；</p>
+					<p class="helpState-main-body-p2">2.3.14 以非法民间组织名义活动的；</p>
+					<p class="helpState-main-body-p2">2.3.15 侵犯他人著作权等合法权益的；</p>
+					<p class="helpState-main-body-p2">2.3.16 含有法律、行政法规禁止的其他内容的。</p>
+					<p class="helpState-main-body-p1">2.4 如果用户在【本网站】发布信息时不能履行和遵守协议中的规定，为维护本网站的形象、信誉、安全，本网站有权删除用户发布的相关信息， 并对违反协议的用户做出封闭ID和/或暂时、永久禁止在本网站发布信息的处理，同时保留依法追究当事人法律责任的权利。此外，本网站在采取移除等相应措施后不为此向原发布人承担违约责任或其他法律责任，包括不承担因侵权指控不成立而给原发布人带来损害的赔偿责任。</p>
+					<p class="helpState-main-body-p1">2.5 用户在注册时向【本网站】提交的电子邮箱、手机号码、用户名和登录密码是您在【本网站】的唯一识别信息。用户注册成功后，不得将注册的电子邮箱、手机号码、用户名和登录密码等信息转让或授权给第三方使用，否则用户应承担由此产生的全部责任，并与实际使用人承担连带责任。用户确认使用用户名和登录密码登录【本网站】后在【本网站】的一切行为均代表个人会员的行为，并由用户承担相应的法律后果。</p>
+					<p class="helpState-main-body-p1">2.6 除非法律允许或【本网站】书面许可，您不得从事下列行为，如果您实施了前款约定的行为，【本网站】将保留依法追究法律责任的权利。</p>
+					<p class="helpState-main-body-p2">2.6.1 删除软件及其副本上关于著作权的信息；</p>
+					<p class="helpState-main-body-p2">2.6.2 对软件进行反向工程、反向汇编、反向编译，或者以其他方式尝试发现软件的源代码；</p>
+					<p class="helpState-main-body-p2">2.6.3 对【本网站】拥有知识产权的内容进行使用、出租、出借、复制、修改、链接、转载、汇编、发表、出版、建立镜像站点等；</p>
+					<p class="helpState-main-body-p2">2.6.4 对软件或者软件运行过程中释放到任何终端内存中的数据、软件运行过程中客户端与服务器端的交互数据，以及软件运行所必需的系统数据，进行复制、修改、增加、删除、挂接运行或创作任何衍生作品，形式包括但不限于使用插件、外挂或非经【本网站】授权的第三方工具/服务接入软件和相关系统；</p>
+					<p class="helpState-main-body-p2">2.6.5 通过修改或伪造软件运行中的指令、数据，增加、删减、变动软件的功能或运行效果，或者将用于上述用途的软件、方法进行运营或向公众传播，无论这些行为是否为商业目的；</p>
+					<p class="helpState-main-body-p2">2.6.6 通过非【本网站】开发、授权的第三方软件、插件、外挂、系统，登录或使用【本网站】软件及服务，或制作、发布、传播上述工具；</p>
+					<p class="helpState-main-body-p2">2.6.7 其他未经【本网站】明示授权的行为。</p>
+					<p class="helpState-main-body-p1">2.7如果用户存在如下行为，【本网站】将有权暂停或终止用户账户、暂停或终止提供相关服务，冻结或清零账户余额，并保留依法追究法律责任的权利。</p>
+					<p class="helpState-main-body-p2">2.7.1违反本协议的约定；</p>
+					<p class="helpState-main-body-p2">2.7.2违反法律法规及法律文书的规定；</p>
+					<p class="helpState-main-body-p2">2.7.3账户操作、资产流向等存在异常时；</p>
+					<p class="helpState-main-body-p2">2.7.4在参加交易时有批量注册会员账号、恶意刷单、交易内容不符或作弊等违反市场规则、违反服务协议原则的；</p>
+					<p class="helpState-main-body-p2">2.7.5 违反【本网站】交易规则的；</p>
+					<p class="helpState-main-body-p2">2.7.6通过不正当交易方式或作弊等行为，导致不当获利的；</p>
+					<p class="helpState-main-body-p2">2.7.8利用关联账户实施关联交易的；</p>
+					<p class="helpState-main-body-p2">2.7.9通过第三方软件、插件、外挂等手段登录或使用【本网站】软件或进行操作或交易的；</p>
+					<p class="helpState-main-body-p2">2.7.10遭到他人投诉，且对方已经提供了一定证据的；</p>
+					<p class="helpState-main-body-p2">2.7.11利用网络漏洞进行非法牟利行为；</p>
+					<p class="helpState-main-body-p1">2.8您同意并授权，为了更好的为您提供服务以及确保您的账户安全，未来无限网可以根据您提供的手机号码、身份证号码等信息，向全国公民身份号码查询服务中心、电信运营商、金融服务机构等可靠单位发起用户身份真实性、用户征信记录、用户手机号码有效性状态等情况的查询。</p>
+					<p class="registration-main-head">三、平台充值服务</p>
+					<p class="helpState-main-body-p1">3.1表现形式</p>
+					<p class="helpState-main-body-p2">未来豆余额使用范围仅限于【本网站】自身所提供的话题交易虚拟服务，未来豆不能兑换人民币。</p>
+					<p class="helpState-main-body-p2">金豆是用户交易赚取的货币，金豆是用户获利的体现，可以兑换奖品、兑换未来豆余额使用范围仅限于兑换【本网站】自身所提供的礼品兑换服务，金豆不能充值获得。</p>
+					<p class="helpState-main-body-p1">3.2未来豆购买价格如下：</p>
+					<p class="helpState-main-body-p2">1元人民币＝100未来豆。</p>
+					<p class="helpState-main-body-p1">3.3购买方式</p>
+					<p class="helpState-main-body-p2">用户可通过支付宝、微信支付、金豆支付的充值方式进行充值。由用户通过其他非官方渠道进行充值而造成的充值异常等一切不利后果，由用户自行承担。</p>
+					<p class="helpState-main-body-p1">3.4特别提示</p>
+					<p class="helpState-main-body-p2">3.4.1基于网络平台服务的特殊性，充值一旦成功，用户即时获得未来豆道具和特权（比如会员等级）等充值回馈，因此用户理解并同意，充值一旦成功，未来豆余额不适用无理由退换，用户已购买的未来豆不能退还为人民币，除非未来豆本身无法使用到平台的任何内容中。【本网站】将不提供任何更改、修正服务。若有任何剩余未来豆，用户不得以此要求退费，若发生异议用户可通过客服专线查询处理。</p>
+					<p class="helpState-main-body-p2">3.4.2【本网站】货币不具备转让或利用【本网站】货币兑换人民币功能；</p>
+					<p class="helpState-main-body-p1">3.5异常情况</p>
+					<p class="helpState-main-body-p2">若用户出现充值错误等情况，用户需保留相应凭证，并在充值发生24小时内，向平台客服提出申请。用户在申请时必须向【本网站】提供准确的个人资料；</p>
+					<p class="helpState-main-body-p2">3.5.1若因平台充值系统自身故障原因造成用户充值失实，在平台恢复、存有有效数据和用户提供合法有效凭证的情况下，平台将根据用户充值情况作出恢复变动措施。</p>
+					<p class="helpState-main-body-p2">3.5.2若因电信系统或互联网网络故障、计算机故障或病毒、信息损坏丢失或其它任何不可抗力原因而产生损失，【本网站】不承担任何责任，但将尽力减少因此而给用户造成的损失和影响。</p>
+					<p class="helpState-main-body-p1">3.6终止服务</p>
+					<p class="helpState-main-body-p2">如发生下列任何一种情形，【本网站】有权合理判断将用户的账号暂停或永久封停，包括但不限于取消该用户所持有的未来豆、无限豆、金豆余额；删除用户的注册信息等一切相关信息，而无需对用户或任何第三方承担任何责任：</p>
+					<p class="helpState-main-body-p2">3.6.1涉嫌使用任何非法手段进行充值获利的；</p>
+					<p class="helpState-main-body-p2">3.6.2用户严重违反《未来无限网注册协议》 中的规定。用户不能遵守法律规定和平台规则的情况；</p>
+					<p class="helpState-main-body-p2">3.6.3用户注册的账号激活服务后，长期连续没有进行过登入操作的。</p>
+					<p class="registration-main-head">四、隐私保护</p>
+					<p class="helpState-main-body-p1">4.1【本网站】保证不对外公开或向第三方提供单个用户的注册资料及用户在使用网络服务时存储在【本网站】的非公开内容，但下列情况除外：</p>
+					<p class="helpState-main-body-p2">4.1.1 事先获得用户的明确授权；</p>
+					<p class="helpState-main-body-p2">4.1.2 根据有关的法律法规要求；</p>
+					<p class="helpState-main-body-p2">4.1.3 按照相关政府主管部门的要求；</p>
+					<p class="helpState-main-body-p2">4.1.4 为维护社会公众的利益；</p>
+					<p class="helpState-main-body-p1">4.2 【本网站】可能会与第三方合作向用户提供相关的网络服务，在此情况下，如该第三方同意承担与【本网站】同等的保护用户隐私的责任，则【本网站】有权将用户的注册资料等提供给该第三方。</p>
+					<p class="helpState-main-body-p1">4.3 在不透露单个用户隐私资料的前提下，【本网站】有权对整个用户数据库进行分析并对用户数据库进行商业上的利用。</p>
+					<p class="registration-main-head">五、法律责任和免责条款</p>
+					<p class="helpState-main-body-p1">5.1 用户明确同意使用【本网站】的风险由用户个人承担。用户理解并接受下载或通过【本网站】取得的任何信息资料取决于用户自己，并由其承担系统受损、资料丢失以及其它任何风险。对在任何情况下因使用或不能使用【本网站】服务所产生的直接、间接、偶然、特殊及后续的损害及风险，本公司及合作单位不承担任何责任。</p>
+					<p class="helpState-main-body-p1">5.2 本公司对【本网站】账号上所有服务将尽力维护其安全性及方便性，但对服务中出现的信息（包括但不限于用户发布的信息）删除或储存失败不承担任何责任。另外我们保留判定用户的行为是否符合本服务条款的要求的权利。</p>
+					<p class="helpState-main-body-p1">5.3 使用本服务涉及到互联网服务，可能会受到各个环节不稳定因素的影响，存在因不可抗力、计算机病毒、黑客攻击、系统不稳定、用户所在位置、用户关机以及其他任何网络、技术、通信线路等原因造成的服务中断或不能满足用户要求的风险，用户须明白并自行承担以上风险，本公司不承担任何责任。 </p>
+					<p class="helpState-main-body-p1">5.4 用户因第三方如电信部门的通讯线路故障、技术问题、网络、电脑故障、系统不稳定性及其他各种不可抗力原因而遭受的经济损失，本公司不承担任何责任。</p>
+					<p class="helpState-main-body-p1">5.5 在【本网站】已经上线的预测或者评鉴题材，可能会因为不可预见的原因被修改、或被暂停、或被终止交易。出现此类情况时，【本网站】将给予通知、并作出适当调整。用户须明白并自行承担以上风险，本公司不承担任何责任。</p>
+					<p class="registration-main-head">六、知识产权保护条款</p>
+					<p class="helpState-main-body-p1">6.1 【本网站】中的所有内容均属于本公司所有，包括但不限于文本、数据、文章、设计、源代码、软件、图片、照片、音频、视频及其他全部信息。【本网站】内容受中国知识产权法律法规及各国际版权公约的保护。</p>
+					<p class="helpState-main-body-p1">6.2 未经本公司事先书面同意，用户承诺不以任何形式复制、模仿、传播、出版、公布、展示【本网站】中内容，包括但不限于电子的、机械的、复印的、录音录像的方式和形式等。用户承认【本网站】内容是属于本公司的财产。</p>
+					<p class="helpState-main-body-p1">6.3 未经本公司书面同意，用户不得将【本网站】包含的资料等任何内容发布到任何其他网站或者服务器。任何未经授权对【本网站】内容的使用均属于违法行为，本公司有权追究用户的法律责任。</p>
+					<p class="registration-main-head">七、积分</p>
+					<p class="helpState-main-body-p1">7.1 就您使用【本网站】服务过程中【本网站】向您授予的积分，无论该积分以何种方式获得，您都不得使用该积分换取任何现金或金钱。</p>
+					<p class="helpState-main-body-p1">7.2 积分并非您拥有所有权的财产，【本网站】有权单方面调整积分数值或调整【本网站】的积分规则。</p>
+					<p class="helpState-main-body-p1">7.3 您有权按【本网站】的积分规则，将所获积分交换【本网站】指定的服务或权益。</p>
+					<p class="helpState-main-body-p1">7.4 如【本网站】有合理理由怀疑您的积分的获得及（或）使用存有欺诈、滥用或其它【本网站】认为不当的行为，【本网站】可随时取消您的积分，或限制、终止您的积分使用。</p>
+					<p class="registration-main-head">八、协议更新及用户关注义务</p>
+					<p class="helpState-main-body-p1">8.1 根据国家法律法规变化及网站运营需要，【本网站】有权对本协议条款不时地进行修改，修改后的协议一旦被张贴在本站上即生效，并代替原来的协议。</p>
+					<p class="helpState-main-body-p1">8.2 用户可随时登录查阅最新协议；用户有义务不时关注并阅读最新版的协议及网站公告。如用户不同意更新后的协议，可以且应立即停止接受【本网站】依据本协议提供的服务；如用户继续使用本网站提供的服务的，即视为同意更新后的协议。</p>
+					<p class="helpState-main-body-p1">8.3 本站建议您在使用本站之前阅读本协议及本站的公告。如果本协议中任何一条被视为废止、无效或因任何理由不可执行，该条应视为可分的且并不影响任何其余条款的有效性和可执行性。</p>
+					<p class="registration-main-head">九、法律适用和管辖 </p>
+					<p class="helpState-main-body-p1">9.1本协议所定的任何条款的部分或全部无效者，不影响其它条款的效力。 </p>
+					<p class="helpState-main-body-p1">9.2本协议的解释、效力及纠纷的解决，适用于中华人民共和国（不包括香港、澳门特别行政区和台湾地区）法律。若用户和【本网站】之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，用户在此完全同意将纠纷或争议提交北京仲裁委员会申请仲裁，仲裁结果是终局的，对双均有约束力。</p>
+					<p class="helpState-main-body-p1">9.3【本网站】拥有在法律允许最大范围对本协议拥有解释权与修改权。</p>
+				</div>
+			</div>
+			</div>
+		</div>
+		
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+		<script src="js/rem.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/sign.js"></script>
+		<script src="js/layer.js"></script>
+		<script src="js/base_app.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="js/wxShare.js"></script>
+		<script src="js/commonShare.js"></script>
+		<script src="js/coutry.js" ></script>
+		<script src="js/inviteRegister.js" ></script>
+	</body>
+</html>

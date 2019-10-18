@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />-->
+		<meta name="viewport" content="width=device-width,initial-scale=0.1,minimum-scale=0.1,maximum-scale=0.1,user-scalable=no" />
+		<title>呼朋唤友赚福利</title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			em,i{
+				font-style:normal;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{ 
+				text-decoration:none; 
+				cursor:pointer; 
+			}
+			body{
+			    font-family:"微软雅黑";
+			    background: #fff1d7;
+				margin:0 auto;
+			}
+			.Invite_box{
+				width: 7.5rem;
+				margin: auto;
+				font-size: 0;
+			}
+			.Invite_banner{
+				width: 100%;
+			}
+			.Invite_banner>img{
+				width: 100%;
+				height: 12.56rem;
+			}
+			.invite_num{
+				width: 100%;
+				height: 5.39rem;
+				background: url(../../../../dist/webApp/activity/invite/img/small_img2.jpg) no-repeat top center;
+				background-size: cover;
+			    overflow: hidden;
+			}
+			.invite_main{
+				width: 100%;
+				height: 2.03rem;
+				margin-top: 0.46rem;
+				font-size: 0;
+			}
+			.invite_main_left{
+				width: 2.32rem;
+				height: 2.03rem;
+				display: inline-block;
+				background: url(../../img/activity/invite/invite-img1.png) no-repeat center;
+				background-size: cover;
+				margin-left: 1.16rem;
+				overflow: hidden;
+			    vertical-align: middle;
+			}
+			.invite_main_img{
+				width: 100%;
+				height: 1.33rem;
+				line-height: 1.33rem;
+				text-align: center;
+				margin-top: 0.22rem;
+			}
+			.invite_main_img>img{
+				width: 1.33rem;
+				height: 1.33rem;
+				border-radius: 0.16rem;
+				vertical-align: middle;
+			}
+			.invite_main_name{
+				width: 100%;
+				height: 0.32rem;
+				line-height: 0.32rem;
+				text-align: center;
+				font-size: 0.22rem;
+				color: #ea7300;
+			}
+			.invite_main_right{
+				display: inline-block;
+				margin-left: 0.45rem;
+				height: 1.05rem;
+				vertical-align: middle;
+			}
+			.invite_main_text{
+				line-height: 0.48rem;
+				font-size: 0.28rem;
+				color: #ffffff;
+			}
+			.invite_main_btn{
+				height: 0.4rem;
+				line-height: 0.4rem;
+				background: #ca152b;
+				font-size: 0.26rem;
+				color: #FFFFFF;
+				border: 0;
+				margin-top: 0.17rem;
+				border-radius: 0.04rem;
+				padding: 10px 0.2rem;
+				text-align: center;
+			}
+			.invite_content{
+				width: 6.57rem;
+				margin: auto;
+			}
+			.invite_content_box{
+				width: 100%;
+				height: 0.48rem;
+				line-height: 0.48rem;
+				color: #ffffff;
+				font-size: 0.24rem;
+				margin-top: 0.22rem;
+			}
+			.invite_content_left{
+				float: left;
+			}
+			.invite_content_left>img{
+				width: 0.48rem;
+				height: 0.48rem;
+				vertical-align: top;
+				margin-right: 0.1rem;
+			}
+			.invite_content_right{
+				float: right;
+			}
+			.invite_flow,.invite_explain{
+				width: 100%;
+			}
+			.invite_flow>img{
+				width: 100%;
+				height: 16.59rem;
+			}
+			.invite_explain>img{
+				width: 100%;
+				height: 19.90rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="Invite_box">
+			<p class="Invite_banner"><img src="../../../../dist/webApp/activity/invite/img/small_img1.jpg?v=201712251008"/></p>
+			<div class="invite_num">
+				<div class="invite_main">
+					<div class="invite_main_left" id="userInfo">
+						<p class="invite_main_img">
+							<img src="https://img.ifuturex.com/image/user/male.png"/>
+						</p>
+						<p class="invite_main_name">尚未登录</p>
+					</div>
+					<div class="invite_main_right">
+						<p class="invite_main_text" id="invite_code"></p>
+						<p class="invite_main_text" id="invite_num"></p>
+						<p class="invite_main_btn">立即邀请</p>
+					</div>
+				</div>
+				<div class="invite_content">
+					<div class="invite_content_box">
+						<p class="invite_content_left">
+							<img src="../../img/activity/invite/invite-icon.png"/>
+							<i>邀请10人获得20元手机话费</i>
+						</p>
+						<p class="invite_content_right" id="ten"></p>
+					</div>
+					<div class="invite_content_box">
+						<p class="invite_content_left">
+							<img src="../../img/activity/invite/invite-icon.png"/>
+							<i>邀请20人获得30元手机话费</i>
+						</p>
+						<p class="invite_content_right" id="twenty"></p>
+					</div>
+					<div class="invite_content_box">
+						<p class="invite_content_left">
+							<img src="../../img/activity/invite/invite-icon.png"/>
+							<i>邀请50人获得50元京东E卡</i>
+						</p>
+						<p class="invite_content_right" id="fifty"></p>
+					</div>
+				</div>
+			</div>
+			<p class="invite_flow"><img src="../../../../dist/webApp/activity/invite/img/small_img3.jpg?v=201712251008"/></p>
+			<p class="invite_explain"><img src="../../../../dist/webApp/activity/invite/img/small_img4.jpg?v=201712251008"/></p>
+		</div>
+		<input id="token_input" type="hidden" />
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script type="text/javascript">
+			(function (doc, win) {    
+			    var docEl = doc.documentElement, 
+			    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+			    recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();    
+			})(document, window);
+			var config={
+				token:'',
+				baseUrl:'https://api.ifuturex.com:443',
+				init:function(){
+					var _this = this;
+					if (window.webkit) {
+						window.webkit.messageHandlers.share.postMessage({name: '奖励这么大，带朋友一起来看看！', introduce: '呼朋唤友赚福利，邀请好友一起玩！', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: location.href})
+					} else if (window.android) {
+						_this.token = 'Bearer '+ window.android.getToken();
+						window.android.share('奖励这么大，带朋友一起来看看！', '呼朋唤友赚福利，邀请好友一起玩！', 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', location.href)
+					}
+					save(_this.token);
+				},
+				getUserInfo:function(){
+					var _this = this;
+					var getParm={
+						client_id:'ifuturex70sh5dl3',
+						client_secret:'ub21t5m4ypokcetebd7x082lar1frzu4',
+						timestamp:Math.floor(new Date().getTime() / 1000)
+					}
+					var timestamp = Math.floor(new Date().getTime() / 1000);
+				}
+			}
+			function getToken(v){
+				config.token = v;
+				save(config.token);
+			}
+			config.init();
+
+			 function getXMLHttpRequest() {  
+			          var xhr;  
+			          if(window.ActiveXObject) {  
+			                   xhr= new ActiveXObject("Microsoft.XMLHTTP");  
+			          }else if (window.XMLHttpRequest) {  
+			                   xhr= new XMLHttpRequest();  
+			          }else {  
+			                   xhr= null;  
+			          }  
+			          return xhr;  
+			}  
+  
+			function save(token) {  
+	          var xhr = getXMLHttpRequest();  
+	          var url = config.baseUrl+'/activity/v1/invitation/invitation'
+	          xhr.open("post",url);  
+	          xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+	          xhr.setRequestHeader("Authorization",token);  
+	          xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+	          var data = "{}";  
+	          xhr.send(data);  
+	          xhr.onreadystatechange= function() {  
+                   if(xhr.readyState == 4 && xhr.status == 200) {  
+                        var data = JSON.parse(xhr.responseText); 
+                        var invite = data.resultValue;
+                        var code = '<p class="invite_main_img"><img src=" ' + invite.userInvitationInfo.img + '"/></p><p class="invite_main_name">' + invite.userInvitationInfo.nickName + '</p>';
+						$('#userInfo').html(code);
+						$('#ten').text('已有'+invite.ten+'人完成');
+						$('#twenty').text('已有'+invite.twenty+'人完成');
+						$('#fifty').text('已有'+invite.fifty+'人完成');
+						$('#invite_num').text('您已成功邀请'+invite.userInvitationInfo.invitedCount+'人')
+						$('#invite_code').text('邀请码：'+invite.userInvitationInfo.invitedCode+'');
+						inviteClick();
+                   }  
+          		};  
+			} 
+			function inviteClick(){
+				$('.invite_main_btn').on('click',function(){
+					if (window.webkit) {
+						window.webkit.messageHandlers.YQ_HY_1.postMessage({name: '奖励这么大，带朋友一起来看看！', introduce: '呼朋唤友赚福利，邀请好友一起玩！', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: location.href})
+					} else if (window.android) {
+						window.android.SC_FX('奖励这么大，带朋友一起来看看！', '呼朋唤友赚福利，邀请好友一起玩！', 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', location.href)
+					}
+				})
+			}
+		</script>
+	</body>
+</html>
+

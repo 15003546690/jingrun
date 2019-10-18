@@ -1,0 +1,58 @@
+@charset "utf-8";
+body, h1, h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, input,textarea,th,td,select { margin:0; padding:0;}
+em,i { font-style:normal;}
+li { list-style:none;}
+a { text-decoration:none; cursor:pointer; }
+body{
+    font-family:"microsoft yahei";
+	background: #f8f8fb;
+	width:750px;
+	margin:0 auto;
+}
+.what-future{
+	width: 710px;
+	margin:0 auto;
+}
+.what-future-top{
+	height: 100px;
+    line-height: 100px;
+    color: #272424;
+    font-size: 28px;
+    padding-left: 15px;
+    border-bottom: solid 1px #b9b9b9;
+    margin-bottom: 20px;
+}
+.what-future-body>div{
+	color: #272424;
+    font-size:26px;
+    line-height:48px;
+    display: flex;
+}
+.what-future-body>div>span{
+	margin-right: 4px;
+	float: left;
+/*	padding-top: 8px;*/
+	font-size:26px;
+}
+.what-future-body>div>p{
+	line-height:48px;
+	font-size:26px;
+    /*margin-left: 2em;
+    text-indent: -1.7em;*/
+}
+.unique{
+	height: 100px;
+    line-height: 48px;
+    color: #272424;
+    font-size: 28px;
+    padding-left: 15px;
+    border-bottom: solid 1px #b9b9b9;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.hangshenred>img{
+	vertical-align: middle;
+}
+.ticaixiangqing{
+	text-align: center;
+}

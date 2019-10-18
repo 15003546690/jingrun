@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title>2017年度汉字评选</title>
+		<style>
+		html {
+		  outline:0;
+		}
+		ul,li,ol,dl,dt,dd,p,h1,h2,h3,h4,input,textarea,th,p,label{padding:0px; margin:0px; list-style:none; font-weight:normal; font-size: .26rem;}
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			em,i{
+				font-style:normal;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{ 
+				text-decoration:none; 
+				cursor:pointer; 
+			}
+			img{width: 100%; display: block;}
+			body{
+			    font-family:"Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+			    background: #f8f8f8;
+				margin:0 auto;
+			}
+			.flex{ display: flex; display: -webkit-flex; flex-wrap: wrap; -webkit-flex-wrap:wrap; width:100%; align-items:center;}
+			input,textarea,button{font-family: "Microsoft YaHei","Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif; border-width:0; padding:0; margin:0; outline:none; resize:none; color:#000; font-size: .24rem;}
+
+			/*.chuti_box {}
+			.chuti_box .chuti_title{background: #f8f8f8; border-top: solid 1px #d9d9d9; border-bottom: solid 1px #d9d9d9; height: 40px; line-height: 40px; padding-left: .2rem; color: #333; font-size: .23rem; vertical-align: middle;}
+			.chuti_box .chuti_title .small{font-size: .2rem; display: inline-block; margin-left: .2rem; color: #999; cursor: pointer;}
+			.chuti_box .chuti_title2{background: #f8f8f8; border-top: solid 1px #d9d9d9; border-bottom: solid 1px #d9d9d9; height: 30px; line-height: 30px; padding-left: .2rem; color: #e63034; font-size: .14rem; overflow: hidden;}
+			.chuti_box .chuti_nr{padding:0 .2rem; position: relative;background: #fff;}
+			.chuti_box .chuti_nr input,.chuti_box .chuti_nr textarea{width: 100%; font-size: .2rem; border-width:0; margin:0; padding: 0; outline: none; display: block}
+			.chuti_box .chuti_nr input{height: 60px; line-height: 60px;}
+			.chuti_box .chuti_nr textarea{height: 3rem; padding-top: .2rem;}
+			.wordsNum{width: 100%; position: absolute; bottom:.1rem; right: .2rem; text-align: right; color: #c9c9c9; font-size: .2rem;}
+
+			.submit_btn{display: block; width: 4rem; height: .8rem; line-height: .8rem; border-radius: .1rem; background: #e63034; color: #fff; text-align: center; font-size: .26rem; margin:0 auto; margin-top: .8rem;}*/
+			.chuti_box{overflow: hidden;}
+			.chuti_title{background: #f8f8f8; border-top: solid 1px #d9d9d9; border-bottom: solid 1px #d9d9d9; height: .6rem; line-height: .6rem; padding-left: .2rem; font-size: .24rem; color: #333;}
+			.chuti_title .small{font-size: .2rem; display: inline-block; margin-left: .2rem;}
+			.chuti_title.fu2{height: .4rem; line-height: .4rem; font-size: .16rem; color: #e63034;}
+			.chuti_nr{padding:0 .2rem; position: relative;background: #fff;}
+			.chuti_nr input{width: 100%; height: 40px; line-height: normal; border-width:0; vertical-align: middle;}
+			.chuti_nr textarea{height: 3rem; width: 100%; padding-top: .2rem;}
+			.wordsNum{width: 100%; position: absolute; bottom:.1rem; right: .2rem; text-align: right; color: #c9c9c9; font-size: .2rem;}
+
+			.submit_btn{display: flex; display: -webkit-flex; justify-content:center; width: 4rem; height: .8rem; background: #e63034; color: #fff; text-align: center; font-size: .26rem; margin:0 auto; margin-top: .8rem; padding: 0; border-radius: 5px;}
+
+			.dialog_com{width: 100%; height: 100%; position: fixed; z-index: 9999; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+			.dialog_com .dialog_content{width: 96%; position: absolute; left: 2%; top: 20%;}
+			.dialog_com .dialog_content .dia_close{display: block; width: .36rem; height: .36rem; position: absolute; right: 0; top: -.2rem;}
+			.dialog_com .dialog_nr{width: 80%; left: 10%; position: absolute; top: 1rem; color: #8e5e5c; font-size: .32rem; line-height: .4rem; text-align: center;}
+			.dialog_com .dialog_btn{width: 100%; position: absolute; text-align: center; bottom:.47rem;}
+			.dialog_com .dialog_btn .yes{width: 1.7rem; display: inline-block;}
+		</style>
+	</head>
+	<body>
+		<div class="chuti_box">
+			<div class="chuti_title flex">我的汉字<span class="small" id="shili">示例</span></div>
+			<div class="chuti_nr flex">
+				<input type="text" placeholder="只可输入一个汉字" maxlength="1" id="title" />
+			</div>
+			<div class="chuti_title fu2 flex">只可输入一个汉字</div>
+			<div class="chuti_nr" style="border-bottom: solid 1px #d9d9d9;">
+				<textarea name="" id="content" placeholder="参选缘由" cols="30" rows="10" maxlength="500" onPaste="var e=this; setTimeout(jisun, 4);"></textarea>
+				<div class="wordsNum">0/500</div>
+			</div>
+			<div>
+				<a href="javascript:;" class="submit_btn flex" id="submit_btn">提交</a>
+			</div>
+		</div>
+
+		<div class="dialog_com">
+			<div class="dialog_content">
+				<a href="javascript:;" class="dia_close" onclick="dialog_close()"><img src="images/tip_dialog_close.png" alt=""></a>
+				<img src="images/tip_dialog_bg.png" alt="">
+				<div class="dialog_nr">
+					
+				</div>
+				<div class="dialog_btn">
+					<a href="javascript:;" class="yes" onclick="dialog_close()"><img src="images/tip_dialog_btn.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+		<script src="js/layer.js" ></script>
+		<script type="text/javascript">
+			(function (doc, win) {    
+			    var docEl = doc.documentElement,    
+			    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+			    recalc = function () {    
+			            var clientWidth = docEl.clientWidth;    
+			            if (!clientWidth) return;    
+			            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+			        };    
+			    if (!doc.addEventListener) return;    
+			    win.addEventListener(resizeEvt, recalc, false);    
+			    recalc();    
+			})(document, window);
+
+			function dialog_close(){
+				$('.dialog_com').hide();
+			}
+			function showDialog(txt){
+				$('.dialog_com').fadeIn(300).find('.dialog_nr').html(txt);
+			}
+			var config={
+				token:'',
+				page:0,
+				total:1,
+				flag:true,
+				activityId:'',
+				baseUrl:'https://api.ifuturex.com:443',
+				// baseUrl:'http://192.168.0.13:7500',
+				init:function(){
+					console.log(this.shareUrl)
+					var _this = this;
+					if (window.webkit) {
+						// _this.token = getToken();
+						this.activityId = this.getParm(window.location.href,'activityId') || '';
+						window.webkit.messageHandlers.share.postMessage({name: '回首这一年，哪个字最能代表你的2017？参与评选获千元奖金！', introduce: '2017年度汉字评选', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: config.shareUrl()})
+					} else if (window.android) {
+						_this.token = 'Bearer '+ window.android.getToken();
+						this.activityId = this.getParm(window.location.href,'activityId') || '';
+						window.android.share('回首这一年，哪个字最能代表你的2017？参与评选获千元奖金！','2017年度汉字评选',  'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', config.shareUrl())
+
+						publicDialog();
+					}
+					
+				},
+				shareUrl:function(){
+					return window.location.protocol + '//' + window.location.host +'/webApp/activity/chinese/share.html';
+				},
+				$POST:function(url,data,success){
+					  var xhr = getXMLHttpRequest();  
+			          var url = config.baseUrl+url
+			          xhr.open("post",url);  
+			          xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+			          xhr.setRequestHeader("Authorization",config.token);  
+			          xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+			          if(arguments.length < 3){
+			          	var data = '{}';  
+			          }else{
+			          	var data = data
+			          }
+			          xhr.send(JSON.stringify(data));  
+			          xhr.onreadystatechange= function() {  
+			          	// alert('readyState==>'+xhr.readyState+'xhr.status==>'+xhr.status)
+		                   if(xhr.readyState == 4 && xhr.status == 200) {  
+		                        var data = JSON.parse(xhr.responseText); 
+		                        if(typeof success === 'function'){
+		                        	success(data);
+		                        }
+		                   }else if(xhr.readyState == 4 && xhr.status != 200){
+		                   		alert('您还没有登录');
+		                   		window.history.go(-1);
+		                   }
+		          		};  
+				},
+				getParm : function(url, key) {
+					var escapeReg = function(source) {
+						return String(source)
+								.replace(new RegExp("([.*+?^=!:\x24{}()|[\\]\/\\\\])", "g"), '\\\x241');
+					};
+					var reg = new RegExp(
+										"(^|&|\\?|#)" 
+										+ escapeReg(key) 
+										+ "=([^&]*)(&|\x24)", 
+									"");
+					var match = url.match(reg);
+					if (match) {
+						var result=match[2].substring(match[2].length-1,match[2].length);
+						return result=='#'?match[2].substring(0,match[2].length-1):match[2];
+					}
+					
+					return null;
+				}
+			}
+			function getToken(v){
+				config.token = v;
+				// config.token = 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTE2ODMxNjUsInVzZXJJZCI6MzgwNjcyLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwianRpIjoiODcwZWM3OGItMzc3MC00NThhLWJlYmQtODE1MGU4NzRhMDRjIiwiY2xpZW50X2lkIjoiaWZ1dHVyZXg3MHNoNWRsMyIsInNjb3BlIjpbInVzZXIiXX0.TzRsy0NtXon3cb6u_A5pHyIhdmUF3xOFgdHs5y2d8pTeoK7-OTJCRnVNlgf2dW9PjK9kIizmeyEdqHjReHpRAirhgNL6Ex0lYqCFfJCPu8TWXyDcmnAQe5MyjughRFTx_KwJreoOEiVZkMBWdjN7XFvCqlROQkGeb9MFJ176oiXZzKCsCA6wfB-w6_X8l_G_mX8fYCZ89DfgaSlR_O8mvFfxBUnlYH3nJXnOecPEv1ET0okqWM3QQIuUKDuL7VdjXQsY_S2znbT8d8hU0iHK1VjpaA_GUKhWoMfTsxq74WvPxaweCGQnaFTjrX99wAEex_1uWjHe0ZMsONBsNAoNSQ'
+				publicDialog();
+			}
+			config.init();
+			// getToken()
+
+			 function getXMLHttpRequest() {  
+			          var xhr;  
+			          if(window.ActiveXObject) {  
+			                   xhr= new ActiveXObject("Microsoft.XMLHTTP");  
+			          }else if (window.XMLHttpRequest) {  
+			                   xhr= new XMLHttpRequest();  
+			          }else {  
+			                   xhr= null;  
+			          }  
+			          return xhr;  
+			}  
+  
+
+// publicDialog()
+function jisun(){
+	var valu = $('#content').val();
+	var newvalue = valu.replace(/[^\x00-\xff]/g, "**");
+	var len = newvalue.length;
+		if(len < 500){
+			$('.wordsNum').html(Math.floor(parseInt(len) / 2 )+'/500');
+		}
+}
+			//发布
+			function publicDialog(){
+				var data = {
+	          		"activityId": config.activityId,
+					"page": config.page,
+					"size": 10
+	          	};
+	          	config.$POST('/account/v1/userSubject/queryUserSubject',data,function(data){
+
+	          	})
+			$('#content').on('keyup',function(){
+				var valu = $(this).val();
+				var newvalue = valu.replace(/[^\x00-\xff]/g, "**");
+				var len = newvalue.length;
+		  		if(len < 500){
+		  			$('.wordsNum').html(Math.floor(parseInt(len) / 2 )+'/500');
+		  		}
+		  	})
+		  	$('#shili').on('click',function(){
+		  		layer.open({
+				    content: '<div style="text-align:left;"><h2 style="font-size:.2rem; color#333; margin-bottom:.1rem; line-height.24rem;">我的汉字：<span style="color:#666">善</span></h2><h2 style="font-size:.2rem; color#333; margin-bottom:.1rem;">参选缘由：</h2><p style="font-size:.2rem;color:#666; line-height.24rem;">善即良，上善若水，于柔中见刚，于纤中见强，是进取而内敛。有一种以卓越为核心要义的至高境界的追求，那就是“止于至善”，上升到人性的层面来说，那是大真、大爱、大诚、大智的体现</p></div>'
+				    ,btn: '知道了'
+				    ,yes:function(){
+				    	layer.closeAll();
+				    }
+				  });
+		  	})
+		  	$('#submit_btn').on('click',function(){
+			  		var data = {
+			  			title:$('#title').val(),
+			  			content:$('#content').val(),
+			  			activityId:config.activityId
+			  		}
+			  		if($.trim(data.title) == ''){
+			  			  layer.open({
+						    content: '汉字不能为空'
+						    ,skin: 'msg'
+						    ,time: 2
+						  });
+						  return false;
+			  		}
+			  		if(data.title.length > 1){
+			  			  layer.open({
+						    content: '汉字只可输入一个'
+						    ,skin: 'msg'
+						    ,time: 2
+						  });
+						  return false;
+			  		}
+			  		if($.trim(data.content) == ''){
+			  			  layer.open({
+						    content: '参选缘由不能为空'
+						    ,skin: 'msg'
+						    ,time: 2
+						  });
+						  return false;
+			  		}
+			  		if(config.flag){
+				  		config.$POST('/account/v1/userSubject/addActivitySubject',data,function(data){
+				  			config.flag = false
+				  			if(data.resultCode === 200){
+				  				showDialog('参与成功');
+				  				$('#title').val('');
+				  				$('#content').val('');
+				  				config.flag = true;
+				  			}else if(data.resultCode === 924001){
+				  				showDialog('您已有3个汉字被采纳<br>无法再次提议');
+				  			}else if(data.resultCode === 924002){
+				  				showDialog('今日提议次数已用完');
+				  			}
+				  		})
+
+			  		}
+				})
+			}
+		</script>
+	</body>
+</html>
+

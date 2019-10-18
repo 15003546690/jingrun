@@ -1,0 +1,118 @@
+body{
+	background: url(../img/background.jpg) no-repeat center;background-size:cover;max-width: 750px; margin: auto;}
+	#title{width: 6.60rem;height: 0.75rem;margin: 0 auto;justify-content:space-between;background: url(../img/jinbi.png) no-repeat center;background-size: cover;margin-top: 1.55rem;    padding-top: 0.20rem;}
+    .title_first,.title_second{height: 0.40rem;line-height:0.40rem;}
+    .title_first{margin-right: 0.90rem;margin-left: 0.60rem;position: relative;display: none;float: left;}
+    .title_first a{color: #4e2623;font-size: 0.28rem;}
+    /*登录按钮*/
+    .title_login{color: #4e2623;font-size: 0.28rem;margin-left: 1.6rem;position: relative;display: none;}
+    .title_second{width: 1.48rem;line-height: 0.40rem;margin-right: 0.70rem;float: right;}
+    .title_second img{width: 1.45rem;height: 0.38rem;vertical-align: middle;}
+    .fadeIn{position: absolute;top: -0.08rem;right:-0.6rem;height: 0.14rem;display: table;color: #4e2623;font-size: 0.18rem;
+		    animation:mymove 2s infinite;
+			-webkit-animation:mymove 2s infinite; 
+			animation-iteration-count:1;
+			animation-direction:normal;
+			/*opacity: 0;*/
+			display: none;
+    }
+    @-webkit-keyframes mymove {
+		0% {opacity: 0;top:0px;}
+		50% {opacity: 1;}
+		100% {opacity: 0;top:-24px;}
+	}
+    
+   .shanDeng_bg{width: 7.18rem;height: 5.70rem;margin: 0 auto;background: url(../img/back_center.png) no-repeat center;background-size:100% 100%;}
+   .shanDeng{margin: 0 auto;margin-top: 0.65rem;}
+   #luck {padding-top: 0.32rem;}
+   #luck .cj_box{width: 6.40rem;height: 4.84rem;margin: 0 auto;border-radius: 10px;overflow: hidden;position: relative;}
+   .divput.color_yellow{background: #fabc00;}
+   .divput{width: 1.58rem;height: 1.572rem;background: #fbdb00;border-right: solid 0.02rem white;border-bottom: solid 0.02rem white;text-align: center;}
+   .divput p{text-align: center;height: 1.0rem;overflow: hidden;}
+   .divput p img{height: 1.0rem;}
+   .divput span{width: 1.26rem;line-height: 0.25rem;display: block;margin: 0 auto;text-align: center;margin-top:0.06rem;color: #ff1d62;font-size: 0.16rem;overflow:hidden; text-overflow:ellipsis;display:-webkit-box; -webkit-box-orient:vertical;-webkit-line-clamp:2; }
+   #luck .cj_box .item_box{width:105%;}
+   #luck .cj_box .item_box div:nth-child(5){margin-right: 3.20rem;}
+   #luck .cj_box .item_box div:nth-child(6){border-right: none;}
+    #luck .cj_box .item_box div:nth-child(4){border-right: none;}
+   #luck .cj_box .item_box div:nth-child(10){border-radius: 0 0 10px 0;border-right: none;}
+   #luck .cj_box .item_box div:nth-child(7){border-radius: 0 0 0 10px;}
+   
+   #luck .cj_box .item_box div:nth-child(10),#luck .cj_box .item_box div:nth-child(7),#luck .cj_box .item_box div:nth-child(8),#luck .cj_box .item_box div:nth-child(9){border-bottom: none;}
+   
+   
+   
+   
+    /*深色块*/
+   .div_img{text-align: center;height: 1.10rem;line-height: 1.10rem;}
+   .div_img img{vertical-align: middle;width: 1.30rem;height: 0.80rem;}
+
+   
+   
+   .luck_div{border-radius: 0 10px 0 0;}
+   .luck_divtwo{border-radius: 0 0 10px 0;}
+  
+  
+   #button2{background: url(../img/Button2.png) no-repeat center;background-size: cover;}
+   .tody{width: 5.60rem;height: 3.30rem;background: white;margin: 0 auto;margin-top: 1.22rem;position: relative;padding-top: 0.7rem;}
+   #container{overflow: hidden;position: relative;width: 4.80rem;height:3.10rem;margin-left: 0.4rem;overflow: hidden;}
+   .tody ul{width: 4.80rem;margin: 0 auto;position: absolute;}  
+   .tody img{width:7.10rem;height:1.25rem;position: absolute;top: -0.6rem;left: -0.72rem;}
+   .tody ul li{width:4.80rem;line-height: 0.50rem;color: #282734;font-size: 0.24rem;margin: 0 auto;text-align: left;display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 1;
+overflow: hidden;}
+   .tody ul li a{margin-left:0.25rem;color: #7b7883;}
+    
+/*文字部分*/
+   .wenzi{width: 7.10rem;margin: 0 auto;margin: 0.60rem auto 0.20rem auto;}
+   .wenzi p{color: #9fa4e6;line-height: 0.40rem;font-size: 0.20rem;}
+
+/*弹层*/
+.material{width: 100%;height: 100%;background:rgba(0,0,0,0.4);position: fixed;top: 0; left: 0; right: 0;bottom: 0;}
+.material_mian{ width: 100%;height: 100%;display: table;}
+.material_mian_body{display: table-cell;vertical-align: middle;}
+.material_mian_body_list{width: 7.10rem;min-height: 6.90rem;position: relative !important;margin: 0 auto;background: url(../img/alert_cheng.png) no-repeat center;background-size: 100% 100%;}
+.body_list{text-align: center;}
+.body_list img{width:2.9rem;margin-left: 0.25rem;}
+.body_list .lostImf{width:2.6rem;height: 2.4rem;}
+.body_list_kimin{margin: 0 auto;margin-top: 0.53rem;margin-bottom: 0.15rem;}
+.body_list_kimin_btn{margin-top: 0.20rem;}
+.kimin_btn{width: 3.8rem;margin: 0 auto;justify-content:space-between;}
+.kimin_btn a{height:0.56rem;line-height:0.56rem;color: #e73034;font-size: 0.28rem;margin-left: 0.20rem;}
+.kimin_btn button{width: 2rem;height: 0.56rem;background: url(../img/button.png) no-repeat center;background-size: cover;}
+.body_list_kimin_a{text-align: center;/*margin-bottom: 0.45rem;*/}
+.body_list_kimin_a img{width: 2.40rem;height: 1.42rem;}
+.body_list_kimin_aa{text-align: center;color: #ff1d62;font-size: 0.24rem;display: none;}
+.kimin_aa{width:3.10rem;text-align: center;color: #ff1d62;font-size: 0.44rem;margin: 0 auto;margin-top: 0.4rem;}
+.liji_btn{text-align: center;margin-top: 0.60rem;}
+.liji_btn img{width: 4.00rem;height: 0.56rem;margin-left: 0.25rem;}
+.liji_btn_hide{display: block;}
+
+
+
+.shuoming{width:4.0rem;line-height: 0.30rem;color: #7b7883;font-size: 0.20rem;margin: 0 auto;text-align: center;}
+.shuoming a{color: #285ae9;}
+
+
+.close{width:0.40rem;height:0.40rem;position: absolute !important;top: -0.15rem; right: 0.45rem;}
+.share{width:0.40rem;height:0.40rem;position: absolute !important;top: 0.35rem; right: 0.95rem;}
+
+.share_btn{width:0.40rem;height:0.40rem;position: absolute;top: 3rem; right: 1.20rem;}
+.closemode{width:0.40rem;height:0.40rem;position: absolute;top: 2.5rem; right: 0.55rem;}
+.body_list_kimin .imgKim{display: none;}
+.body_list_kimin .body_wen{font-size: 0.30rem;color: #282734;line-height: 30px;width: 2.5rem;margin-left: 2.6rem;}
+
+.cjBtn{width: 50.1%;height: 1.60rem;background: url(../img/Button1.png) no-repeat center;background-size: cover;position: absolute;top: 1.59rem;left: 1.59rem;}
+.cjBtnDom{background: url(../img/Button2.png) no-repeat center;background-size: cover;}
+
+.shiwucheng{width:2.80rem;}
+.change{display: none;}
+
+
+/*分享弹层文案*/
+.tanceng{width:100%;height:1.02rem;line-height:1.02rem;position: absolute;top: 0;left: 0;background: rgba(0,0,0,0.2);text-align: right;display: none;}
+.tanceng img{width:3.00rem;vertical-align: middle;margin-right: 0.50rem;}
+
+
+.chenggong{display: none;}

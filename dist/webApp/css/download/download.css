@@ -1,0 +1,50 @@
+@charset "utf-8";
+body, h1, h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, input,textarea,th,td,select { margin:0; padding:0;}
+em,i { font-style:normal;}
+ul,li { list-style:none;}
+a { text-decoration:none; cursor:pointer; }
+body,html{
+	font-family: "microsoft yahei";
+	height: 100%;  
+	background:url(../../img/download/down-bg.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	overflow-x: hidden;
+}
+.logo{
+	height:290px;
+	margin-top:300px;
+	text-align: center;
+}
+.logo>img{
+	vertical-align: middle;
+}
+.apple{
+	margin-top:200px;
+	text-align: center;
+}
+.apple>p{
+	width:500px;
+	height:100px;
+	margin:0 auto;
+}
+.apple>p+p{
+	margin-top:80px;
+}
+.apple>p>img+img{
+	display: none;
+}
+/****************点击之后*********************/
+.apple>p.yang>img{
+	display: none;
+}
+.apple>p.yang>img+img{
+	display: inline;
+}
+.download_downup{
+	position:absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	/*display: none;*/
+}

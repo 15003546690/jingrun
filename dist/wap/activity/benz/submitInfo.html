@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<meta name="description" content="未来无限网奔驰调查问卷">
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<link rel="stylesheet" href="css/LArea.css">
+		<link rel="stylesheet" href="css/LCalendar.css">
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?v=53"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js?v=04"></script>
+		<style>
+			html,body{height:100%; background: #06060c;}
+			#app{height: 100%; position: relative;}
+			.submit_box{width: 7.1rem; margin:0 auto; padding-top: .3rem;}
+			.submit_box .submit_item{height: .88rem; line-height: .88rem; background: #161922; border-radius: 5px; margin-bottom: .2rem;}
+			.submit_box .submit_item>.item_key{padding-left: .2rem; color: #fff; font-size: .32rem;}
+			.submit_box .submit_item>.item_val{padding-right: .3rem; text-align: right; font-size: .32rem;}
+			.submit_item>.item_val>input{width:90%;text-align: right; color: #8b8c91; font-size: .32rem; line-height: .88rem; background: transparent;}
+			.radio_box,.flexEnd{justify-content:flex-end;}
+			.submit_item>.item_val .radio_label{cursor: pointer; font-size: .32rem; margin-left: .5rem;}
+			.submit_item>.item_val .radio_label>em{width: .35rem; height: .35rem; margin-right: .2rem; background: url(img/radio_ico.png) no-repeat; background-size: 100%;}
+			.submit_item>.item_val .radio_label.on>em{background-position: 0 100%;}
+			.submit_item>.item_val>.arrow{width: .2rem; height: .2rem; border:solid 1px #fff; border-width:0 1px 1px 0; transform: rotate(45deg); margin-left: .2rem; margin-top: -.1rem;}
+			.item_sub{background-color: #1e2230; margin-bottom: .2rem; padding:0 .2rem; display: none;}
+			.item_sub li{line-height: .88rem; border-bottom: solid 1px #353945; text-align: center; color: #8b8c91; font-size: .32rem; cursor: pointer;}
+			.item_sub li:last-child{border-bottom-width:0;}
+			.submit_btn{width: 3rem; margin:.5rem auto; cursor: pointer;}
+			.submit_btn>button{width: 100%; height: .72rem; background: url(img/submit_btn.png) no-repeat; background-size: 100%;}
+			.radio_label input{border:solid 1px #8b8c91; width: .58rem; text-align: center; height: .58rem; line-height: .58rem; border-radius: 3px; margin-right: .2rem; background: transparent;}
+			.none{display: none;}
+		</style>
+    	
+	</head>
+	<body>
+		<div id="app">
+			<div class="submit_box">
+				<div class="submit_item displayFlex">
+					<div class="item_key">姓名<sub>*</sub></div>
+					<div class="item_val flex1">
+						<input type="text" placeholder="请输入姓名" id="realName">
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">电话<sub>*</sub></div>
+					<div class="item_val flex1">
+						<input type="tel" placeholder="请输入手机号码" maxlength="11" id="phone">
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">性别<sub>*</sub></div>
+					<div class="item_val flex1 displayFlex radio_box" id="sex">
+						<div class="radio_label displayFlex flexMidle on" data-value="0"><em></em>男</div>
+						<div class="radio_label displayFlex flexMidle" data-value="1"><em></em>女</div>
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">生日<sub>*</sub></div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd">
+						<input type="text" readonly="" placeholder="请输入您的生日" id="birthday">
+						<div class="arrow"></div>
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">婚姻状况<sub>*</sub></div>
+					<div class="item_val flex1 displayFlex radio_box" id="married">
+						<div class="radio_label displayFlex flexMidle on" data-value="0"><em></em>已婚</div>
+						<div class="radio_label displayFlex flexMidle" data-value="1"><em></em>未婚</div>
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">购买车型<sub>*</sub></div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd">
+						<input type="text" placeholder="车型" id="model">
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">车牌号</div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd">
+						<input type="text" placeholder="请输入您的车牌号" id="licencePlate">
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">车架号（后六位）<sub>*</sub></div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd">
+						<input type="text" placeholder="请输入您的车架号" maxlength="6" id="vehicleId">
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">车辆使用地<sub>*</sub></div>
+					<div class="item_val flex1 displayFlex radio_box" id="carCity">
+						<div class="radio_label displayFlex flexMidle on" data-value="510100"><em></em>成都</div>
+						<div class="radio_label displayFlex flexMidle" data-value="0"><em></em>其他</div>
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">子女数量</div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd trigerSub">
+						<p data-value="0" id="childrenNum">无</p>
+						<div class="arrow"></div>
+					</div>
+				</div>
+				<div class="item_sub">
+					<ul>
+						<li data-value="0">无</li>
+						<li data-value="1">1位</li>
+						<li data-value="2">2位及以上</li>
+					</ul>
+				</div>
+				<div class="submit_item displayFlex none" id="childAge">
+					<div class="item_key">子女年龄</div>
+					<div class="item_val flex1 displayFlex radio_box">
+						<div class="radio_label displayFlex flexMidle" data-value="0"><input type="tel" id="childAge1">岁</div>
+						<div class="radio_label displayFlex flexMidle" data-value="1"><input type="tel" id="childAge2">岁</div>
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">客户地址</div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd">
+						<input type="text" readonly="" placeholder="请选择您的地址" id="diqu">
+						<input type="hidden" id="diquValue">
+						<div class="arrow"></div>
+					</div>
+				</div>
+				<div class="submit_item displayFlex">
+					<div class="item_key">详细地址</div>
+					<div class="item_val flex1 displayFlex flexMidle flexEnd">
+						<input type="text" placeholder="请输入详细地址" id="address">
+					</div>
+				</div>
+				<div class="submit_btn"><button class="button" id="tijiao"></button></div>
+			</div>
+		</div>
+		<script src="js/LAreaData1.js" ></script>
+		<script src="js/LArea2.js" ></script>
+		<script src="js/LCalendar.js" ></script>
+		<script src="js/layer.js" ></script>
+		<script>
+			//地区选择
+		    var area1 = new LArea2();
+		    area1.init({
+		        'trigger': '#diqu', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+		        'valueTo': '#diquValue', //选择完毕后id属性输出到该位置
+		        'keys': {
+		            id: 'id',
+		            name: 'name'
+		        }, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+		        'type': 1, //数据源类型
+		        'data': LAreaData //数据源
+		    });
+		    var calendar = new LCalendar();
+		    calendar.init({
+		        'trigger': '#birthday', //标签id
+		        'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+		        'minDate': '1900-1-1', //最小日期
+		        'maxDate': new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() //最大日期
+		    });
+
+
+
+			var newHd = new AppCommon();
+			newHd.baseUrl='https://np.ifuturex.com:7500/';//记得删除
+
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',trackDesc)
+			}
+			var shareIndex={
+				activityName:'',
+				img:'',
+				title:'',
+				url:window.location.href
+			};
+			$('#app').on('click','.trigerSub',function(){
+				var $sub = $(this).parents('.submit_item').next('.item_sub');
+				$sub.toggle(0);
+			}).on('click','.item_sub li',function(){
+				var text = $(this).text();
+				var val = $(this).attr('data-value');
+				var $item = $(this).parents('.item_sub').prev('.submit_item');
+				$item.find('.item_val p').text(text).attr('data-value',val);
+				$(this).parents('.item_sub').hide();
+				childrenIshow(val);
+			}).on('click','.radio_label',function(){
+				var $radioBox = $(this).parent('.radio_box');
+				$radioBox.find('.on').removeClass('on');
+				$(this).addClass('on');
+			}).on('click','#tijiao',function(){
+				// window.location.replace('question.html');
+				formSubmit();
+			})
+			function childrenIshow(index){
+				if(index == 0){
+					$('#childAge').addClass('none');
+				}else{
+					$('#childAge').removeClass('none');
+					console.log(index)
+					if(index == 1){
+						$('#childAge .radio_label:eq(1)').addClass('none');
+					}else if(index == 2){
+						$('#childAge .radio_label:eq(1)').removeClass('none');
+					}
+				}
+			}
+			function formSubmit(){
+				var diqu = $('#diqu').val();
+				var diquArr = diqu.split('-');
+				var postData = {
+					activityId:newHd.getCookie('activityId'),
+					realname : $('#realName').val(),
+					mobile : $('#phone').val(),
+					sex : $('#sex').find('.on').attr('data-value'),
+					birthday:$('#birthday').val(),
+					married:$('#married').find('.on').attr('data-value'),
+					model:$('#model').val(),
+					licencePlate:$('#licencePlate').val(),
+					vehicleId:$('#vehicleId').val(),
+					carCity:$('#carCity').find('.on').attr('data-value'),
+					childrenNum:$('#childrenNum').attr('data-value'),
+					childAge1:$('#childAge1').val(),
+					childAge2:$('#childAge2').val(),
+					province:diquArr[0] || '',
+					city:diquArr[1] || '',
+					county:diquArr[2] || '',
+					address:$('#address').val()
+
+				}
+				newHd.setCookie('mobile',postData.mobile);
+				if($.trim(postData.realname) == ''){
+					layer.open({
+					    content: '请输入您的真实姓名'
+					    ,skin: 'msg'
+					    ,time: 2 
+					 });
+	    			return false;
+				}
+				if($.trim(postData.mobile) == ''){
+					layer.open({
+					    content: '请输入手机号码'
+					    ,skin: 'msg'
+					    ,time: 2 
+					 });
+	    			return false;
+				}
+				var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+				 if (!myreg.test(postData.mobile)) {
+					layer.open({
+					    content: '请输入正确的手机号码',
+					    skin: 'msg',
+					    time: 2
+				  	});
+					return false;
+				}
+				if($.trim(postData.birthday) == ''){
+					layer.open({
+					    content: '请选择您的生日'
+					    ,skin: 'msg'
+					    ,time: 2 
+					 });
+	    			return false;
+				}
+				if (postData.birthday.length > 10) {
+					layer.open({
+					    content: '请选择正确的日期',
+					    skin: 'msg',
+					    time: 2
+				  	});
+					return false;
+				}
+				if($.trim(postData.model) == ''){
+					layer.open({
+					    content: '请填写您的车型'
+					    ,skin: 'msg'
+					    ,time: 2 
+					 });
+	    			return false;
+				}
+				if($.trim(postData.vehicleId) == ''){
+					layer.open({
+					    content: '请填写您的车架号'
+					    ,skin: 'msg'
+					    ,time: 2 
+					 });
+	    			return false;
+				}
+				if(postData.vehicleId.length<6){
+					layer.open({
+					    content: '请填写车架号后6位'
+					    ,skin: 'msg'
+					    ,time: 2 
+					 });
+	    			return false;
+				}
+				console.log(JSON.stringify(postData))
+				newHd.$POST('activity/v1/syrvey/userSubmitMsgBenz',
+				postData,
+				function(data){
+					if(data.resultCode == 200){
+						window.location.replace('question.html');
+					}else{
+						layer.open({
+						    content: data.resultMessages
+						    ,skin: 'msg'
+						    ,time: 2 
+						 });
+					}
+				})
+			}
+			function bury(){
+				newHd.uriedPoints(1,'benz',newHd.getCookie('activityId'),trackDesc,1)
+			}
+
+		</script>
+	</body>
+</html>

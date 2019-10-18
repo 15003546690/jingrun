@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		 <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+		<style>
+		html,body{background:-webkit-gradient(linear, 0 0, 0 bottom, from(#d6c6b9), to(#4b5056)); height: 100%;}
+		#app{height: 100%; position: relative;max-width: 750px;margin: 0 auto;}
+		.result_txt{padding-top: 1rem; margin-bottom: 1.3rem;}
+		.question_result{}
+		.questionR_logo{width: 100%; text-align: center; font-size: .6rem; color: #fff;}
+		.questionR_num{width: 100%;color: #fff;font-size: .36rem;text-align: center; margin-bottom: .6rem;}
+		.questionR_num i{font-size: 1.2rem}
+		.questionR_num_user{width: 6.40rem;height: 1.40rem;background: url(img/car.png) no-repeat center;background-size: 100%;margin: 0 auto;border-radius: 0.18rem;padding: 0.17rem 0 0 0.60rem;}
+	    .questionR_num_user_main span{width: 1.06rem;height: 1.06rem;border-radius: 50%;border: solid 0.03rem #280941;}
+	    .questionR_num_user_main span img{width: 100%;height: 100%;border-radius: 50%;}
+	    .questionR_num_user_main p{font-size: 0.32rem;line-height: 1.08rem;margin-left: 0.58rem;color: #280941;}
+	    .questionR_btn{display:block;width: 3.00rem;height: 0.72rem;margin: auto;background: url(img/test.png) no-repeat;background-size: 100%;margin-top: 1.5rem;margin-bottom: 0.6rem;}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="question_result">
+				<div class="result_txt">
+					<img src="img/result_txt.png" alt="">
+				</div>
+				<div class="questionR_logo"></div>
+				<div class="questionR_num"><i></i>分</div>
+				<div class="questionR_num_user">
+					<div class="questionR_num_user_main displayFlex">
+						<span><img src="" alt=""></span>
+						<p></p>
+					</div>
+				</div>
+				<a href="javascript:;" class="questionR_btn"></a>
+			</div>
+		</div>
+		<script>
+			var newHd = new AppCommon();
+			newHd.baseUrl='https://np.ifuturex.com:7500/';
+			var code=newHd.GetQueryString('code');
+			var actId=newHd.GetQueryString('activityId');
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',trackDesc)
+			}
+			$('.questionR_btn').on('click',function(){
+				window.location.href = 'index.html?activityId='+actId;
+			})
+			function getInfo(){
+				newHd.uriedPoints(1,'landrover',actId,trackDesc);
+				newHd.$POST('/order/v1/syrvey/userSeeShareResult',
+				{
+					"activityId": actId,
+					"userCode":code
+				},
+				function(data){
+					var num=data.resultValue.score,
+						img=data.resultValue.img,
+						name=data.resultValue.nickname,
+						logoImg=data.resultValue.typeMsg.typeImg;
+					$('.questionR_num i').text(num);
+					$(".questionR_num_user_main span img").attr('src',img); 
+					$(".questionR_logo").text(data.resultValue.typeMsg.typeName); 
+					$('.questionR_num_user_main p').text(name);
+					// $(document).attr('title',data.resultValue.shareMsg.activityName); 
+					if(isWeixinBrowser) {
+						var shareData = {
+							title: data.resultValue.shareMsg.activityName,
+							desc: data.resultValue.shareMsg.title,
+							link: data.resultValue.shareMsg.url,
+							imgUrl: data.resultValue.shareMsg.img
+						}
+						shareInit(shareData,bury)
+					}
+				})
+			}
+			function bury(){
+				newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc,1)
+			}
+			function getToken(){
+				$.ajax({
+					url:newHd.baseUrl+'/uaa/oauth/token?client_id=ifuturex70sh5dl3&client_secret=ub21t5m4ypokcetebd7x082lar1frzu4&grant_type=client_credentials',
+					type:'POST',
+					async:true,
+					dataType:'json',
+					success:function(data){
+						var token=data.token_type.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())+' '+data.access_token;
+						newHd.token=token;
+						getInfo()
+					}
+				})
+			}
+			getToken()
+		</script>
+	</body>
+</html>

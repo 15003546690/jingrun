@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<title>邀请页</title>
+		<link rel="stylesheet" type="text/css" href="../css/invite.css"/>
+	</head>
+	<body>
+		<img class="download_downup" src="../img/invite/download_downup.png"/>
+		<section>
+			<div class="logo"><img src="../img/invite/invite-img1.png"/></div>
+			<div class="invite-num">
+				<p class="invite-img">
+					<i><img src="../img/invite/invite-img2.png"/></i>
+					<span id="invite_text"></span>
+				</p>
+				<p class="invite-text">邀请码长按复制</p>
+			</div>
+			<div class="invite-btn">
+				<p id="download"><img src="../img/invite/invite-text.png"/></p>
+			</div>
+		</section>
+		<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js" ></script>	
+		<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>	
+		<script>
+			function GetQueryString(name){
+			    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			    var r = window.location.search.substr(1).match(reg);
+			    if(r!=null)return  unescape(r[2]); return null;
+			}
+		/*<![CDATA[*/
+		    if (navigator.userAgent.match(/(MicroMessenger|Weibo)/i)) {
+		    	$('.download_downup').show()
+		    }
+			$('#download').click(function () {
+				if ($('.download_downup').is(':visible')) {
+					alert('请在浏览器中打开')
+				} else {
+					if (navigator.userAgent.match(/(iPhone|iPod|iPad|ios)/i)) {
+						location.href = 'https://itunes.apple.com/cn/app/%E6%9C%AA%E6%9D%A5%E6%97%A0%E9%99%90/id1189430265?mt=8'
+					} else if (navigator.userAgent.match(/Android/i)) {
+						location.href = 'https://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/kinrank-android-apk/iFuturex.apk'
+					}
+				}
+			})
+			var code = GetQueryString('code')
+			$("#invite_text").html(code)
+		/*]]>*/
+		</script>
+	</body>
+</html>

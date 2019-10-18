@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<link rel="stylesheet" href="../../css/swiper.min.css">
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?a=5"></script>
+		<script src="js/echarts.min.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+		<script src="../../js/swiper.min.js"></script>
+		<style>
+			html,body{background:-webkit-gradient(linear, 0 0, 0 bottom, from(#d6c6b9), to(#4b5056)); height: 100%;}
+			#app{width:100%;height: 100%; position: relative; overflow: hidden; overflow-y:auto; }
+			/*提交结果页*/
+			.question_result{width: 100%;height: 100%;}
+			.result_txt{margin-top: 1rem; margin-bottom: 1.3rem;}
+			.questionR_logo{width: 100%; text-align: center; font-size: .6rem; color: #fff;}
+			.questionR_num{width: 100%;color: #fff;font-size: .36rem;text-align: center;margin-bottom: .3rem}
+			.questionR_num span{font-size: 1.2rem}
+			.questionR_btn{width: 3.01rem;height: .72rem;margin: auto;background: url(img/showOff.png) no-repeat;background-size: 100%;}
+			.questionR_share{width: 100%;height: 100%;background: rgba(0,0,0,.7);position: fixed;top: 0;z-index: 999;overflow: hidden;display: none;}
+			.questionR_share div{width: 4.25rem;height: 1.50rem;position: absolute;right: .43rem;top: .12rem;background: url(img/share.png) no-repeat;background-size: 100%;}
+			#mainBar{margin:1rem auto;}
+			.overlay-prize{width: 100%; height: 100%; background: rgba(0,0,0,.7); position: fixed; left: 0; top: 0; z-index:1000; display: none;}
+			.overlay-prize a.close{display: block; width: .44rem; position: absolute; right: .4rem; top: .5rem; z-index: 10;}
+			.overlay-prize>.baoxiang{width: 4.8rem; margin:0 auto; position: relative; margin-top: 1rem;} 
+			.overlay-prize>.baoxiang>.jiangpin{width: 2.16rem; height: 2.16rem; position: absolute; left: 50%; margin-left: -1.08rem; border:solid 3px #fdc700; border-radius: 5px; overflow: hidden; top:.5rem;}
+			.overlay-prize>.baoxiang>.lose{width: 2.56rem; position: absolute; left: 50%; margin-left: -1.28rem; overflow: hidden; top:1rem;}
+			.overlay-prize>.choujiang_xx{width: 6.7rem; margin:0 auto; position: relative; margin-top: .5rem;}
+			.overlay-prize>.choujiang_xx h1{text-align: center; font-size: .4rem; color: #9e6152; position: absolute; left: 50%; top: 0; width:4.96rem; top: .9rem; margin-left: -2.48rem;}
+			.overlay-prize>.choujiang_xx>.choujiang_content{width: 4.4rem; height: 2.68rem; overflow: hidden; overflow-y:auto; position: absolute; left: 50%; top: 1.67rem; margin-left: -2.2rem; color: #d59e72; font-size: .28rem; }
+			.overlay-prize>.choujiang_xx>.lose_content{text-align: center; font-size: .34rem; color: #9e6152;width: 4.4rem; height: 2.68rem;position: absolute; left: 50%; top: 2rem; margin-left: -2.2rem;}
+			.yaoyiyao{width: 6.4rem; height: 1.4rem; margin:0 auto; margin-bottom: .8rem; background:rgba(75,80,86,.1) url(img/yao_pont.png); border:solid 1px #959493; border-radius: .1rem; text-align: center; color: #ceacea; display: none;}
+			.yaoyiyao>span{width: .5rem; margin-right: .15rem;animation: yaoyao 1.5s linear 1s infinite alternate;}
+			.yaoyiyao>p{font-size: .3rem; font-style: italic; color: #cdd0d4;}
+			@keyframes yaoyao{
+				0%   {transform: rotate(0deg) translateY(0);}
+				5%  {transform: rotate(-15deg) translateY(3px);}
+				10% {transform: rotate(0deg) translateY(0);}
+				15%   {transform: rotate(0deg) translateY(0);}
+				20%  {transform: rotate(-15deg) translateY(3px);}
+				25% {transform: rotate(0deg) translateY(0);}
+				30%   {transform: rotate(0deg) translateY(0);}
+				35%  {transform: rotate(-15deg) translateY(3px);}
+				40% {transform: rotate(0deg) translateY(0);}
+				100% {transform: rotate(0deg) translateY(0);}
+			}
+		</style>
+    	
+	</head>
+	<body>
+		<div id="app">
+			<!-- 结果页 -->
+			<div class="question_result">
+				<div class="result_txt">
+					<img src="img/result_txt.png" alt="">
+				</div>
+				<div class="questionR_logo"></div>
+				<div class="questionR_num">
+					<span></span>分
+				</div>
+				<div class="yaoyiyao displayFlex flexCenter flexMidle">
+					<span><img src="img/result_ico.png" alt=""></span>
+					<p>摇一摇 抢好礼</p>
+				</div>
+				<div class="questionR_btn"></div>
+				<div id="mainBar" style="width: 94%;height:4.5rem;"></div>
+			</div>
+			<audio src="img/voice.mp3" controls preload="metadata" id="video1" style="display:none; visibility:hidden; width:0px; height:0px; background:none;"></audio>
+			<div class="questionR_share">
+				<div></div>
+			</div>
+			<div class="overlay-prize" id="overlay-prize">
+				<a href="javascript:;" class="close"><img src="img/choujiang_close.png" alt=""></a>
+				<div class="baoxiang">
+					<div class="jiangpin">
+						<img src="img/choujiang_jp.jpg" alt="">
+					</div>
+					<img src="img/choujiang_xiang.png" alt="">
+				</div>
+				<div class="choujiang_xx">
+					<h1>万宝龙机械表  x1</h1>
+					<div class="choujiang_content">
+						规则<br>
+						1.规则第一条<br>
+						2.规则第二条<br>
+						2.规则第二条<br>
+						2.规则第二条<br>
+						2.规则第二条<br>
+						3.规则第三条
+					</div>
+					<img src="img/choujiang_xx.png" alt="">
+				</div>
+			</div>
+			<div class="overlay-prize" id="overlay-lose">
+				<a href="javascript:;" class="close"><img src="img/choujiang_close.png" alt=""></a>
+				<div class="baoxiang">
+					<div class="lose">
+						<img src="img/choujiang_lose.png" alt="">
+					</div>
+					<img src="img/choujiang_xiang.png" alt="">
+				</div>
+				<div class="choujiang_xx">
+					<div class="lose_content">
+						再次参与活动还可抽奖。
+					</div>
+					<img src="img/choujiang_xx.png" alt="">
+				</div>
+			</div>
+		</div>
+		<script>
+			var newHd = new AppCommon();
+			newHd.baseUrl='https://np.ifuturex.com:7500/';
+			var shareTitle = decodeURIComponent(newHd.getCookie('shareTitle'));
+			var shareDesc = decodeURIComponent(newHd.getCookie('shareDesc'));
+			var shareImg = decodeURIComponent(newHd.getCookie('shareImg'));
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			var imgType = newHd.GetQueryString('url');
+			var score = newHd.GetQueryString('score');
+			var myChart = echarts.init(document.getElementById('mainBar'));
+			var subid = '';
+			// $(document).attr('title',shareDesc); 
+			
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',trackDesc)
+			}
+			newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc);
+			newHd.$POST('/order/v1/syrvey/userSeeShareResult',
+					{
+						"activityId": newHd.getCookie('activityId'),
+						"userCode":newHd.getCookie('inviteCode')
+					},
+				function(data){
+					subid = data.resultValue.subId;
+					var havePrize = data.resultValue.havePrize
+					if(havePrize){
+						$('.yaoyiyao').css('display','flex');
+						if (window.DeviceMotionEvent) {
+							window.addEventListener('devicemotion', deviceMotionHandler, false);
+						}
+						// $('.yaoyiyao').on('click',function(){
+						// 	luckDraw();
+						// })
+					}
+					// luckDraw();
+					$('.questionR_logo').text(data.resultValue.typeMsg.typeName);
+					$('.questionR_num span').text(data.resultValue.score);
+					
+					// luckDraw();//临时调试接口
+					var radar = data.resultValue.radar;
+					if(isWeixinBrowser) {
+						var shareData = {
+							title: data.resultValue.shareMsg.activityName,
+							desc: data.resultValue.shareMsg.title,
+							link: 'https://www.ifuturex.com/wap/activity/landrover/success.html?code='+newHd.getCookie('inviteCode')+'&activityId='+newHd.getCookie('activityId'),
+							imgUrl: data.resultValue.shareMsg.img
+						}
+						shareInit(shareData,bury)
+					}
+					if(radar.length < 1){
+						return false;
+					}
+					var indicatorArr=[];
+					var echartsData=[];
+					for(var i = 0;i<radar.length;i++){
+						var indiObj = {
+							name:radar[i].dimensionName,
+							max:100
+						}
+						indicatorArr.push(indiObj);
+						echartsData.push(radar[i].score)
+					}
+					myChart.setOption({	
+				    tooltip: {},
+				    calculable : true,
+				    polar: {
+				        // shape: 'circle',
+				        name: {
+				            textStyle: {
+				                color: '#fff',
+				                backgroundColor: '#999',
+				                borderRadius: 3,
+				                padding: [3, 5]
+				           }
+				        },
+				        axisLine:{
+			            lineStyle:{
+			            color:'#3c4146'
+			            }
+			          },
+			          splitLine:{
+			            lineStyle:{
+			            color:'#3c4146'
+			            }
+			          },
+			          splitArea:{
+			          	show:false
+			          },
+			           type: 'polygon',
+				        indicator: indicatorArr
+				    },
+				    series: [{
+				        name: '',
+				        type: 'radar',
+				        itemStyle: {
+			                normal: {
+			                    areaStyle: {
+			                        type: 'default',
+			                        color:'rgba(60,65,70,.5)'
+			                    },
+			                    lineStyle:{
+			                    	width:0
+			                    }
+			                }
+			            },
+				        data : [
+				            {
+				                value : echartsData,
+				                symbolSize:0
+				            }
+				        ]
+				    }]
+			        });
+				
+			})
+			//抽奖方法
+			function luckDraw(){
+				window.removeEventListener('devicemotion', deviceMotionHandler, false);
+				newHd.$POST('/activity/v1/syrvey/shakeLottery',
+					{
+						"activityId": newHd.getCookie('activityId'),
+						"subId":subid
+					},
+				function(data){
+					if(data.resultCode == 200){
+						if(data.resultValue.win == 0){
+							$('#overlay-lose').show();
+							return false;
+						}
+						$('#overlay-prize .jiangpin img').attr('src',data.resultValue.prizeImg);
+						$('#overlay-prize .choujiang_xx h1').html(data.resultValue.prizeName+'  x1');
+						$('#overlay-prize .choujiang_content').html(data.resultValue.memo)
+						$("#overlay-prize").show();
+						$('.yaoyiyao').hide();
+						// 摇一摇执行播放那个函数
+						playVid();
+					}else{
+						alert(data.resultValue);
+					}
+				})
+			}
+			function bury(){
+				newHd.uriedPoints(1,'landrover',newHd.getCookie('activityId'),trackDesc,1)
+			}
+			//点击炫耀
+			$('.questionR_btn').on('click',function(){
+				$('.questionR_share').css('display','block')
+			})
+			var yaoFlag = true;
+			$(".overlay-prize").on('click','a.close',function(){
+				$(".overlay-prize").hide();
+			})
+			$('.questionR_share').on('click',function(){
+				$(this).hide();
+			})
+			
+
+			var SHAKE_THRESHOLD = 300;
+			var last_update = 0;
+			var x, y, z, last_x, last_y, last_z;
+
+			function deviceMotionHandler(eventData) {
+
+				var acceleration = eventData.accelerationIncludingGravity;
+				//alert(newDate().getTime());
+				var curTime = new Date().getTime();
+
+				// alert(curTime - last_update);
+				if ((curTime - last_update) > 300) {
+
+					var diffTime = curTime - last_update;
+					last_update = curTime;
+
+					x = acceleration.x;
+					y = acceleration.y;
+					z = acceleration.z;
+
+					var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+					if (speed > SHAKE_THRESHOLD) {
+						//中奖方法
+						luckDraw();
+					}
+					last_x = x;
+					last_y = y;
+					last_z = z;
+				}
+			}
+
+			function playVid() {
+				// $(document).on('touchstart', function() {
+				// 	myVideo.load()
+				// })
+				var myVideo = document.getElementById("video1");
+				myVideo.play();
+			}
+		</script>
+	</body>
+</html>

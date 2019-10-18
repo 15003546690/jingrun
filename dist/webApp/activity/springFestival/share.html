@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+	<meta name="viewport" content="width=device-width, initial-scale=0.1, maximum-scale=0.1, minimum-scale=0.1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="cache-control" content="no-cache">
+	<title>2018年春晚你最希望看到的艺人</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		em,i{
+			font-style:normal;
+		}
+		ul,li{
+			list-style:none;
+		}
+		a{ 
+			text-decoration:none; 
+			cursor:pointer; 
+		}
+		img{width: 100%; display: block;}
+		body{
+		    font-family:"SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+		    background: #fdecd2;
+			margin:0 auto;
+		}
+		a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+		input,textarea{outline: none;}
+		a img{border: 0;}
+		.banner{width: 100%;height: 1.02rem;background: url(images/btn_bg.jpg) no-repeat top;background-size: 100%;}
+		.banner a{width: 34%;height: 1.6%;display: block;margin: auto;}
+		.tab_box{width: 100%;background: #fdedd6;}
+		.tab_list1{width: 100%; height: 1.98rem; display: flex; flex-wrap: wrap; justify-content: center;}
+		.tab_list1 li{width: 2.11rem; height: 0.92rem;margin: 0 0.18rem 0.14rem 0.18rem;}
+		.activity_time{width: 100%;height: 1.25rem;line-height: 1.25rem;text-align: center;}
+		.activity_time img{display: inline;width: 94.3%;}
+		.prize_detail{width: 100%;margin-top: 0.25rem;}
+		.activity_detail{width: 100%;margin-top: 0.48rem; position: relative;}
+		.activity_detail a{width: 20.5%;height: 1rem; line-height: 1.3rem; border: 0;position: absolute;right: 0.25rem;top: 1rem;}
+		.activity_detail a img{display: inline; vertical-align: middle;}
+		.join_box{width: 100%;background: #d0222c;}
+		.join{width: 100%;height: 0.84rem;background: url(images/join_bg.jpg) no-repeat;background-size: 100%;}
+		.join a{width: 34.4%;display: block;margin: auto;}
+		.star_word{width: 97.5%;background: #fdf0dd;margin: auto;}
+		.star_word_head{width: 100%;height: 0.76rem;}
+		.join_list{width: 94.4%;margin: auto;}
+		.join_list li{width: 100%; height: 1.06rem; border: 0.01rem solid #efb2a8; margin-bottom: 0.1rem;}
+		.headImg{width: 9.3%;height: 100%; float: left; text-align: center;}
+		.headImg img{width: 0.5rem; height: 0.5rem; border-radius: 50%; display: inline-block; vertical-align: top;margin-top: 0.1rem;}
+		.join_list_right{width: 88.9%; float: left;}
+		.user_name{font-size: 0.2rem; color: #acacac;line-height: 0.3rem; margin-top: 0.06rem;}
+		.user_name i{float: left;}
+		.user_name span{float: right;}
+		.user_star{width:90%; font-size: 0.22rem; color: #333;line-height: 0.3rem;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+		.page{width: 43%; height: 0.7rem; line-height: 0.7rem; margin: auto;}
+		.page a{font-size: 0.24rem; color: #d0222c; font-weight: bold;}
+		.prev{float: left;}
+		.next{float: right;}
+		.page a.end{font-size: 0.2rem; color: #beb4a7;}
+		#pageInfo{width:54%; float: left; text-align: center; color: #C4C4C4; font-size: 0.3rem;}
+		.stage2{width: 100%; height: 2.29rem; background: url(images/stage4.png) no-repeat; background-size: 100%;}
+		.stage2 a{width: 2.6rem; display: block; margin: auto;}
+	</style>
+</head>
+<body>
+<a href="https://www.ifuturex.com/webApp/download/download.html">
+	<img src="images/banner.jpg"/>
+	<div class="banner">
+		<a href="javascript:;"><img src="images/btn1.png"/></a>
+	</div>
+	<div class="tab_box">
+		<ul class="tab_list1">
+			<li><a href="javascript:;"><img src="images/act_time.png"/></a></li>
+			<li><a href="javascript:;"><img src="images/act_prize.png"/></a></li> <!--id="prizeBtn"-->
+			<li><a href="javascript:;"><img src="images/act_detail.png"/></a></li>
+			<li><a href="javascript:;"><img src="images/act_theme.png"/></a></li>
+			<li><a href="javascript:;"><img src="images/act_rank.png"/></a></li>
+		</ul>
+	</div>
+	<div class="activity_time"><img src="images/time.png"/></div>
+	<div class="prize_detail" id="prize">
+		<img src="images/prize.jpg"/>
+	</div>
+	<div class="activity_detail" id="detail">
+		<a href="javascript:;"><img src="images/a.png"/></a>
+		<img src="images/detail1.jpg?v=201801101034"/>
+	</div>
+	<div class="join_box">
+		<div class="join"><a href="javascript:;"><img src="images/join_btn.png"/></a></div>
+		<div class="star_word">
+			<div class="star_word_head"><img src="images/img1.jpg"/></div>
+			<ul class="join_list" id="words_box">
+				<!--<li>
+					<div class="headImg"><img src="https://img.ifuturex.com/image/user/male.png"/></div>
+					<div class="join_list_right">
+						<p class="user_name"><i>用户名</i><span>2016-5-5 12:13:0</span></p>
+						<p class="user_star"><i>提名艺人：</i><span>赵本山</span></p>
+						<p class="user_star"><i>提名理由：</i><span id="star_content">乱七八糟理由乱七八糟理由理由乱七八七八乱七八糟理</span></p>
+					</div>
+				</li>-->
+			</ul>
+			<div class="page">
+				<a href="javascript:;" class="prev">上一页</a>
+				<span id="pageInfo">0/1</span>
+				<a href="javascript:;" class="next">下一页</a>
+			</div>
+		</div>
+	</div>
+	<div class="stage1"><img src="images/stage1.png"/></div>
+	<div class="stage1"><img src="images/stage2.png"/></div>
+	<div class="stage1"><img src="images/stage3.png"/></div>
+	<div class="stage2"><a href="javascript:;"><img src="images/stage_btn.png"/></a></div>
+</a>	
+<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+<script type="text/javascript">
+	(function (doc, win) {    
+	    var docEl = doc.documentElement,    
+	    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+	    recalc = function () {    
+	            var clientWidth = docEl.clientWidth;    
+	            if (!clientWidth) return;    
+	            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+	        };    
+	    if (!doc.addEventListener) return;    
+	    win.addEventListener(resizeEvt, recalc, false);    
+	    recalc();    
+	})(document, window);
+</script>
+</body>
+</html>

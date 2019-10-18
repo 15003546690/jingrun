@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta http-equiv="cache-control" content="no-cache">
+		<title>好运就要SHOW，好礼送不停！</title>
+		<meta name="Description" content="我再未来无限网抽中#礼品名称#，快来试试手气吧！" />
+		<link rel="stylesheet" type="text/css" href="../../css/common.css?v=01" />
+		<link rel="stylesheet" href="css/index.css?v=01">
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?4933824c3bcc9fccd852b3be0d6c0d58";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<div class="nodelist">
+			<header class="download_top displayFlex flexMidle">
+				<div class="logo displayFlex flex1">
+					<h1 class="logo-img"></h1>
+					<p class="logo-text">
+						<span class="text-span1">未来无限APP</span>
+						<span class="text-span2">新手注册立享大礼包</span>
+					</p>
+				</div>
+				<a class="logo-right" href="javascript:;" onclick="gotoDown()">下载有礼</a>
+			</header>
+			<div id="title" class="">
+				<!--displayFlex flexMidle-->
+				<div class="title_first">
+					<a>我的金豆：</a>
+					<a class="jindou"></a>
+					<span class="fadeIn">-100</span>
+				</div>
+				<a class="title_login" >
+					登录
+				</a>
+				<div class="title_second">
+					<img class="clickDuihuan" onclick="luckDraw.clickDuihuan()" src="img/duihuan.png" />
+				</div>
+			</div>
+			<div class="shanDeng">
+				<div class="shanDeng_bg">
+					<div id="luck">
+						<div class="cj_box">
+							<div class="item_box displayFlex">
+								<div class="divput divput-0" id="divput-0"></div>
+								<div class="divput divput-1" id="divput-1"></div>
+								<div class="divput divput-2" id="divput-2"></div>
+								<div class="luck_div divput divput-3" id="divput-3"></div>
+								<div class="divput divput-9" id="divput-9"></div>
+								<div class="divput divput-4" id="divput-4"></div>
+								<div class="divput divput-8" id="divput-8"></div>
+								<div class="divput divput-7" id="divput-7"></div>
+								<div class="divput divput-6" id="divput-6"></div>
+								<div class="luck_divtwo divput divput-5" id="divput-5"></div>
+							</div>
+							<button id="idli" class="cjBtn" onclick=""></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tody">
+				<img src="img/tody.png" />
+				<div id="container">
+					<ul id="content"></ul>
+				</div>
+			</div>
+			<div class="wenzi">
+				<p>抽奖说明</p>
+				<p>1.每个账号每日有1次免费抽奖机会。</p>
+				<p>2.分享抽奖活动可再获得1次免费抽奖机会。</p>
+				<p>3.更多参与抽奖可每次消耗100金豆抽奖，每日次数不限。</p>
+				<p>4.免费抽奖机会限当天使用，逾期自动作废，每日24点刷新。</p>
+				<p>5.获得实物或虚拟奖品后，请在“我的兑换”中查看发货具体信息。</p>
+				<p>6.活动最终解释权归无限未来网所有。</p>
+			</div>
+		</div>
+		<script src="js/jquery-2.2.0.js"></script>
+		<script src="js/alert.js"></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?v=01"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js?v=01"></script>
+		<script>
+			var newHd = new AppCommon();
+			newHd.share.name = '好运就要SHOW，好礼送不停！';
+			newHd.share.introduce = '我在未来无限网抽中#礼品名称#，快来试试手气吧！';
+			newHd.setCookie('setUrl', window.location.href);
+			var config = {
+				winId: -1,
+				text: '',
+				img: '',
+				type: '',
+				zhuangtai: '',
+				winIdname: '',
+				valuelength: '',
+				prizeId: '',
+				clickFlag: true,
+				isPayMoney: 0 //是否支付金豆   0-未支付金豆；1-支付金豆 , 
+			}
+			var layer = $('body').alertDialog;
+			var trackDesc = sessionStorage.getItem("trackDesc");
+			if(trackDesc == null) {
+				trackDesc = new Date().getTime();
+				sessionStorage.setItem('trackDesc', trackDesc)
+			}
+
+			function gotoDown() {
+				newHd.uriedPoints(0, 'download', 'undefined', trackDesc);
+				window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.presaint.mhexpress'
+			}
+
+			if(isWeixinBrowser) {
+				var shareData = {
+					title: newHd.share.introduce,
+					desc: newHd.share.name,
+					link: window.location.href,
+					imgUrl: 'https://www.ifuturex.com/wap/activity/duyuesheng/share/share.jpg',
+					success: function() {
+						luckDraw.WeixinShare()
+					}
+				}
+				shareInit(shareData)
+			}
+
+			newHd.choujiang = function(callback) {
+				var _this = this;
+				if(_this.browser == 'mhexpresss') {
+					_this.setCookie('token', newHd.token, 7199);
+					_this.shareSet();
+				} else {
+					//浏览器下的
+					if(_this.token == null) {
+						$.ajax({
+							url: newHd.baseUrl + 'uaa/oauth/token?client_id=ifuturex70sh5dl3&client_secret=ub21t5m4ypokcetebd7x082lar1frzu4&grant_type=client_credentials',
+							type: 'POST',
+							async: true,
+							dataType: 'json',
+							success: function(data) {
+								var token = data.token_type.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase()) + ' ' + data.access_token;
+								var expires_in = parseInt(data.expires_in);
+								_this.setCookie('token', token, expires_in);
+								_this.token = token;
+							}
+						})
+					} else {
+						_this.token = _this.getCookie('token');
+					}
+				}
+				if(callback != undefined) {
+					callback();
+				}
+			}
+
+			if(window.android) {
+				newHd.token = 'Bearer ' + window.android.getToken();
+				newHd.browser = 'mhexpresss';
+				newHd.choujiang(luckDraw.prepre);
+			}
+			//此方法只在IOS下调用
+			function getToken(v) {
+				newHd.token = v;
+				newHd.browser = 'mhexpresss';
+				newHd.choujiang(luckDraw.prepre);
+			}
+
+			function getTokenss(s) {
+				window.webkit.messageHandlers.getToken.postMessage('')
+			}
+
+			setTimeout(function() {
+				if(newHd.browser != 'mhexpresss') {
+					$('.download_top').slideDown();
+					newHd.choujiang(luckDraw.prepre);
+				}
+			}, 3000)
+
+			//-------------------------------------------------------
+			//全局定义 
+			var luckDraw = {
+				//一进页面判断金豆
+				prepre: function() {
+					var islogin = newHd.isLogin();
+					if(islogin) {
+						$('.title_first').show(); //金豆隐藏
+						$('.title_login').hide(); //登录显示
+						newHd.$POST('/account/v1/userInfo/queryUserInfo', {}, function(data) {
+							if(data.resultCode == 200) {
+								var gold = data.resultValue.gold
+								    $('.jindou').html(gold);
+							}
+						})
+					} else {
+						$('.title_first').hide(); //金豆隐藏
+						$('.title_login').show(); //登录显示
+					}
+					luckDraw.xuanran()
+					luckDraw.Namelist()
+					luckDraw.isAny()
+				},
+				//登录进行判断
+				login: function() {
+					var islogin = newHd.isLogin();
+					if(!islogin) {
+						alert('新活动，请重新登录')
+						newHd.setCookie('backUrl', window.location.href)
+						window.location.href = '../../login.html';
+					}
+				},
+				//点击我的兑换按钮
+				clickDuihuan:function(){
+					var islogin = newHd.isLogin();
+					if(!islogin) {
+						alert('新活动，请重新登录')
+						newHd.setCookie('backUrl', window.location.href)
+						window.location.href = '../../login.html';
+					} else {
+						if(newHd.browser == 'mhexpresss') {
+							if(window.webkit) {
+								window.webkit.messageHandlers.WD_DH.postMessage('')
+							} else if(window.android) {
+								window.android.WD_DH()
+							}
+						} else {
+							newHd.uriedPoints(0, 'download', 'undefined', trackDesc);
+							window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.presaint.mhexpress';
+						}
+					}
+				},
+				//转盘渲染
+				xuanran: function() {
+					newHd.$POST('/mall/v1/draw/queryPrizeList', {}, function(data) {
+						if(data.resultCode == 200) {
+							var value = data.resultValue
+							var listzong = '';
+							var butlist = '';
+							for(var i = 0; i < value.length; i++) {
+								var classname = $('.divput').eq(i).attr('class');
+								var id = $('.divput').eq(i).attr('id');
+								listzong += '<div class="' + classname + '" id="' + id + '" data-id="' + value[i].prizeId + '">' +
+									'<p>' +
+									'<img src="' + value[i].prizeImg + '"class="div_img" />' +
+									'</p>' +
+									'<span>' + value[i].prizeName + '</span>' +
+									'</div>'
+							}
+							$('.item_box').html(listzong);
+						}
+					})
+				},
+				//点击立即抽奖按钮
+				huojiang: function() {
+					if(config.valuelength == 0) {
+						//没有可领取
+						newHd.$POST('/mall/v1/draw/luckDraw',{}, function(data) {
+							if(data.resultCode == 200) {
+								var value = data.resultValue;
+								config.prizeId = data.resultValue.prizeId;
+								config.winIdname = data.resultValue.winId;
+								var isPayMoney  = data.resultValue.isPayMoney;
+								var cls = $('.divput[data-id=' + config.prizeId + ']').attr('id');
+								var clsArr = cls.split('-');
+								config.winId = clsArr[1];
+								config.type = data.resultValue.type;
+								config.text = data.resultValue.prizeName;
+								config.img = data.resultValue.prizeImg;
+								newHd.setCookie('prizeId', config.prizeId);
+								newHd.setCookie('winId', config.winIdname);
+								if(data.resultValue.prizeName == '继续努力') {
+									config.zhuangtai = false;
+								} else {
+									config.zhuangtai = true;
+								}
+								if(isPayMoney == 1){
+									shifou()
+								}
+								roll();
+							}
+						})
+					} else {
+						//有未领取
+						layer({
+							text: config.text,
+							img: config.img,
+							zhuangtai: true,
+							jpType: config.type,
+							winIdname: config.winIdname
+						})
+					}
+				},
+				//一进页面是否有未领取的奖品
+				isAny: function() {
+					newHd.$POST('/mall/v1/draw/queryUnreceivedPrize', {}, function(data) {
+						if(data.resultCode == 200) {
+							config.valuelength = data.resultValue.length;
+							if(config.valuelength > 0) {
+								config.winIdname = data.resultValue[0].winId;
+								config.prizeId = data.resultValue[0].prizeId;
+								config.type = data.resultValue[0].type;
+								config.text = data.resultValue[0].prizeName;
+								config.img = data.resultValue[0].prizeImg;
+								newHd.setCookie('prizeId', config.prizeId);
+								newHd.setCookie('winId', config.winIdname);
+								layer({
+									text: config.text,
+									img: config.img,
+									zhuangtai: true,
+									jpType: config.type,
+									winIdname: config.winIdname,
+									browser: newHd.browser,
+									yes: function() {
+										if(config.type == 2) {
+											if(window.webkit) {
+												window.webkit.messageHandlers.DZ_GL.postMessage('')
+											} else if(window.android) {
+												window.android.DZ_GL();
+											}
+										} else if(config.type == 3) {
+											//中奖充值卡
+											luckDraw.lingquChongzhi();
+										}
+									}
+								})
+							}
+						}
+					})
+				},
+				//今日获奖的名单
+				Namelist: function() {
+					newHd.$POST('/mall/v1/draw/getPrizeWinners', {}, function(data) {
+						if(data.resultCode == 200) {
+							var value = data.resultValue;
+							var list = '';
+							for(var i = 0; i < value.length; i++) {
+								list += '<li><i>' + value[i].mobilePhone + '</i><a>抽中  &nbsp;&nbsp;&nbsp;&nbsp;' + value[i].prizeName + '</a></li>'
+							}
+							$('#content').html(list);
+							if(value.length > 6) {
+								sonnn()
+							}
+						}
+					})
+				},
+				//领取充值卡
+				lingquChongzhi: function() {
+					var postData = {
+						prizeId: config.prizeId,
+						winId: config.winIdname
+					}
+					luckDraw.lingqujiangli(postData)
+				},
+				//领奖
+				lingqujiangli: function(postData) {
+					newHd.$POST('/mall/v1/draw/receivePrize', postData, function(data) {
+						if(data.resultCode == 200) {
+							config.zhuangtai = false;
+							config.clickFlag = true;
+							layer({
+								text: config.text,
+								zhuangtai: config.zhuangtai,
+								jpType: 0,
+								winIdname: config.winIdname,
+								browser: newHd.browser,
+								chengongbtn: true,
+								yes: function() {
+									if(config.zhuangtai){
+										if(config.type == 2) {
+											if(window.webkit) {
+												window.webkit.messageHandlers.DZ_GL.postMessage('')
+											} else if(window.android) {
+												window.android.DZ_GL();
+											}
+										}else if(config.type == 3) {
+											//中奖充值卡
+											luckDraw.lingquChongzhi();
+											
+										}else{
+		                                    layer.closeAll();
+										    $("#idli").trigger('click')
+									    }
+										$('.fadeIn').hide();
+									}else{
+										layer.closeAll();
+										$("#idli").trigger('click')
+									}
+									newHd.delCookie(prizeId)
+									newHd.delCookie(winId)  
+								},
+								no:function(){
+                                        $('#lijieDialog').remove()
+										$("#idli").click();
+										roll();
+										$('.fadeIn').show();
+//										luckDraw.prepre();
+										setTimeout(function() {$(".fadeIn").fadeOut(5000);}, 100);
+								}
+							})
+						}else {
+							alert(data.resultMessages)
+						}
+					})
+				},
+			    //分享
+//			    share:function(){
+//			    	newHd.$POST('/mall/v1/draw/shareLotteryDrawApp', postData, function(data) {
+//			    		
+//			    	})
+//			    }
+//			
+			
+			}
+
+			//输入地址返回成功的时候调取 
+			function finishDrawPrize(address, mobilePhone, realName) {
+				var address = address;
+				var mobilePhone = mobilePhone;
+				var realName = realName;
+				var prizeId = newHd.getCookie('prizeId')
+				var winId = newHd.getCookie('winId')
+				var postData = {
+					address: address,
+					mobilePhone: mobilePhone,
+					realName: realName,
+					prizeId: prizeId,
+					winId: winId
+				}
+				luckDraw.lingqujiangli(postData)
+			}
+			//转盘	
+			var luck = {
+				index: -1, //当前转动到哪个位置，起点位置
+				count: 0, //总共有多少个位置
+				timer: 0, //setTimeout的ID，用clearTimeout清除
+				speed: 20, //初始转动速度
+				times: 0, //转动次数
+				cycle: 20, //转动基本次数：即至少需要转动多少次再进入抽奖环节
+				prize: -1, //中奖位置
+
+				init: function(id) {
+					if($("#luck").find(".divput").length > 0) {
+						var $luck = $("#luck"); //把id赋给$luck
+						var $units = $luck.find(".divput"); //id下找到luck-unit    然后赋给units
+						this.obj = $luck; //把$luck赋给this.obj
+						this.count = $units.length; //把$units的长度赋给this.count
+						$luck.find(".divput-" + this.index).addClass("color_yellow"); //在id下找到class名的下标     给它添加class名    active
+					};
+				},
+				roll: function() {
+					var index = this.index;
+					var count = this.count; //=$units.length
+					var luck = this.obj; //$("#"+id)
+					$(luck).find(".divput-" + index).removeClass("color_yellow"); //id下找到class名luck-unit  减去下标      移除class名     active
+					index += 1;
+					if(index > count - 1) {
+						index = 0;
+					};
+					$(luck).find(".divput-" + index).addClass("color_yellow");
+					this.index = index;
+					return false;
+				}
+			};
+
+			function roll(value) {
+				luck.times += 1; //id转动的次数
+				luck.roll(); //调用
+				if(luck.times > luck.cycle + 10 && luck.prize == luck.index) { //转动的次数大于      至少需要转动多少次再进入抽奖环节+10 并且 id的中奖位置==id的下标
+					clearTimeout(luck.timer); //   清除id
+					luck.timer = null;
+					luck.prize = -1; //下标的位置重新赋值为-1
+					luck.times = 0; //转动的次数也重新赋值为0
+					config.clickFlag = true; //点击效果是不是点击的样式
+					//弹层 显示
+					layer({
+						text: config.text,
+						img: config.img,
+						zhuangtai: config.zhuangtai,
+						jpType: config.type,
+						browser: newHd.browser,
+						yes: function() {
+							if(config.zhuangtai) {
+								//中奖实物
+								if(config.type == 2) {
+									if(window.webkit) {
+										window.webkit.messageHandlers.DZ_GL.postMessage('')
+									} else if(window.android) {
+										window.android.DZ_GL();
+									}
+								} else if(config.type == 3) {
+									//中奖充值卡
+									luckDraw.lingquChongzhi();
+								} else {
+									//中奖虚拟
+									layer.closeAll();
+									$("#idli").trigger('click')
+								}
+								$('.fadeIn').hide();
+							} else {
+								//中奖虚拟
+								layer.closeAll();
+								$("#idli").trigger('click')
+							}
+							newHd.delCookie(prizeId)
+							newHd.delCookie(winId)
+							$('.fadeIn').show();
+//							luckDraw.prepre();
+							setTimeout(function() {$("#idli").removeClass("cjBtnDom");$(".fadeIn").fadeOut(5000);}, 100);
+						},
+						no:function(){
+                            $('#lijieDialog').remove()
+							$("#idli").click();
+//							luckDraw.prepre();
+							$('.fadeIn').show();
+							setTimeout(function() {$(".fadeIn").fadeOut(5000);}, 100);
+						}
+					})
+				} else {
+					if(luck.times < luck.cycle) { //转动的次数小于      至少需要转动多少次再进入抽奖环节
+						luck.prize = parseInt(config.winId); //下标赋值给id的中奖位置  	
+
+					} else {
+						if(luck.times > luck.cycle + 10 && ((luck.prize == 0 && luck.index == 7) || luck.prize == luck.index + 1)) {
+							//转动的次数大于      至少需要转动多少次再进入抽奖环节+10 并且        （id的中奖位置==0并且下标等于7）或者中奖的位置==id的下标加上1
+							luck.speed += 110; //初始速度+=110
+						} else {
+							luck.speed += 20; //初始速度+=20
+						}
+					}
+					if(luck.speed < 40) {
+						luck.speed = 40;
+					};
+					luck.timer = setTimeout(roll, luck.speed); //定时
+				}
+				return false;
+			}
+			//立即抽奖按钮点击
+			$(function() {
+				luck.init();
+				$("#idli").click(function() {
+					if(!config.clickFlag) {
+						return false;
+					}
+					var islogin = newHd.isLogin();
+					if(!islogin) {
+						newHd.setCookie('backUrl', window.location.href)
+						window.location.href = '../../login.html';
+					} else {
+						//按下弹起效果
+						if(config.valuelength > 0){//是否有要领取的奖品
+							luckDraw.isAny();
+							config.clickFlag = false;
+						}else{
+								if($(".jindou").text() < 100) {
+									alert('金豆余额不足')
+								}else {
+									luckDraw.huojiang();
+								}
+//							}
+						}
+					}
+				});
+			})
+			//名单滚动
+			function sonnn() {
+				var segmentHeight = 0;
+				$("#container #content li").each(function() {
+					segmentHeight += $(this).outerHeight(true);
+				});
+
+				$("#container #content li").clone().appendTo($("#container #content"));
+				run(40000);
+
+				function run(interval) {
+					$("#container #content").animate({
+						"top": -segmentHeight
+					}, interval, "linear", function() {
+						$("#container #content").css("top", 0);
+						run(40000);
+					});
+				}
+
+			}
+			//点击我的兑换按钮
+//			$('.clickDuihuan').click(function() {
+//				luckDraw.clickDuihuan()
+//			})
+			$('.title_login').click(function() {
+				luckDraw.login()
+			})
+			//是否是第一次抽奖
+			function shifou(){
+				var jindou = parseFloat($('.jindou').text());
+					var jindouHtml = jindou - 100;
+					    $('.jindou').text(jindouHtml.toFixed(2))
+					$("#idli").addClass("cjBtnDom");
+					$('.fadeIn').show();
+					setTimeout(function() {$("#idli").removeClass("cjBtnDom");$(".fadeIn").fadeOut(5000);}, 100);
+					luck.speed = 100;
+			}
+		</script>
+	</body>
+
+</html>

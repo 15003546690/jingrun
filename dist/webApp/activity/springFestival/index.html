@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=.1, maximum-scale=.1, minimum-scale=.1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+	<title>2018年春晚你最希望看到的艺人</title>
+	<style>
+		html {
+		  outline:0;
+		}
+		ul,li,ol,dl,dt,dd,p,h1,h2,h3,h4,input,textarea,th,p,label{padding:0px; margin:0px; list-style:none; font-weight:normal; font-size: .24rem;}
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		em,i{
+			font-style:normal;
+		}
+		ul,li{
+			list-style:none;
+		}
+		a{ 
+			text-decoration:none; 
+			cursor:pointer; 
+		}
+		img{width: 100%; display: block;}
+		body{
+		    font-family:"Microsoft YaHei","Arial", "Hiragino Sans GB","WenQuanYi Micro Hei";
+		    background: #fdecd2;
+			margin:0 auto;
+		}
+		a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+		input,textarea,button{font-family: "Microsoft YaHei","Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif; border-width:0; padding:0; margin:0; outline:none; resize:none; color:#000; font-size: .24rem;}
+		a img{border: 0;}
+		.banner{width: 100%;height: 1.02rem;background: url(images/btn_bg.jpg) no-repeat top;background-size: 100%;}
+		.banner a{width: 34%;height: 1.6%;display: block;margin: auto;}
+		.tab_box{width: 100%;background: #fdedd6;}
+		.tab_list1{width: 100%; display: flex; flex-wrap: wrap; justify-content: center;}
+		.tab_list1 li{width: 28.4%; height: 0.92rem;margin: 0 0.18rem 0.14rem 0.18rem;}
+		.activity_time{width: 100%;height: 1.25rem;line-height: 1.25rem;text-align: center;}
+		.activity_time img{display: inline;width: 94.3%;}
+		.prize_detail{width: 100%;margin-top: 0.25rem;}
+		.activity_detail{width: 100%;margin-top: 0.48rem; position: relative;}
+		.activity_detail a{width: 20.5%;height: 1rem; line-height: 1.1rem; border: 0;position: absolute;right: 0.25rem;top: 1rem;}
+		.activity_detail a img{display: inline; vertical-align: middle;}
+		.join_box{width: 100%;background: #d0222c;}
+		.join{width: 100%;height: 0.84rem;background: url(images/join_bg.jpg) no-repeat;background-size: 100%;}
+		.join a{width: 34.4%;display: block;margin: auto;}
+		.star_word{width: 97.5%;background: #fdf0dd;margin: auto;}
+		.star_word_head{width: 100%;height: 0.76rem;}
+		.join_list{width: 94.4%;margin: auto;}
+		.join_list li{width: 100%; height: 1.06rem; border: 0.01rem solid #efb2a8; margin-bottom: 0.1rem;}
+		.headImg{width: 9.3%;height: 100%; float: left; text-align: center;}
+		.headImg img{width: 0.5rem; height: 0.5rem; border-radius: 50%; display: inline-block; vertical-align: top;margin-top: 0.1rem;}
+		.join_list_right{width: 88.9%; float: left;}
+		.user_name{font-size: 0.2rem; color: #acacac;line-height: 0.3rem; margin-top: 0.06rem;}
+		.user_name i{float: left;}
+		.user_name span{float: right;}
+		.user_star{width:90%; font-size: 0.22rem; color: #333;line-height: 0.3rem;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+		.page{width: 43%; height: 0.7rem; line-height: 0.7rem; margin: auto; display: flex;}
+		.page a{font-size: 0.24rem; color: #d0222c; font-weight: bold;}
+		.page a.end{font-size: 0.2rem; color: #beb4a7;}
+		#pageInfo{width:52%; float: left; text-align: center; color: #C4C4C4; font-size: 0.3rem;}
+		.stage2{width: 100%; height: 2.29rem; background: url(images/stage4.png) no-repeat; background-size: 100%;}
+		.stage2 a{width: 2.6rem; display: block; margin: auto;}
+		
+		.dialog_com1{width: 100%; height: 100%; position: fixed; z-index: 9999; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+		.dialog_com1 .dialog_content{width: 78.9%; position: absolute; left: 11.6%; top: 30%;}
+		.dialog_com1 .dialog_content .dia_close{display: block; width: .4rem; height: .4rem; position: absolute; right: -0.4rem; top: -.2rem;}
+		.dialog_com1 .dialog_nr{width: 80%; left: 10%; position: absolute; top: 0.5rem; color: #fb1f3c; font-size: .38rem; line-height: 2.4rem; text-align: center;}
+		.dialog_com1 .dialog_nr p{display: inline-block; vertical-align: middle; line-height: 0.46rem;}
+		
+		.dialog_com2{width: 100%; height: 100%; position: absolute; z-index: 99; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+		.dialog_com2 .dialog_content{width: 73.9%; position: absolute; left: 11.6%; top: 20%;}
+		.dialog_com2 .dialog_content .dia_close{display: block; width: .4rem; height: .4rem; position: absolute; right: -0.4rem; top: -.2rem;}
+		.dialog_set{width: 80%; position: absolute;top: 9.7%;left: 10.2%;}
+		.dialog_set_head{width: 92%; height: 0.8rem; margin: auto; line-height: 0.8rem; text-align: center;}
+		.dialog_set_head img{display: inline-block; vertical-align: middle;}
+		.dialog_set_name{width: 96%; height: 0.36rem; margin-left: 3%; line-height: 0.36rem; display: flex; display: -webkit-flex;}
+		.dialog_set_name span{width: 21%; font-size: 0.22rem; color: #fb1f3c;}
+		.dialog_set_name input{width: 74%; height: 0.36rem; line-height: 0.36rem; border: 0; font-size: 0.22rem; padding-left: 0.1rem;}
+		.dialog_set_tishi{height: 0.2rem; font-size: 0.18rem; color: #fb1f3c; margin-left: 1.2rem;}
+		.dialog_set_reason{width: 96%; height: 1.69rem;  margin-left: 3%; display: flex; position: relative;}
+		.dialog_set_reason span{width: 21%; font-size: 0.22rem; color: #fb1f3c;}
+		.dialog_set_box{width: 76%;height: 1.69rem;background: #fff;}
+		.dialog_set_reason textarea{width: 96%; height: 1.4rem; line-height: 0.28rem; border: 0; font-size: 0.24rem; padding-left: 0.1rem; resize: none; padding-top: 0.05rem;}
+		.wordsNum{position: absolute; bottom: 0; right: 0.2rem; color: #ccc2c2; font-size: 0.20rem;}
+		.submitBtn{width: 96%; height: 0.36rem; margin-top: 0.1rem;}
+		.submitBtn a{width: 1.3rem; height: 0.36rem; float: right;}
+		.example{width: 94%; margin: auto;}
+		
+		.dialog_com3{width: 100%; height: 100%; position: absolute; z-index: 99; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+		.dialog_com3 .dialog_content{width: 73.9%; position: absolute; left: 11.6%; top: 20%;}
+		.dialog_com3 .dialog_content .dia_close{display: block; width: .4rem; height: .4rem; position: absolute; right: -0.4rem; top: -.2rem;}
+		.record_head{width: 100%; height: 0.7rem; line-height: 0.58rem; text-align: center; border-bottom: 0.01rem solid #eca676; margin-top: 0.2rem;}
+		.record_head img{width: 50%; display: inline-block; vertical-align: middle;}
+		.record_box{height: 3.8rem; overflow: auto;}
+		.record_item{ border-bottom:solid .01rem #eca676; padding:.1rem;}
+		.record_item_main{height: 0.32rem; line-height: 0.32rem; margin-top: 0.12rem;}
+		.record_item_main h2{font-size: .26rem; color: #8e5e5c;float: left;}
+		.record_item_main .state{float: right; width: 1.0rem;}
+		.record_time{height: 0.2rem; line-height: 0.2rem; display: flex; margin-bottom: 0.05rem;}
+		.record_time small{color: #8e5e5c; font-size: 0.2rem;}
+		.record_item article{ line-height: 0.24rem;font-size: 0.24rem; color: #8e5e5c;}
+		.record_item .comment{ font-size: 0.24rem; line-height: 0.24rem;}
+		.record_item .comment.go{color: #029c15;}
+		.record_item .comment.pass{color: #d01a0f;}
+		
+		.dialog_com4{width: 100%; height: 100%; position: fixed; z-index: 99; left: 0; top: 0; background: rgba(0,0,0,.7); display: none;}
+		.dialog_com4 .dialog_content{width: 73.9%; position: absolute; left: 11.6%; top: 20%;}
+		.dialog_com4 .dialog_content .dia_close{display: block; width: .4rem; height: .4rem; position: absolute; right: -0.4rem; top: -.2rem;}
+		.cause_head{width: 40%; height: 0.4rem; line-height: 0.4rem; text-align: center; margin: auto;}
+		.cause_head img{display: inline;}
+		.cause_content{height:4.0rem; overflow:auto;  margin-top: 0.2rem; font-size: 0.26rem; color: #8e5e5c;}
+		.open{overflow: hidden; width:100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 1;}
+	</style>
+</head>
+<body>
+	<div id="app">
+		
+	
+	<img src="images/banner.jpg"/>
+	<div class="banner">
+		<a href="javascript:;" onclick="showDialog2()"><img src="images/btn1.png"/></a>
+	</div>
+	<div class="tab_box">
+		<ul class="tab_list1">
+			<li><a href="javascript:;"><img src="images/act_time.png"/></a></li>
+			<li><a href="javascript:;" onclick="goTop('prize')"><img src="images/act_prize.png"/></a></li> <!--id="prizeBtn"-->
+			<li><a href="javascript:;" onclick="goTop('detail')"><img src="images/act_detail.png"/></a></li>
+			<li><a href="javascript:;" onclick="showDialog1('暂未开始，敬请期待！')"><img src="images/act_theme.png"/></a></li>
+			<li><a href="javascript:;" onclick="showDialog1('将于2月14日公布')"><img src="images/act_rank.png"/></a></li>
+		</ul>
+	</div>
+	<div class="activity_time"><img src="images/time.png"/></div>
+	<div class="prize_detail" id="prize">
+		<img src="images/prize.jpg"/>
+	</div>
+	<div class="activity_detail" id="detail">
+		<a href="javascript:;" onclick="showDialog3()"><img src="images/a.png"/></a>
+		<img src="images/detail1.jpg?v=201801101034"/>
+	</div>
+	<div class="join_box">
+		<div class="join"><a href="javascript:;" onclick="showDialog2()"><img src="images/join_btn.png"/></a></div>
+		<div class="star_word">
+			<div class="star_word_head"><img src="images/img1.jpg"/></div>
+			<ul class="join_list" id="words_box">
+			</ul>
+			<div class="page">
+				<a href="javascript:;" class="prev">上一页</a>
+				<span id="pageInfo">0/1</span>
+				<a href="javascript:;" class="next">下一页</a>
+			</div>
+		</div>
+	</div>
+	<!-- 提示弹层 -->
+	<div class="dialog_com1">
+		<div class="dialog_content">
+			<a href="javascript:;" class="dia_close" onclick="dialog_close2()"><img src="images/close.png"></a>
+			<img src="images/hint_bg.png">
+			<div class="dialog_nr">
+				<p></p>
+			</div>
+		</div>
+	</div>
+	<!--出题弹层-->
+	<div class="dialog_com2">
+		<div class="dialog_content">
+			<a href="javascript:;" class="dia_close" onclick="dialog_close()"><img src="images/close.png"></a>
+			<img src="images/get_bg.png">
+			<div class="dialog_set">
+				<div class="dialog_set_head"><img src="images/text.png?v=201801110437"/></div>
+				<div class="dialog_set_name">
+					<span>提&nbsp;&nbsp;&nbsp;&nbsp;名：</span><input type="text" placeholder="每次可输入一个人名或团体" id="title"/>
+				</div>
+				<div class="dialog_set_tishi"></div>
+				<div class="dialog_set_reason">
+					<span>理&nbsp;&nbsp;&nbsp;&nbsp;由：</span>
+					<div class="dialog_set_box">
+						<textarea name="" id="content" cols="30" rows="10" maxlength="500" onkeyup="setTimeout(jisuan, 4);"></textarea>
+						<div class="wordsNum">0/500</div>
+					</div>
+				</div>
+				<div class="submitBtn"><a href="javascript:;" id="submit_btn"><img src="images/submit_btn.png"/></a></div>
+				<div class="example"><img src="images/example.png?v=201801110437"/></div>
+			</div>
+		</div>
+	</div>
+	<!--我的提名记录-->
+	<div class="dialog_com3">
+		<div class="dialog_content">
+			<a href="javascript:;" class="dia_close" onclick="dialog_close()"><img src="images/close.png"></a>
+			<img src="images/get_bg.png">
+			<div class="dialog_set">
+				<div class="record_head"><img src="images/record.png"/></div>
+				<div class="record_box" id="recordBox">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--缘由弹层-->
+	<div class="dialog_com4">
+		<div class="dialog_content">
+			<a href="javascript:;" class="dia_close" onclick="dialog_close2()"><img src="images/close.png"></a>
+			<img src="images/get_bg.png">
+			<div class="dialog_set">
+				<div class="cause_head"><img src="images/cause_text.png?v=201801110405"/></div>
+				<div class="cause_content"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="stage1"><img src="images/stage1.png"/></div>
+	<div class="stage1"><img src="images/stage2.png"/></div>
+	<div class="stage1"><img src="images/stage3.png"/></div>
+	<div class="stage2"><a href="javascript:;" onclick="showDialog2()"><img src="images/stage_btn.png"/></a></div>
+	</div>
+	
+<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js" ></script>
+<script type="text/javascript">
+	(function (doc, win) {    
+	    var docEl = doc.documentElement,    
+	    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',    
+	    recalc = function () {    
+	            var clientWidth = docEl.clientWidth;    
+	            if (!clientWidth) return;    
+	            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';    
+	        };    
+	    if (!doc.addEventListener) return;    
+	    win.addEventListener(resizeEvt, recalc, false);    
+	    recalc();    
+	})(document, window);
+	function dialog_close(){
+		$('.dialog_com3,.dialog_com2').hide();
+		$('#app').removeClass('open');
+	}
+	function dialog_close2(){
+		$('.dialog_com1,.dialog_com4').hide();
+		myrefresh()
+	}
+	/*function dialog_close1(){
+		$('.dialog_com2').hide();
+		$('#app').removeClass('open');
+	}*/
+	function showDialog1(txt){
+		$('.dialog_com1').fadeIn(300).find('.dialog_nr p').html(txt);
+	}
+ 	function showDialog2(){
+ 		$('.dialog_com2').fadeIn(300)
+ 		publicDialog()
+   		$('#app').addClass('open');
+ 	}
+ 	function showDialog3(){
+ 		$('.dialog_com3').fadeIn(300)
+ 		$('#app').addClass('open');
+ 		getRecords()
+ 	}
+ 	function showDialog4(txt){
+		$('.dialog_com4').fadeIn(300).find('.cause_content').html(txt);
+	}
+	var config={
+		token:'',
+		page:0,
+		total:1,
+		activityId:'',
+		wordsArr: [],
+		flag: true,
+		// baseUrl:'https://api.ifuturex.com:443',
+		baseUrl:'http://192.168.0.13:7500',
+		init:function(){
+			var _this = this;
+			if (window.webkit) {
+				window.webkit.messageHandlers.share.postMessage({name: '参与征集送现金红包', introduce: '2018春晚节目评选你最希望看到谁？', shareIcon: 'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', url: config.shareUrl()})
+				this.activityId = this.getParm(window.location.href,'activityId') || '';
+				$('body').addClass('scale');
+			} else if (window.android) {
+				_this.token = 'Bearer '+ window.android.getToken();
+				this.activityId = this.getParm(window.location.href,'activityId') || '';
+				window.android.share('参与征集送现金红包','2018春晚节目评选你最希望看到谁？',  'http://weilaiwuxianwang.oss-cn-beijing.aliyuncs.com/active/logo.png', config.shareUrl())
+				
+				getWords()
+			}
+		},
+		getXMLHttpRequest: function() {
+		  	var xhr;
+		  	if(window.ActiveXObject) {  
+		   		xhr= new ActiveXObject("Microsoft.XMLHTTP");  
+		  	}else if (window.XMLHttpRequest) {  
+		    	xhr= new XMLHttpRequest();
+		 	}else {  
+		    	xhr= null;  
+		  	}  
+		  	return xhr;  
+		},
+		//公用ajax调用方法
+		$POST: function(url,data,success) {
+			var xhr = this.getXMLHttpRequest();
+			var url = this.baseUrl+url;
+			xhr.open("post",url);  
+	      	xhr.setRequestHeader("Content-Type","application/json;charset=UTF-8");  
+	      	xhr.setRequestHeader("Authorization",this.token);  
+	      	xhr.setRequestHeader("Accept","application/json, text/plain, */*");  
+	      	var data = data || '{}';  
+	     	xhr.send(JSON.stringify(data));
+	     	xhr.onreadystatechange= function() {  
+	           if(xhr.readyState == 4 && xhr.status == 200) {  
+	                var data = JSON.parse(xhr.responseText); 
+	                if(typeof success === 'function'){
+	                	success(data);
+	                }
+	           	}else if(xhr.readyState == 4 && xhr.status != 200){
+               		alert('您还没有登录');
+               		window.history.go(-1);
+               	}  
+	  		};  
+		},
+		getParm : function(url, key) {
+			var escapeReg = function(source) {
+				return String(source)
+						.replace(new RegExp("([.*+?^=!:\x24{}()|[\\]\/\\\\])", "g"), '\\\x241');
+			};
+			var reg = new RegExp(
+								"(^|&|\\?|#)" 
+								+ escapeReg(key) 
+								+ "=([^&]*)(&|\x24)", 
+							"");
+			var match = url.match(reg);
+			if (match) {
+				var result=match[2].substring(match[2].length-1,match[2].length);
+				return result=='#'?match[2].substring(0,match[2].length-1):match[2];
+			}
+			
+			return null;
+		},
+		shareUrl:function(){
+			return window.location.protocol + '//' + window.location.host +'/webApp/activity/springFestival/share.html';
+		},
+	}
+	function add0(m){return m<10?'0'+m:m }
+	function format(format){
+		//shijianchuo是整数，否则要parseInt转换
+		var time = new Date(format);
+		var y = time.getFullYear();
+		var m = time.getMonth()+1;
+		var d = time.getDate();
+		var h = time.getHours();
+		var mm = time.getMinutes();
+		var s = time.getSeconds();
+		return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+	}
+	//获取token
+	function getToken(v){
+		config.token = v;
+		getWords();
+		// return v;				
+	}
+	config.init();
+	//获取token兼容旧版本
+	function getTokenss(s){
+		window.webkit.messageHandlers.getToken.postMessage('')
+	}
+	
+	
+	function jisuan(){
+		var valu = $('#content').val();
+		var newvalue = valu.replace(/[^\x00-\xff]/g, "**");
+		var len = newvalue.length;
+		if(len < 500){
+			$('.wordsNum').html(Math.floor(parseInt(len) / 2 )+'/500');
+		}
+	}
+	
+	function goTop(id){
+		var num = $('#'+id).offset().top+'px';
+		$("html,body").animate({scrollTop: num }, 500);
+	}
+	
+	/*我的提名记录*/
+	function getRecords() {
+		config.activityId = config.getParm(window.location.href,'activityId')
+		var data = {
+      		"activityId": config.activityId,
+			"page": 0,
+			"size": 100000
+      	};
+      	config.$POST('/account/v1/userSubject/queryUserSubject',data,function(data){
+  			if(data.resultCode === 200){
+  				var list = data.resultValue.userSubjectEntitys;
+  				config.total = data.resultValue.userSubjectEntitysCount;
+  				var temp = '';
+  				for(var i =0,len=list.length;i<len;i++){
+  					var stat = list[i].status + 1;
+  					var timestamp = list[i].createTime;
+					var date = format(timestamp);
+  					temp +='<div class="record_item"><div class="record_item_main"><h2>'+ list[i].title 
+						 +'</h2><div class="state"><img src="images/state'+ stat 
+						 + '.png"></div></div><div class="record_time"><small>'+ date 
+						 + '</small></div><article>'+  list[i].content 
+						 +'</article>'
+  					if(list[i].subjectOption != ''){
+	  					if(list[i].status == 2){
+	  						temp +='<div class="comment go">'
+	  					}else if(list[i].status == 1){
+	  						temp +='<div class="comment pass">'
+	  					}
+	  					temp +=list[i].subjectOption + '</div>'
+  					}
+  					temp +='</div>'
+  				}
+  				$('#recordBox').html(temp);
+  			}else{
+  				showDialog1(data.resultMessages)
+  			}
+  		})
+	}
+	
+	/*看看大家排名*/
+	function getWords() {
+	  config.activityId = config.getParm(window.location.href,'activityId')
+      var data = {
+      		"activityId": config.activityId,
+			"page": config.page,
+			"size": 4
+      };
+      config.$POST('/account/v1/userSubject/queryApprovalActivitySubject',data,function(data){
+           if(data.resultCode == 200) {
+                config.total = Math.ceil(data.resultValue.userSubjectEntitysCount/4);
+                if(config.page == (config.total-1)){
+					$('.page .next').addClass('end');
+				}else{
+					$('.page .next').removeClass('end');
+				}
+                var list = data.resultValue.userSubjectEntitys;
+                config.wordsArr = list;
+                // alert(list)
+                var code = '';
+                for(var i = 0,len=list.length;i<len;i++){
+                	var timestamp = list[i].createTime;
+					/*var newDate = new Date();
+					newDate.setTime(timestamp);*/
+					var date = format(timestamp);
+                	code+='<li data-index="'+i+'">'
+                		+ '<div class="headImg"><img src="' + list[i].headimg + '"/></div>'
+                		+ '<div class="join_list_right">'
+						+ '<p class="user_name">'
+						+ '<i>'+ list[i].nickname + '</i><span>' + date + '</span>'
+						+ '</p>'
+						+ '<p class="user_star"><i>提名艺人：</i><span>'+ list[i].title +'</span></p>'
+						+ '<p class="user_star"><i>提名理由：</i><span id="star_content">'+ list[i].content + '</span></p>'
+						+ '</div>'
+                		+'</li>';
+                }
+                $('#words_box').empty().html(code);
+                var cur = config.page + 1;
+                $('#pageInfo').html(''+cur+'/'+config.total+'')
+				pageState();
+				pageClick();
+           }  
+  		})  
+	}
+	function pageClick(){
+		$('#words_box').on('click','li',function(){
+			var index = parseInt($(this).attr('data-index'));
+			var txt = config.wordsArr[index].content;
+			showDialog4(txt)
+		})
+		
+	}
+	/*分页*/
+	function pageState(){
+		if(config.page == 0){
+			$('.prev').addClass('end');
+		}else{
+			$('.prev').off().on('click',function(){
+				if(config.page > 0){
+					config.page--;
+					getWords();
+				}
+			})
+		}
+		if(config.page == config.total){
+			$('.next').addClass('end');
+		}else{
+			$('.next').off().on('click',function(){
+				if(config.page < (config.total - 1)){
+					$('.prev').removeClass('end');
+					config.page++;
+					getWords();
+				}
+			})
+		}
+	}
+	
+	/*发布*/
+	function publicDialog(){
+		config.activityId = config.getParm(window.location.href,'activityId')
+		var data = {
+      		"activityId": config.activityId,
+			"page": config.page,
+			"size": 10
+      	};
+		$('#content').on('keyup',function(){
+			var valu = $(this).val();
+			var newvalue = valu.replace(/[^\x00-\xff]/g, "**");
+			var len = newvalue.length;
+	  		if(len < 500){
+	  			$('.wordsNum').html(Math.floor(parseInt(len) / 2 )+'/500');
+	  		}
+	  	})
+	  	$('#submit_btn').on('click',function(){
+	  		var data = {
+	  			title:$('#title').val(),
+	  			content:$('#content').val(),
+	  			activityId:config.activityId
+	  		}
+	  		if($.trim(data.title) == ''){
+	  			showDialog1('名字不能为空');
+	  			return false;
+	  		}
+	  		if($.trim(data.content) == ''){
+	  			showDialog1('提名理由不能为空');
+	  			return false;
+	  		}
+	  		if(config.flag){
+	  			config.flag = false
+		  		config.$POST('/account/v1/userSubject/addNewActivitySubject',data,function(data){
+		  			if(data.resultCode == 200){
+		  				showDialog1('参与成功');
+		  				$('#title').val('');
+		  				$('#content').val('');
+		  				config.flag = true;
+		  			}else{
+		  				showDialog1(data.resultMessages)
+		  				config.flag = true
+		  			}
+		  		})
+
+	  		}
+		})
+	}
+	
+	function myrefresh() {
+	    window.location.reload();
+	}
+</script>
+</body>
+</html>

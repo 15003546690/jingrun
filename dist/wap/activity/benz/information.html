@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="target-densitydpi=device-dpi,width=750,user-scalable=0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="format-detection" content="telephone=no" />
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    <meta http-equiv="cache-control" content="no-cache">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+		<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
+		<script src="../../js/jquery-3.2.1.min.js" ></script>
+		<script src="../../js/rem.js"></script>
+		<script src="../../js/md5.js"></script>
+		<script src="../../js/sign.js"></script>
+		<script src="../../js/base_app.js?a=5"></script>
+		<script src="js/echarts.min.js"></script>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="../../js/wxShare.js"></script>
+		<style>
+			html,body{
+			width: 100%;
+			height: 100%;
+			} 
+			#app{width:100%;height: 100%; position: relative; overflow: hidden; background: #141415;
+    display: inline-table;}
+			.app_titlt{width:100%;height:0.9rem;background: #2b2b32;}
+			.app_titlt a{width: 50%;font-size: 0.28rem;color: #818589;text-align: center;height:0.9rem;line-height:0.9rem;}
+			.app_titlt a.select_cole{color: #fff;background: url(../landrover/img/yell_coorm.png) no-repeat center 0.8rem;}
+			.result_txt{height: 2rem;}
+			/*提交结果页*/
+			/*.question_result{width: 100%;height: 100%;background:#210d32;}*/
+			.questionR_logo{width: 100%; text-align: center; font-size: .6rem; color: #fff;margin-bottom: .3rem}
+			.questionR_num{width: 100%;color: #fff;font-size: .36rem;text-align: center;}
+			.questionR_num span{font-size: 1.2rem}
+			.questionR_btn{width: 3.01rem;height: .72rem;margin: auto;background: url(img/showOff.png) no-repeat;background-size: 100%;margin-bottom: 1.06rem;}
+			.questionR_share{width: 100%;height: 100%;background: rgba(0,0,0,.7);position: fixed;top: 0;z-index: 999;overflow: hidden;display: none;}
+			.questionR_share div{width: 4.25rem;height: 1.50rem;position: absolute;right: .43rem;top: .12rem;background: url(img/share.png) no-repeat;background-size: 100%;}
+			#mainBar{margin:1rem auto;}
+		</style>
+    	
+	</head>
+	<body>
+		<div id="app">
+			<div class="app_titlt displayFlex">
+				<a href="javascript:;" class="select_cole">个人信息</a>
+				<a href="javascript:;" class="prize">获得奖品</a>
+			</div>
+			<!-- 结果页 -->
+			<div class="question_result">
+				<div class="result_txt">
+				</div>
+				<div class="questionR_logo"></div>
+				<!-- <div class="questionR_num">
+					<span></span>分
+				</div> -->
+				<div id="mainBar" style="width: 94%;height:4.5rem;"></div>
+				<div class="questionR_btn"></div>
+			</div>
+		</div>
+		<script>
+			var newHd = new AppCommon();
+			newHd.baseUrl='https://np.ifuturex.com:7500/';
+			var shareTitle = decodeURIComponent(newHd.getCookie('shareTitle'));
+			var shareDesc = decodeURIComponent(newHd.getCookie('shareDesc'));
+			var shareImg = decodeURIComponent(newHd.getCookie('shareImg'));
+			var trackDesc=sessionStorage.getItem("trackDesc");
+			var imgType = newHd.GetQueryString('url');
+			var score = newHd.GetQueryString('score');
+			var myChart = echarts.init(document.getElementById('mainBar'));
+			var flag = true;
+			if(trackDesc == null){
+				trackDesc=new Date().getTime();
+				sessionStorage.setItem('trackDesc',trackDesc)
+			}
+			newHd.uriedPoints(1,'benz',newHd.getCookie('activityId'),trackDesc);
+			newHd.$POST('/order/v1/syrvey/userSeeShareResult',{
+					"activityId": newHd.getCookie('activityId'),
+					"userCode":newHd.getCookie('inviteCode')
+					},
+				function(data){
+					if(data.resultCode!=200){
+						alert(data.resultMessages)
+						return false;
+					}
+					$('.questionR_logo').text(data.resultValue.typeMsg.typeName);
+					$('.questionR_num span').text(data.resultValue.score);
+					var radar = data.resultValue.radar;
+					if(radar.length < 1){
+						return false;
+					}
+					var indicatorArr=[];
+					var echartsData=[];
+					for(var i = 0;i<radar.length;i++){
+						var indiObj = {
+							name:radar[i].dimensionName,
+							max:100
+						}
+						indicatorArr.push(indiObj);
+						echartsData.push(radar[i].score)
+					}
+					myChart.setOption({	
+				    tooltip: {},
+				    calculable : true,
+				    polar: {
+				        name: {
+				            textStyle: {
+				                color: '#fff',
+				                backgroundColor: '#999',
+				                borderRadius: 3,
+				                padding: [3, 5]
+				           }
+				        },
+				        axisLine:{
+			            lineStyle:{
+			            color:'#abb3bd'
+			            }
+			          },
+			          splitLine:{
+			            lineStyle:{
+			            color:'#abb3bd'
+			            }
+			          },
+			          splitArea:{
+			          	show:false
+			          },
+			           type: 'polygon',
+				        indicator: indicatorArr
+				    },
+				    series: [{
+				        name: '',
+				        type: 'radar',
+				        itemStyle: {
+			                normal: {
+			                    areaStyle: {
+			                        type: 'default',
+			                        color:'rgba(120,78,12,.7)'
+			                    },
+			                    lineStyle:{
+			                    	width:1,
+			                    	color:'#d18d21'
+			                    }
+			                }
+			            },
+				        data : [
+				            {
+				                value : echartsData,
+				                symbolSize:0
+				            }
+				        ]
+				    }]
+			        });
+				if(isWeixinBrowser) {
+					var shareData = {
+						title: data.resultValue.shareMsg.activityName,
+						desc: data.resultValue.shareMsg.title,
+						link: 'https://www.ifuturex.com/wap/activity/benz/success.html?activityId='+newHd.getCookie('activityId'),
+						imgUrl: data.resultValue.shareMsg.img
+					}
+					shareInit(shareData,bury)
+				}
+			})
+			function bury(){
+				newHd.uriedPoints(1,'benz',newHd.getCookie('activityId'),trackDesc,1)
+			}
+			$('.prize').on('click',function(){
+				if(flag){
+					if(newHd.refreshToken == null){
+						var url = 'http://www.ifuturex.com/wap/activity/benz/prize.html?activityId='+newHd.getCookie('activityId');
+						window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx798d96bd5a689a90&redirect_uri='+url+'&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect'
+					}else{
+						window.location.href='http://www.ifuturex.com/wap/activity/benz/prize.html';
+					}
+				}
+			})
+			//点击炫耀
+			$('.questionR_btn').on('click',function(){
+				$('.questionR_share').css('display','block')
+			})
+			var yaoFlag = true;
+			$("#overlay-prize").on('click','a.close',function(){
+				$("#overlay-prize").hide();
+			})
+			if (window.DeviceMotionEvent) {
+				window.addEventListener('devicemotion', deviceMotionHandler, false);
+			}
+
+			var SHAKE_THRESHOLD = 300;
+			var last_update = 0;
+			var x, y, z, last_x, last_y, last_z;
+
+			function deviceMotionHandler(eventData) {
+
+				var acceleration = eventData.accelerationIncludingGravity;
+				var curTime = new Date().getTime();
+				if ((curTime - last_update) > 300) {
+
+					var diffTime = curTime - last_update;
+					last_update = curTime;
+
+					x = acceleration.x;
+					y = acceleration.y;
+					z = acceleration.z;
+
+					var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+					if (speed > SHAKE_THRESHOLD) {
+						$("#overlay-prize").show();
+						// window.removeEventListener('devicemotion', deviceMotionHandler, false);
+						// 摇一摇执行播放那个函数
+						playVid();
+					}
+					last_x = x;
+					last_y = y;
+					last_z = z;
+				}
+			}
+
+			function playVid() {
+				$(document).on('touchstart', function() {
+					myVideo.load()
+				})
+				var myVideo = document.getElementById("video1");
+				myVideo.play();
+			}
+		</script>
+	</body>
+</html>

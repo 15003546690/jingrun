@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<script src="jquery-2.2.0.js"></script>
+	<script>
+		function GetQueryString(name){
+           var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+           var r = window.location.search.substr(1).match(reg);
+           if(r!=null)return  unescape(r[2]); return null;
+	    }
+		var code=GetQueryString('code')
+		alert(code)
+		$.ajax({
+			url:'http://192.168.0.13:7601/account/callback/v1/auth/wechat',
+			type:'GET',
+			data:{
+				'code':code
+			},
+			success:function(data){
+				console.log(data.resultValue.isbinding==-1)
+				if(data.resultValue.isbinding==-1){
+//				location.href='http://localhost:8080/#/personal/account/bind'			
+				}else if()
+
+			}
+		})
+	</script>
+</body>
+</html>

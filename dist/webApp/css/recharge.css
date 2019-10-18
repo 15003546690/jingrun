@@ -1,0 +1,55 @@
+@charset "utf-8";
+body,html{
+	font-family: "microsoft yahei";
+	padding: 0;
+	margin: 0;
+}
+.recharge-main{
+	width: 750px;
+	background: #fff;
+	margin: auto;
+	margin-bottom: 80px;
+	overflow-x: hidden;
+}
+.recharge-text{
+	width: 670px;
+	margin: auto;
+}
+.recharge-body{
+	width: 100%;
+	margin-top: 37px;
+}
+.recharge-body-p1{
+	width: 100%;
+	line-height: 38px;
+	color: #272424;
+	font-size: 30px;
+	margin-bottom: 33px;
+}
+.recharge-body-p2,.recharge-body-p4{
+	width: 100%;
+	line-height: 36px;
+	color: #727272;
+	font-size: 24px;
+	margin-bottom: 35px;
+}
+.recharge-body-p2{
+	text-indent: 2em;
+}
+.recharge-body-p3{
+	width: 100%;
+	color: #272424;
+	font-size: 28px;
+	line-height: 40px;
+	margin-bottom: 34px;
+}
+.recharge-body-p5,.recharge-body-p6{
+	width: 100%;
+	line-height: 36px;
+	color: #727272;
+	font-size: 24px;
+	margin: 0;
+}
+.recharge-body-p6{
+	margin-bottom: 35px;
+}
